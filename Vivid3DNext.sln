@@ -1,0 +1,28 @@
+﻿
+Microsoft Visual Studio Solution File, Format Version 12.00
+# Visual Studio 15
+VisualStudioVersion = 15.0.26430.16
+MinimumVisualStudioVersion = 10.0.40219.1
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Vivid3DNext", "Vivid3DNext\Vivid3DNext.csproj", "{4A668DD0-FA8F-42BA-9810-866308E9053C}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "ExampleOne", "ExampleOne\ExampleOne.csproj", "{26BAE99C-1635-45C5-9DC8-1B155145D347}"
+EndProject
+Global
+	GlobalSection(SolutionConfigurationPlatforms) = preSolution
+		Debug|Any CPU = Debug|Any CPU
+		Release|Any CPU = Release|Any CPU
+	EndGlobalSection
+	GlobalSection(ProjectConfigurationPlatforms) = postSolution
+		{4A668DD0-FA8F-42BA-9810-866308E9053C}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{4A668DD0-FA8F-42BA-9810-866308E9053C}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{4A668DD0-FA8F-42BA-9810-866308E9053C}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{4A668DD0-FA8F-42BA-9810-866308E9053C}.Release|Any CPU.Build.0 = Release|Any CPU
+		{26BAE99C-1635-45C5-9DC8-1B155145D347}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{26BAE99C-1635-45C5-9DC8-1B155145D347}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{26BAE99C-1635-45C5-9DC8-1B155145D347}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{26BAE99C-1635-45C5-9DC8-1B155145D347}.Release|Any CPU.Build.0 = Release|Any CPU
+	EndGlobalSection
+	GlobalSection(SolutionProperties) = preSolution
+		HideSolutionNode = FALSE
+	EndGlobalSection
+EndGlobal
