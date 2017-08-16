@@ -9,7 +9,7 @@ namespace Vivid.Scene
 {
     public class VCam : VSceneNode
     {
-        public Matrix4 ProjMat = null;
+        public Matrix4 ProjMat = Matrix4.Identity;
         public VCam()
         {
             ProjMat = Matrix4.CreatePerspectiveFieldOfView(MathHelper.DegreesToRadians(35), AppInfo.W / AppInfo.H, 0.01f, 1000.0f);

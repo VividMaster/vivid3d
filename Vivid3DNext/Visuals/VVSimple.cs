@@ -28,7 +28,13 @@ namespace Vivid.Visuals
           
             for(int i = 0; i < md.NumIndices; i += 3)
             {
-                GL.Vertex3(v.)
+                uint i1, i2, i3;
+                i1 = md.Indices[i] * (uint)md.Data.Components;
+                i2 = md.Indices[i + 1] * (uint)md.Data.Components;
+                i3 = md.Indices[i + 2] * (uint)md.Data.Components;
+                GL.Vertex3(v[i1], v[i1 + 1], v[i1 + 2]);
+                GL.Vertex3(v[i2], v[i2 + 1], v[i2 + 2]);
+                GL.Vertex3(v[i3], v[i3 + 1], v[i3 + 2]);
             }
 
             GL.End();

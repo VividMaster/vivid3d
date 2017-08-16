@@ -26,6 +26,7 @@ namespace Vivid.Import
 
                 var m2 = new VMesh(m.VertexCount, m.GetIntIndices().Length);
                 root.AddMesh(m2);
+                m2.Name = m.Name;
                 var mat = s.Materials[m.MaterialIndex];
                 TextureSlot t1;
                 if (mat.GetTextureCount(TextureType.Diffuse) > 0)

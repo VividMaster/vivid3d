@@ -8,6 +8,7 @@ namespace Vivid.Data
 {
     public class VMesh
     {
+        public string Name = "NoName";
         public VVertex3D Data = null;
         public uint[] Indices = null;
         public int NumVertices

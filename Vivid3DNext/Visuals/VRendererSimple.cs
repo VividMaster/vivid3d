@@ -10,6 +10,10 @@ namespace Vivid.Visuals
     {
         public VRendererSimple()
         {
+   
+        }
+        public override void Init()
+        {
             Layers.Add(new VRLSimple());
         }
     }

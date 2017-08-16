@@ -67,6 +67,7 @@
     <Compile Include="Scene\VSceneGraph.cs" />
     <Compile Include="Scene\VSceneNode.cs" />
     <Compile Include="Data\VVertex3D.cs" />
+    <Compile Include="Visuals\VRLSimple.cs" />
     <Compile Include="Visuals\VVertexArrays.cs" />
     <Compile Include="Data\VVertexData.cs" />
     <Compile Include="Visuals\VVisualizer.cs" />

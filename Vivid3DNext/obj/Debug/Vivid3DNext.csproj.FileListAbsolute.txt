@@ -17,3 +17,13 @@ G:\Custom\3D\Vivid3DNext\Vivid3DNext\Vivid3DNext\Vivid3DNext\bin\Debug\OpenTK.dl
 G:\Custom\3D\Vivid3DNext\Vivid3DNext\Vivid3DNext\Vivid3DNext\obj\Debug\Vivid3DNext.csprojResolveAssemblyReference.cache
 G:\Custom\3D\Vivid3DNext\Vivid3DNext\Vivid3DNext\Vivid3DNext\obj\Debug\Vivid3D.dll
 G:\Custom\3D\Vivid3DNext\Vivid3DNext\Vivid3DNext\Vivid3DNext\obj\Debug\Vivid3D.pdb
+C:\VividGIT\Vivid3D\vividsutdio3d\Vivid3DNext\obj\Debug\Vivid3DNext.csprojResolveAssemblyReference.cache
+C:\VividGIT\Vivid3D\vividsutdio3d\Vivid3DNext\obj\Debug\Vivid3DNext.csproj.CoreCompileInputs.cache
+C:\VividGIT\Vivid3D\vividsutdio3d\Vivid3DNext\obj\Debug\Vivid3D.dll
+C:\VividGIT\Vivid3D\vividsutdio3d\Vivid3DNext\obj\Debug\Vivid3D.pdb
+C:\VividGIT\Vivid3D\vividsutdio3d\Vivid3DNext\bin\Debug\Vivid3D.dll
+C:\VividGIT\Vivid3D\vividsutdio3d\Vivid3DNext\bin\Debug\Vivid3D.pdb
+C:\VividGIT\Vivid3D\vividsutdio3d\Vivid3DNext\bin\Debug\AssimpNet.dll
+C:\VividGIT\Vivid3D\vividsutdio3d\Vivid3DNext\bin\Debug\OpenTK.pdb
+C:\VividGIT\Vivid3D\vividsutdio3d\Vivid3DNext\bin\Debug\OpenTK.xml
+C:\VividGIT\Vivid3D\vividsutdio3d\Vivid3DNext\bin\Debug\OpenTK.dll.config

@@ -41,6 +41,14 @@ namespace Vivid.Scene
         public VSceneNode Top = null;
         public List<VSceneNode> Sub = new List<VSceneNode>();
         public VInfoMap<string, object> Links = new VInfoMap<string, object>();
+        public VSceneNode()
+        {
+            Init();
+        }
+        public virtual void Init()
+        {
+
+        }
         public virtual void AddLink(string name,object obj)
         {
             Links.Add(name, obj);
@@ -71,7 +79,7 @@ namespace Vivid.Scene
                 LocalPos = LocalPos + nv;
             }
         }
-        public virtual void Present()
+        public virtual void Present(VCam c)
         {
 
         }

@@ -23,3 +23,16 @@ G:\Custom\3D\Vivid3DNext\Vivid3DNext\Vivid3DNext\ExampleOne\bin\Debug\OpenTK.dll
 G:\Custom\3D\Vivid3DNext\Vivid3DNext\Vivid3DNext\ExampleOne\obj\Debug\ExampleOne.csprojResolveAssemblyReference.cache
 G:\Custom\3D\Vivid3DNext\Vivid3DNext\Vivid3DNext\ExampleOne\obj\Debug\ExampleOne.exe
 G:\Custom\3D\Vivid3DNext\Vivid3DNext\Vivid3DNext\ExampleOne\obj\Debug\ExampleOne.pdb
+C:\VividGIT\Vivid3D\vividsutdio3d\ExampleOne\bin\Debug\ExampleOne.exe.config
+C:\VividGIT\Vivid3D\vividsutdio3d\ExampleOne\bin\Debug\ExampleOne.exe
+C:\VividGIT\Vivid3D\vividsutdio3d\ExampleOne\bin\Debug\ExampleOne.pdb
+C:\VividGIT\Vivid3D\vividsutdio3d\ExampleOne\bin\Debug\Vivid3D.dll
+C:\VividGIT\Vivid3D\vividsutdio3d\ExampleOne\bin\Debug\AssimpNet.dll
+C:\VividGIT\Vivid3D\vividsutdio3d\ExampleOne\bin\Debug\Vivid3D.pdb
+C:\VividGIT\Vivid3D\vividsutdio3d\ExampleOne\bin\Debug\OpenTK.pdb
+C:\VividGIT\Vivid3D\vividsutdio3d\ExampleOne\bin\Debug\OpenTK.xml
+C:\VividGIT\Vivid3D\vividsutdio3d\ExampleOne\bin\Debug\OpenTK.dll.config
+C:\VividGIT\Vivid3D\vividsutdio3d\ExampleOne\obj\Debug\ExampleOne.csprojResolveAssemblyReference.cache
+C:\VividGIT\Vivid3D\vividsutdio3d\ExampleOne\obj\Debug\ExampleOne.csproj.CoreCompileInputs.cache
+C:\VividGIT\Vivid3D\vividsutdio3d\ExampleOne\obj\Debug\ExampleOne.exe
+C:\VividGIT\Vivid3D\vividsutdio3d\ExampleOne\obj\Debug\ExampleOne.pdb

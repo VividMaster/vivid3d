@@ -7,6 +7,7 @@ using OpenTK;
 using OpenTK.Graphics.OpenGL;
 using Vivid.State;
 using Vivid.Draw;
+using Vivid.Import;
 namespace Vivid.System
 {
     public static class AppInfo
@@ -55,6 +56,7 @@ namespace Vivid.System
             AppInfo.H = height;
             AppInfo.Full = full;
             AppInfo.App = app;
+            VImport.RegDefaults();
          
 
         }

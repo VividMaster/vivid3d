@@ -36,7 +36,7 @@ namespace Vivid.Scene
             {
                 foreach(var n in Nodes)
                 {
-                    n.Render(c);
+                    n.Present(c);
                 }
             }
         }
