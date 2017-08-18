@@ -20,7 +20,7 @@ namespace Vivid.Data
             Data = new T[vertexCount * components];
             StrideSize = strideSize;
             ComponentSize = componentSize;
-            Components = componentSize;
+            Components = components;
             Vertices = vertexCount;
             Indices = indexCount;
             Index = new int[indexCount];

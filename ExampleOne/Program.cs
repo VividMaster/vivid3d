@@ -25,7 +25,7 @@ namespace ExampleOne
             sg = new VSceneGraph();
             e1 = VImport.ImportNode("c:/media/test1.3ds");
             var m1 = new VMaterial();
-            m1.LoadTexs("c:/media", "metal1");
+            m1.LoadTexs("c:/media", "tex1");
             var ee = e1 as VSceneEntity;
             SetMat(ee, m1);
             sg.Add(e1);
@@ -37,6 +37,7 @@ namespace ExampleOne
         }
         public void SetMat(VSceneEntity e,VMaterial m)
         {
+            Console.WriteLine("E:" + e.Name + " :" + e.Sub.Count + " MC:" + e.Meshes.Count);
             foreach(var mm in e.Meshes)
             {
                 mm.Mat = m;
@@ -50,10 +51,10 @@ namespace ExampleOne
         public override void Render()
         {
             y = y + 0.1f;
-            e1.Rot(new Vector3(y, 0, 0), Space.Local);
+            e1.Rot(new Vector3(0,y, 0), Space.Local);
             //Console.WriteLine("Render!");
             VPen.Rect(20, 20, 200, 200);
-          //  sg.Render();
+            sg.Render();
         }
     }
     class Program

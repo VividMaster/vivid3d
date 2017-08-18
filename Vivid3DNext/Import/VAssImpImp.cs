@@ -62,7 +62,7 @@ namespace Vivid.Import
                     var tan = m.Tangents[i];
                     var bi = m.BiTangents[i];
 
-                    m2.SetVertex(i, Cv(v), Cv(tan), Cv(bi), Cv(n), Cv2(t[0]));
+                    m2.SetVertex(i, Cv(v), Cv(tan), Cv(bi), Cv(n), Cv2(t[i]));
 
                 }
                 int[] id = m.GetIntIndices();
@@ -99,13 +99,14 @@ namespace Vivid.Import
             var lt = r1.LocalTurn;
 
             r1.LocalTurn = lt.ClearTranslation();
-            r1.LocalTurn = lt.ClearScale();
+            r1.LocalTurn = r1.LocalTurn.ClearScale();
             r1.LocalPos = lt.ExtractTranslation();
             Console.WriteLine("x:" + r1.LocalPos.X + " Y:" + r1.LocalPos.Y + " z:" + r1.LocalPos.Z);
             r1.LocalScale = lt.ExtractScale();
+           // r1.LocalPos = new OpenTK.Vector3(r1.LocalPos.X + 100, 0, 0);
             for(int i = 0; i < s.MeshCount; i++)
             {
-                root.AddMesh(ml[s.MeshIndices[i]]);
+                r1.AddMesh(ml[s.MeshIndices[i]]);
                 Console.WriteLine("Mesh:" + s.MeshIndices[i] + " added to node:" + r1.Name);
             }
             if (s.HasChildren)

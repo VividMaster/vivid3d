@@ -10,6 +10,9 @@ namespace Vivid.Scene
     public class VCam : VSceneNode
     {
         public Matrix4 ProjMat = Matrix4.Identity;
+        public bool DepthTest = true;
+        public bool AlphaTest = false;
+        public bool CullFace = true;
         public VCam()
         {
             ProjMat = Matrix4.CreatePerspectiveFieldOfView(MathHelper.DegreesToRadians(35), AppInfo.W / AppInfo.H, 0.01f, 1000.0f);
@@ -18,6 +21,7 @@ namespace Vivid.Scene
         {
             get
             {
+                Console.WriteLine("CM");
                 return Matrix4.Invert(World);
             }
         }

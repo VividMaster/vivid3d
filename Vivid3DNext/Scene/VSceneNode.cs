@@ -17,6 +17,19 @@ namespace Vivid.Scene
         public Vector3 LocalPos = Vector3.Zero;
         public Vector3 LocalScale = Vector3.One;
         public Matrix4 LocalTurn = Matrix4.Identity;
+        public Vector3 WorldPos
+        {
+            get
+            {
+                var p = Vector3.Zero;
+                if (Top != null)
+                {
+                    p = Top.WorldPos;
+                }
+                p = p + LocalPos;
+                return p;
+            }
+        }
         public Matrix4 World
         {
             get
@@ -28,19 +41,11 @@ namespace Vivid.Scene
                 }
                 r = r * LocalTurn;
 
-                Console.WriteLine("X:" + LocalPos.X + " Y:" + LocalPos.Y + " Z:" + LocalPos.Z);
-                Matrix4 pos = Matrix4.CreateTranslation(LocalPos);
-                r = r * pos;
+       
                 return r;
             }
         }
-        public Vector3 WorldPos
-        {
-            get
-            {
-                return World.ExtractTranslation();
-            }
-        }
+   
         public VSceneNode Top = null;
         public List<VSceneNode> Sub = new List<VSceneNode>();
         public VInfoMap<string, object> Links = new VInfoMap<string, object>();

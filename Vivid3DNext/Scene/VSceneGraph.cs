@@ -3,7 +3,6 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
-
 namespace Vivid.Scene
 {
     public class VSceneGraph
@@ -32,6 +31,7 @@ namespace Vivid.Scene
         }
         public virtual void Render()
         {
+            
             foreach(var c in Cams)
             {
                 foreach(var n in Nodes)

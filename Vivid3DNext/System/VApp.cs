@@ -94,6 +94,7 @@ namespace Vivid.System
             Title += $"(Vsync: {VSync}) FPS: {1f / e.Time:0}";
 
             GL.ClearColor(_BgCol);
+            GL.ClearDepth(1000.0f);
 
             GL.Clear(ClearBufferMask.ColorBufferBit | ClearBufferMask.DepthBufferBit);
 
