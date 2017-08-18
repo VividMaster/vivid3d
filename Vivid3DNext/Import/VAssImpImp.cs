@@ -21,11 +21,19 @@ namespace Vivid.Import
             var c1 = new Assimp.Configs.NormalSmoothingAngleConfig(45);
             e.SetConfig(c1);
             var s = e.ImportFile(file, PostProcessSteps.CalculateTangentSpace | PostProcessSteps.GenerateSmoothNormals | PostProcessSteps.Triangulate);
+            Dictionary<string, VMesh> ml = new Dictionary<string, VMesh>();
+            List<VMesh> ml2 = new List<VMesh>();
             foreach (var m in s.Meshes)
             {
 
+                var vm = new Material.VMaterial();
+
                 var m2 = new VMesh(m.VertexCount, m.GetIntIndices().Length);
-                root.AddMesh(m2);
+                ml2.Add(m2);
+                ml.Add(m.Name, m2);
+
+                m2.Mat = vm;
+               // root.AddMesh(m2);
                 m2.Name = m.Name;
                 var mat = s.Materials[m.MaterialIndex];
                 TextureSlot t1;
@@ -64,16 +72,52 @@ namespace Vivid.Import
                 {
                     nd[i] = (uint)id[i];
                 }
-               
+
                 m2.Indices = nd;
 
 
-
+                Console.WriteLine("Processing mesh:" + m.Name);
             }
-         
 
+            ProcessNode(root, s.RootNode, ml2);
+         
+ 
             return root as VSceneNode;
         }
+
+        private void ProcessNode(VSceneEntity root, Assimp.Node s,List<VMesh> ml)
+        {
+
+            VSceneEntity r1 = new VSceneEntity();
+            root.Sub.Add(r1);
+            r1.Top = root;
+            r1.Name = s.Name;
+
+
+            //r1.LocalTurn = new OpenTK.Matrix4(s.Transform.A1, s.Transform.A2, s.Transform.A3, s.Transform.A4, s.Transform.B1, s.Transform.B2, s.Transform.B3, s.Transform.B4, s.Transform.C1, s.Transform.C2, s.Transform.C3, s.Transform.C4, s.Transform.D1, s.Transform.D2, s.Transform.D3, s.Transform.D4);
+            r1.LocalTurn = new OpenTK.Matrix4(s.Transform.A1, s.Transform.B1, s.Transform.C1, s.Transform.D1, s.Transform.A2, s.Transform.B2, s.Transform.C2, s.Transform.D2, s.Transform.A3, s.Transform.B3, s.Transform.C3, s.Transform.D3, s.Transform.A4, s.Transform.B4, s.Transform.C4, s.Transform.D4);
+            var lt = r1.LocalTurn;
+
+            r1.LocalTurn = lt.ClearTranslation();
+            r1.LocalTurn = lt.ClearScale();
+            r1.LocalPos = lt.ExtractTranslation();
+            Console.WriteLine("x:" + r1.LocalPos.X + " Y:" + r1.LocalPos.Y + " z:" + r1.LocalPos.Z);
+            r1.LocalScale = lt.ExtractScale();
+            for(int i = 0; i < s.MeshCount; i++)
+            {
+                root.AddMesh(ml[s.MeshIndices[i]]);
+                Console.WriteLine("Mesh:" + s.MeshIndices[i] + " added to node:" + r1.Name);
+            }
+            if (s.HasChildren)
+            {
+                foreach (var pn in s.Children)
+                {
+                    Console.WriteLine("Processing child node:" + pn.Name);
+                    ProcessNode(r1, pn, ml);
+                }
+            }
+        }
+
         public OpenTK.Vector2 Cv2(Assimp.Vector3D o)
         {
             return new OpenTK.Vector2(o.X, o.Y);

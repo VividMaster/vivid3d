@@ -4,6 +4,7 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 using OpenTK;
+using Vivid.Material;
 namespace Vivid.Data
 {
     public class VMesh
@@ -11,6 +12,7 @@ namespace Vivid.Data
         public string Name = "NoName";
         public VVertex3D Data = null;
         public uint[] Indices = null;
+        public VMaterial Mat = null;
         public int NumVertices
         {
             get

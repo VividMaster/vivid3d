@@ -60,6 +60,8 @@
     <Compile Include="Import\VImport.cs" />
     <Compile Include="Import\VImporter.cs" />
     <Compile Include="Data\VInfoMap.cs" />
+    <Compile Include="Texture\VTex2D.cs" />
+    <Compile Include="Texture\VTexBase.cs" />
     <Compile Include="Visuals\VRenderer.cs" />
     <Compile Include="Visuals\VRendererSimple.cs" />
     <Compile Include="Visuals\VRenderLayer.cs" />
@@ -73,6 +75,7 @@
     <Compile Include="Visuals\VVisualizer.cs" />
     <Compile Include="Data\VMesh.cs" />
     <Compile Include="Visuals\VVSimple.cs" />
+    <Compile Include="Material\VMaterial.cs" />
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
 </Project>

@@ -13,6 +13,7 @@ namespace Vivid.Scene
     }
     public class VSceneNode
     {
+        public string Name = "";
         public Vector3 LocalPos = Vector3.Zero;
         public Vector3 LocalScale = Vector3.One;
         public Matrix4 LocalTurn = Matrix4.Identity;
@@ -21,12 +22,14 @@ namespace Vivid.Scene
             get
             {
                 Matrix4 r = Matrix4.Identity;
-                if (Top == null)
+                if (Top != null)
                 {
-                    r = r * Top.World;
+                    r = Top.World * r;
                 }
                 r = r * LocalTurn;
-                Matrix4 pos = Matrix4.Translation(LocalPos);
+
+                Console.WriteLine("X:" + LocalPos.X + " Y:" + LocalPos.Y + " Z:" + LocalPos.Z);
+                Matrix4 pos = Matrix4.CreateTranslation(LocalPos);
                 r = r * pos;
                 return r;
             }

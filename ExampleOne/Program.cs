@@ -12,23 +12,48 @@ using Vivid.State;
 using Vivid.Draw;
 using Vivid.Scene;
 using Vivid.Import;
+using Vivid.Material;
 namespace ExampleOne
 {
     public class Intro1 : VAppState
     {
+        public VCam c1 = null;
         public VSceneGraph sg = null;
         public VSceneNode e1 = null;
         public override void InitState()
         {
             sg = new VSceneGraph();
-            e1 = VImport.ImportNode("g:/media/3d/test1.3ds");
+            e1 = VImport.ImportNode("c:/media/test1.3ds");
+            var m1 = new VMaterial();
+            m1.LoadTexs("c:/media", "metal1");
+            var ee = e1 as VSceneEntity;
+            SetMat(ee, m1);
             sg.Add(e1);
-
+            c1 = new VCam();
+            sg.Add(c1);
+   
+            c1.Pos(new Vector3(0, 0, 400), Space.Local);
+        
         }
+        public void SetMat(VSceneEntity e,VMaterial m)
+        {
+            foreach(var mm in e.Meshes)
+            {
+                mm.Mat = m;
+            }
+            foreach(var n in e.Sub)
+            {
+                SetMat(n as VSceneEntity, m);
+            }
+        }
+        public float y = 0;
         public override void Render()
         {
+            y = y + 0.1f;
+            e1.Rot(new Vector3(y, 0, 0), Space.Local);
             //Console.WriteLine("Render!");
             VPen.Rect(20, 20, 200, 200);
+          //  sg.Render();
         }
     }
     class Program

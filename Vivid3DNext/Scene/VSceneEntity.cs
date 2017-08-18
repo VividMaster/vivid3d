@@ -33,7 +33,7 @@ namespace Vivid.Scene
             GL.MatrixMode(MatrixMode.Modelview);
             Matrix4 mm = Matrix4.Identity;
             mm = c.CamWorld;
-            mm = mm * World;
+            mm = World * mm;
             GL.LoadMatrix(ref mm);
 
             Bind();
@@ -41,6 +41,10 @@ namespace Vivid.Scene
             Render();
             PostRender();
             Release();
+            foreach(var s in Sub)
+            {
+                s.Present(c);
+            }
         }
         /// <summary>
         /// To be called AFTER data asscoiation.
