@@ -5,10 +5,26 @@
     <BreakpointStore />
   </MonoDevelop.Ide.DebuggingService.Breakpoints>
   <MonoDevelop.Ide.ItemProperties.ExampleOne PreferredExecutionTarget="MonoDevelop.Default" />
-  <MonoDevelop.Ide.Workbench ActiveDocument="ExampleOne\Program.cs">
+  <MonoDevelop.Ide.Workbench ActiveDocument="Vivid3D\Import\VAssImpImp.cs">
     <Files>
-      <File FileName="ExampleOne\Program.cs" Line="1" Column="1" />
+      <File FileName="ExampleOne\Program.cs" Line="49" Column="14" />
+      <File FileName="Vivid3D\Import\VAssImpImp.cs" Line="11" Column="1" />
     </Files>
+    <Pads>
+      <Pad Id="ProjectPad">
+        <State name="__root__">
+          <Node name="Vivid3DNext" expanded="True">
+            <Node name="ExampleOne" expanded="True" />
+            <Node name="Vivid3D" expanded="True">
+              <Node name="References" expanded="True">
+                <Node name="AssimpNet" selected="True" />
+              </Node>
+              <Node name="Import" expanded="True" />
+            </Node>
+          </Node>
+        </State>
+      </Pad>
+    </Pads>
   </MonoDevelop.Ide.Workbench>
   <MultiItemStartupConfigurations />
 </Properties>

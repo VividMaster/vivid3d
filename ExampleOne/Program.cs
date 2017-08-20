@@ -33,7 +33,7 @@ namespace ExampleOne
             c1 = new VCam();
             sg.Add(c1);
    
-            c1.Pos(new Vector3(0, 0, 400), Space.Local);
+            c1.Pos(new Vector3(0, 0, 300), Space.Local);
         
         }
         public void SetMat(VSceneEntity e,VMaterial m)

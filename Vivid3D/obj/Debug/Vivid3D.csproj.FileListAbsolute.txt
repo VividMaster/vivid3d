@@ -1,0 +1,9 @@
+C:\git\VividGIT\Vivid3D\vividsutdio3d\Vivid3D\obj\Debug\Vivid3D.csprojResolveAssemblyReference.cache
+C:\git\VividGIT\Vivid3D\vividsutdio3d\Vivid3D\obj\Debug\Vivid3D.csproj.CoreCompileInputs.cache
+C:\git\VividGIT\Vivid3D\vividsutdio3d\Vivid3D\bin\Debug\Vivid3D.dll
+C:\git\VividGIT\Vivid3D\vividsutdio3d\Vivid3D\bin\Debug\Vivid3D.pdb
+C:\git\VividGIT\Vivid3D\vividsutdio3d\Vivid3D\bin\Debug\AssimpNet.dll
+C:\git\VividGIT\Vivid3D\vividsutdio3d\Vivid3D\bin\Debug\OpenTK.dll
+C:\git\VividGIT\Vivid3D\vividsutdio3d\Vivid3D\bin\Debug\OpenTK.dll.config
+C:\git\VividGIT\Vivid3D\vividsutdio3d\Vivid3D\obj\Debug\Vivid3D.dll
+C:\git\VividGIT\Vivid3D\vividsutdio3d\Vivid3D\obj\Debug\Vivid3D.pdb

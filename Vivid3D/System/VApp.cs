@@ -4,7 +4,7 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 using OpenTK;
-using OpenTK.Graphics.OpenGL;
+using OpenTK.Graphics.ES20;
 using Vivid.State;
 using Vivid.Draw;
 using Vivid.Import;
@@ -87,12 +87,16 @@ namespace Vivid.System
 
             //GL.DepthFunc(DepthFunction.Greater);
 
-            GL.ClearDepth(1.0f);
      
             GL.Enable(EnableCap.DepthTest);
-            GL.DepthRange(0, 1);
+            GL.DepthRange(0,1);
+
+            GL.ClearDepth(1.0f);
             GL.DepthFunc(DepthFunction.Less);
+
+          // GL.DepthFunc(DepthFunction.Lequal);
         }
+
 
         protected override void OnLoad(EventArgs e)
         {
@@ -113,7 +117,7 @@ namespace Vivid.System
         {
             Title = AppName;
             Title += $"(Vsync: {VSync}) FPS: {1f / e.Time:0}";
-            GL.Enable(EnableCap.DepthTest);
+        
             GL.ClearColor(_BgCol);
 
            // GL.DepthMask(true);
