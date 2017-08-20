@@ -1,0 +1,64 @@
+<?xml version="1.0" encoding="utf-8"?>
+<Project DefaultTargets="Build" ToolsVersion="4.0" xmlns="http://schemas.microsoft.com/developer/msbuild/2003">
+  <PropertyGroup>
+    <Configuration Condition=" '$(Configuration)' == '' ">Debug</Configuration>
+    <Platform Condition=" '$(Platform)' == '' ">AnyCPU</Platform>
+    <ProjectGuid>{6850F15F-8E1F-4E93-BE21-E5A7066541C1}</ProjectGuid>
+    <OutputType>Library</OutputType>
+    <RootNamespace>Vivid3D</RootNamespace>
+    <AssemblyName>Vivid3D</AssemblyName>
+    <TargetFrameworkVersion>v4.5</TargetFrameworkVersion>
+  </PropertyGroup>
+  <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Debug|AnyCPU' ">
+    <DebugSymbols>true</DebugSymbols>
+    <DebugType>full</DebugType>
+    <Optimize>false</Optimize>
+    <OutputPath>bin\Debug</OutputPath>
+    <DefineConstants>DEBUG;</DefineConstants>
+    <ErrorReport>prompt</ErrorReport>
+    <WarningLevel>4</WarningLevel>
+    <ConsolePause>false</ConsolePause>
+  </PropertyGroup>
+  <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Release|AnyCPU' ">
+    <Optimize>true</Optimize>
+    <OutputPath>bin\Release</OutputPath>
+    <ErrorReport>prompt</ErrorReport>
+    <WarningLevel>4</WarningLevel>
+    <ConsolePause>false</ConsolePause>
+  </PropertyGroup>
+  <ItemGroup>
+    <Reference Include="System" />
+  </ItemGroup>
+  <ItemGroup>
+    <Compile Include="Properties\AssemblyInfo.cs" />
+    <Compile Include="Cam\VCam.cs" />
+    <Compile Include="Data\VInfoMap.cs" />
+    <Compile Include="Data\VMesh.cs" />
+    <Compile Include="Data\VVertex3D.cs" />
+    <Compile Include="Data\VVertexData.cs" />
+    <Compile Include="Draw\Pen.cs" />
+    <Compile Include="Effect\VEffect.cs" />
+    <Compile Include="Import\VAssImpImp.cs" />
+    <Compile Include="Import\VImport.cs" />
+    <Compile Include="Import\VImporter.cs" />
+    <Compile Include="Input\VInput.cs" />
+    <Compile Include="Material\VMaterial.cs" />
+    <Compile Include="Scene\VCam.cs" />
+    <Compile Include="Scene\VSceneEntity.cs" />
+    <Compile Include="Scene\VSceneGraph.cs" />
+    <Compile Include="Scene\VSceneNode.cs" />
+    <Compile Include="State\VAppState.cs" />
+    <Compile Include="State\VStateManager.cs" />
+    <Compile Include="System\VApp.cs" />
+    <Compile Include="Texture\VTex2D.cs" />
+    <Compile Include="Texture\VTexBase.cs" />
+    <Compile Include="Visuals\VRenderer.cs" />
+    <Compile Include="Visuals\VRendererSimple.cs" />
+    <Compile Include="Visuals\VRenderLayer.cs" />
+    <Compile Include="Visuals\VRLSimple.cs" />
+    <Compile Include="Visuals\VVertexArrays.cs" />
+    <Compile Include="Visuals\VVisualizer.cs" />
+    <Compile Include="Visuals\VVSimple.cs" />
+  </ItemGroup>
+  <Import Project="$(MSBuildBinPath)\Microsoft.CSharp.targets" />
+</Project>
