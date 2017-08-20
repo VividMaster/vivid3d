@@ -38,6 +38,8 @@
   </ItemGroup>
   <ItemGroup>
     <Compile Include="Effect\FXG.cs" />
+    <Compile Include="Effect\VEMultiPass.cs" />
+    <Compile Include="Lighting\VLight.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
     <Compile Include="Cam\VCam.cs" />
     <Compile Include="Data\VInfoMap.cs" />
@@ -66,7 +68,7 @@
     <Compile Include="Visuals\VRLMultiPass.cs" />
     <Compile Include="Visuals\VRLSimple.cs" />
     <Compile Include="Visuals\VRMultiPass.cs" />
-    <Compile Include="Visuals\VVertexArrays.cs" />
+    <Compile Include="Visuals\VVVBO.cs" />
     <Compile Include="Visuals\VVisualizer.cs" />
     <Compile Include="Visuals\VVSimple.cs" />
   </ItemGroup>

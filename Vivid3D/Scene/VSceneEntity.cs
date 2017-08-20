@@ -35,8 +35,8 @@ namespace Vivid.Scene
             Effect.FXG.Cam = c;
            // GL.MatrixMode(MatrixMode.Modelview);
             Matrix4 mm = Matrix4.Identity;
-            mm = c.CamWorld;
-            mm = mm * Matrix4.Invert(Matrix4.CreateTranslation(c.WorldPos));
+           // mm = c.CamWorld;
+            //mm = mm * Matrix4.Invert(Matrix4.CreateTranslation(c.WorldPos));
 
 
             mm = World * mm;

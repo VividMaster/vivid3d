@@ -8,10 +8,10 @@ using OpenTK;
 using OpenTK.Graphics.OpenGL4;
 namespace Vivid.Visuals
 {
-    public class VVertexArrays : VVisualizer
+    public class VVVBO : VVisualizer
     {
         public int va, vbo, eb, tvbo, nbvo, tanvbo, bivbo;
-        public VVertexArrays(int vc,int ic) :base(vc,ic)
+        public VVVBO(int vc,int ic) :base(vc,ic)
         {
 
         }
@@ -37,9 +37,18 @@ namespace Vivid.Visuals
             GL.VertexAttribPointer(0, 3, VertexAttribPointerType.Float, false, md.Data.Components * 4, 0);
             GL.EnableVertexAttribArray(1);
             GL.VertexAttribPointer(1, 2, VertexAttribPointerType.Float, false, md.Data.Components * 4, 12 * 4);
+            GL.EnableVertexAttribArray(2);
+            GL.VertexAttribPointer(2, 3, VertexAttribPointerType.Float, false, md.Data.Components * 4, 3 * 4);
+            GL.EnableVertexAttribArray(3);
+            GL.VertexAttribPointer(3, 3, VertexAttribPointerType.Float, false, md.Data.Components * 4, 6 * 4);
+            GL.EnableVertexAttribArray(4);
+            GL.VertexAttribPointer(4, 3, VertexAttribPointerType.Float, false, md.Data.Components * 4, 9 * 4);
             GL.BindVertexArray(0);
             GL.DisableVertexAttribArray(0);
             GL.DisableVertexAttribArray(1);
+            GL.DisableVertexAttribArray(2);
+            GL.DisableVertexAttribArray(3);
+            GL.DisableVertexAttribArray(4);
 
             eb = GL.GenBuffer();
 
@@ -54,7 +63,9 @@ namespace Vivid.Visuals
             GL.BindBuffer(BufferTarget.ElementArrayBuffer, eb);
             GL.EnableVertexAttribArray(0);
             GL.EnableVertexAttribArray(1);
-
+            GL.EnableVertexAttribArray(2);
+            GL.EnableVertexAttribArray(3);
+            GL.EnableVertexAttribArray(4);
 
         }
         public override void Release()

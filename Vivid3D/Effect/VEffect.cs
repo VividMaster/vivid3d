@@ -8,18 +8,7 @@ using OpenTK;
 using OpenTK.Graphics.OpenGL4;
 namespace Vivid.Effect
 {
-    public class VEMultiPass : VEffect
-    {
-        public VEMultiPass() : base("","vsMP1.txt","fsMP1.txt")
-        {
-
-        }
-        public override void SetPars()
-        {
-            SetMat("MVP", Effect.FXG.Local * FXG.Proj);
-            SetTex("myTextureSampler", 0);
-        }
-    }
+   
     public class VEffect
     {
         public Matrix4 LocalMat = Matrix4.Identity;
@@ -36,6 +25,26 @@ namespace Vivid.Effect
         public void SetMat(string n,Matrix4 m)
         {
             GL.UniformMatrix4(GL.GetUniformLocation(_Program, n), false,ref m);
+        }
+        public void SetInt(string n,int v)
+        {
+            GL.Uniform1(GL.GetUniformLocation(_Program, n), v);
+        }
+        public void SetFloat(string n,float v)
+        {
+            GL.Uniform1(GL.GetUniformLocation(_Program, n), v);
+        }
+        public void SetVec2(string n,Vector2 v)
+        {
+            GL.Uniform2(GL.GetUniformLocation(_Program, n), ref v);
+        }
+        public void SetVec3(string n,Vector3 v)
+        {
+            GL.Uniform3(GL.GetUniformLocation(_Program, n), ref v);
+        }
+        public void SetVec4(string n,Vector4 v)
+        {
+            GL.Uniform4(GL.GetUniformLocation(_Program, n), ref v);
         }
         public void SetTex(string n,int i)
         {

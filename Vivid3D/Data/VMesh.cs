@@ -33,7 +33,7 @@ namespace Vivid.Data
         {
             Data = new VVertex3D(vertices);
             Indices = new uint[indices];
-            Viz = new VVertexArrays(vertices, indices);
+            Viz = new VVVBO(vertices, indices);
         }
         public void SetVertex(int id,Vector3 pos,Vector3 t,Vector3 b,Vector3 n,Vector2 uv)
         {

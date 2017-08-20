@@ -3,15 +3,22 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
+using Vivid.Lighting;
+
 namespace Vivid.Scene
 {
     public class VSceneGraph
     {
         public List<VSceneNode> Nodes = new List<VSceneNode>();
         public List<VCam> Cams = new List<VCam>();
+        public List<VLight> Lights = new List<VLight>();
         public virtual void Add(VCam c)
         {
             Cams.Add(c);
+        }
+        public virtual void Add(VLight l)
+        {
+            Lights.Add(l);
         }
         public virtual void Add(VSceneNode n)
         {
@@ -34,9 +41,13 @@ namespace Vivid.Scene
             
             foreach(var c in Cams)
             {
-                foreach(var n in Nodes)
+                foreach (var l in Lights)
                 {
-                    n.Present(c);
+                    VLight.Active = l;
+                    foreach (var n in Nodes)
+                    {
+                        n.Present(c);
+                    }
                 }
             }
         }

@@ -13,6 +13,7 @@ namespace Vivid.Scene
     }
     public class VSceneNode
     {
+        public bool On = true;
         public string Name = "";
         public Vector3 LocalPos = Vector3.Zero;
         public Vector3 LocalScale = Vector3.One;
