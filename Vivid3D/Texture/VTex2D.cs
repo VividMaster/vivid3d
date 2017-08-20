@@ -6,7 +6,7 @@ using System.Threading.Tasks;
 using System.Threading;
 using System.Drawing;
 using OpenTK;
-using OpenTK.Graphics.OpenGL;
+using OpenTK.Graphics.OpenGL4;
 namespace Vivid.Texture
 {
     public enum LoadMethod
@@ -50,13 +50,13 @@ namespace Vivid.Texture
 
             GL.Enable(EnableCap.Texture2D);
             GL.ActiveTexture((TextureUnit)((int)TextureUnit.Texture0 + texu));
-            GL.ClientActiveTexture((TextureUnit)((int)TextureUnit.Texture0 + texu));
+          //  GL.ClientActiveTexture((TextureUnit)((int)TextureUnit.Texture0 + texu));
             GL.BindTexture(TextureTarget.Texture2D, ID);
         }
         public override void Release(int texu)
         {
             GL.ActiveTexture((TextureUnit)((int)TextureUnit.Texture0 + texu));
-            GL.ClientActiveTexture((TextureUnit)((int)TextureUnit.Texture0 + texu));
+           // GL.ClientActiveTexture((TextureUnit)((int)TextureUnit.Texture0 + texu));
             GL.BindTexture(TextureTarget.Texture2D, 0);
             GL.Disable(EnableCap.Texture2D);
         }

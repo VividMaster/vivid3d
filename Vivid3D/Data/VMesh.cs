@@ -5,10 +5,12 @@ using System.Text;
 using System.Threading.Tasks;
 using OpenTK;
 using Vivid.Material;
+using Vivid.Visuals;
 namespace Vivid.Data
 {
     public class VMesh
     {
+        public VVisualizer Viz = null;
         public string Name = "NoName";
         public VVertex3D Data = null;
         public uint[] Indices = null;
@@ -31,6 +33,7 @@ namespace Vivid.Data
         {
             Data = new VVertex3D(vertices);
             Indices = new uint[indices];
+            Viz = new VVertexArrays(vertices, indices);
         }
         public void SetVertex(int id,Vector3 pos,Vector3 t,Vector3 b,Vector3 n,Vector2 uv)
         {
@@ -51,6 +54,11 @@ namespace Vivid.Data
         public uint[] GetInds()
         {
             return Indices;
+        }
+        public void Final()
+        {
+            Viz.SetMesh(this);
+            Viz.Final();
         }
     }
 }

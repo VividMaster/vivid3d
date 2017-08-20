@@ -25,7 +25,7 @@ namespace Vivid.Visuals
         {
             foreach (VRenderLayer rl in Layers)
             {
-                rl.Render(m);
+                rl.Render(m, m.Viz);
             }
         }
         public virtual void Release(VMesh m)

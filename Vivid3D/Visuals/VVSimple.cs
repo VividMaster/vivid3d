@@ -5,13 +5,16 @@ using System.Text;
 using System.Threading.Tasks;
 using Vivid.Data;
 using OpenTK;
-using OpenTK.Graphics.OpenGL;
+using OpenTK.Graphics.OpenGL4;
 namespace Vivid.Visuals
 {
     public class VVSimple : VVisualizer
     {
-        public VVertexData<float> dat = null;
-        public VMesh md = null;
+     
+        public VVSimple(int vc,int ic) : base(vc,ic)
+        {
+
+        }
         public override void SetData(VVertexData<float> d)
         {
             dat = d;
@@ -22,6 +25,7 @@ namespace Vivid.Visuals
         }
         public override void Visualize()
         {
+            /*
             md.Mat.Bind();
             GL.Begin(BeginMode.Triangles);
             var v = md.GetVerts();
@@ -42,6 +46,7 @@ namespace Vivid.Visuals
 
             GL.End();
             md.Mat.Release();
-        }
+        */    
+    }
     }
 }

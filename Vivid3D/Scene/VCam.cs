@@ -15,7 +15,7 @@ namespace Vivid.Scene
         public bool CullFace = true;
         public VCam()
         {
-            ProjMat = Matrix4.CreatePerspectiveFieldOfView(MathHelper.DegreesToRadians(35), AppInfo.W / AppInfo.H,1.0f, 1000.0f);
+            ProjMat = Matrix4.CreatePerspectiveFieldOfView(MathHelper.DegreesToRadians(35), AppInfo.W / AppInfo.H,0.4f, 1000.0f);
         }
         public Matrix4 CamWorld
         {

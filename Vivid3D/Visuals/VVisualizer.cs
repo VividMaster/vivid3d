@@ -8,15 +8,23 @@ namespace Vivid.Visuals
 {
     public class VVisualizer
     {
-        public VVisualizer()
+        public VVertexData<float> dat = null;
+        public VMesh md = null;
+        public int Vertices = 0, Indices = 0;
+        public VVisualizer(int vc,int ic)
         {
-
+            Vertices = vc;
+            Indices = ic;
         }
         public virtual void SetData(VVertexData<float> d)
         {
 
         }
         public virtual void SetMesh(VMesh m)
+        {
+
+        }
+        public virtual void Final()
         {
 
         }

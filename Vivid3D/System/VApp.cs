@@ -4,7 +4,7 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 using OpenTK;
-using OpenTK.Graphics.ES20;
+using OpenTK.Graphics.OpenGL4;
 using Vivid.State;
 using Vivid.Draw;
 using Vivid.Import;
@@ -50,7 +50,7 @@ namespace Vivid.System
             get { return _Title; }
             set { _Title = value;Title = value; }
         }
-        public VApp(string app,int width,int height,bool full) : base(width,height,OpenTK.Graphics.GraphicsMode.Default,app,full ? GameWindowFlags.Fullscreen : GameWindowFlags.FixedWindow,DisplayDevice.Default,2,0,OpenTK.Graphics.GraphicsContextFlags.ForwardCompatible)
+        public VApp(string app, int width, int height, bool full) : base(width, height, OpenTK.Graphics.GraphicsMode.Default, app, full ? GameWindowFlags.Fullscreen : GameWindowFlags.FixedWindow, DisplayDevice.Default, 4, 0, OpenTK.Graphics.GraphicsContextFlags.Default)
 
         {
             _Title = app;
@@ -83,7 +83,7 @@ namespace Vivid.System
             GL.CullFace(CullFaceMode.Back);
             GL.Disable(EnableCap.StencilTest);
             GL.Disable(EnableCap.ScissorTest);
-            GL.Disable(EnableCap.Lighting);
+          //  GL.Disable(EnableCap.Lighting);
 
             //GL.DepthFunc(DepthFunction.Greater);
 
@@ -112,9 +112,19 @@ namespace Vivid.System
             VInput.MDX = 0;
             VInput.MDY = 0;
         }
+        public int fpsL=0, fps=0, frames=0;
 
         protected override void OnRenderFrame(FrameEventArgs e)
         {
+
+            if (Environment.TickCount>fpsL+1000)
+            {
+                fpsL = Environment.TickCount + 1000;
+                fps = frames;
+                frames = 0;
+                Console.WriteLine("FPS:" + fps);
+            }
+            frames++;
             Title = AppName;
             Title += $"(Vsync: {VSync}) FPS: {1f / e.Time:0}";
         

@@ -4,7 +4,7 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 using OpenTK;
-using OpenTK.Graphics.OpenGL;
+using OpenTK.Graphics.OpenGL4;
 using OpenTK.Graphics;
 namespace Vivid.Draw
 {
@@ -25,7 +25,7 @@ namespace Vivid.Draw
         }
         public static void Bind()
         {
-            GL.Color4(ForeCol);
+        //    GL.Color4(ForeCol);
             switch(BlendMod)
             {
                 case VBlend.Solid:
@@ -33,10 +33,10 @@ namespace Vivid.Draw
                     break;
             }
             
-            GL.MatrixMode(MatrixMode.Projection);
-            GL.LoadMatrix(ref DrawMat);
-            GL.MatrixMode(MatrixMode.Modelview);
-            GL.LoadIdentity();
+          //  GL.MatrixMode(MatrixMode.Projection);
+          //  GL.LoadMatrix(ref DrawMat);
+           // GL.MatrixMode(MatrixMode.Modelview);
+            //GL.LoadIdentity();
 
         }
         public static void Release()
@@ -46,12 +46,12 @@ namespace Vivid.Draw
         public static void Rect(int x,int y,int width,int height)
         {
             Bind();
-            GL.Begin(BeginMode.Quads);
-            GL.Vertex2(x, y);
-            GL.Vertex2(x + width, y);
-            GL.Vertex2(x + width, y + height);
-            GL.Vertex2(x, y + height);
-            GL.End();
+           // GL.Begin(BeginMode.Quads);
+           // GL.Vertex2(x, y);
+            //GL.Vertex2(x + width, y);
+            //GL.Vertex2(x + width, y + height);
+            //GL.Vertex2(x, y + height);
+            //GL.End();
             Release();
         }
         

@@ -75,7 +75,7 @@ namespace Vivid.Import
 
                 m2.Indices = nd;
 
-
+                m2.Final();
          
             }
 

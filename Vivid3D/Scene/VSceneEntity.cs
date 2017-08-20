@@ -6,7 +6,7 @@ using System.Threading.Tasks;
 using Vivid.Data;
 using Vivid.Visuals;
 using OpenTK;
-using OpenTK.Graphics.OpenGL;
+using OpenTK.Graphics.OpenGL4;
 namespace Vivid.Scene
 {
     public class VSceneEntity : VSceneNode
@@ -15,7 +15,7 @@ namespace Vivid.Scene
         public List<VMesh> Meshes = new List<VMesh>();
         public override void Init()
         {
-            Renderer = new VRendererSimple();
+            Renderer = new VRMultiPass();
         }
         public void AddMesh(VMesh mesh)
         {
@@ -29,9 +29,11 @@ namespace Vivid.Scene
         public override void Present(VCam c)
         {
           
-            GL.MatrixMode(MatrixMode.Projection);
-            GL.LoadMatrix(ref c.ProjMat);
-            GL.MatrixMode(MatrixMode.Modelview);
+          //  GL.MatrixMode(MatrixMode.Projection);
+           // GL.LoadMatrix(ref c.ProjMat);
+            Effect.FXG.Proj = c.ProjMat;
+            Effect.FXG.Cam = c;
+           // GL.MatrixMode(MatrixMode.Modelview);
             Matrix4 mm = Matrix4.Identity;
             mm = c.CamWorld;
             mm = mm * Matrix4.Invert(Matrix4.CreateTranslation(c.WorldPos));
@@ -40,8 +42,8 @@ namespace Vivid.Scene
             mm = World * mm;
             var wp = WorldPos;
             mm = Matrix4.CreateTranslation(wp) * mm;
-            GL.LoadMatrix(ref mm);
-
+            //GL.LoadMatrix(ref mm);
+            Effect.FXG.Local = mm;
             Bind();
             PreRender();
             Render();
@@ -66,9 +68,10 @@ namespace Vivid.Scene
         }
         public virtual void Render()
         {
-   
+            Effect.FXG.Ent = this;
             foreach(var m in Meshes)
             {
+                Effect.FXG.Mesh = m;
                 Renderer.Render(m);
             }
           

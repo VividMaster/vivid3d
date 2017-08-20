@@ -11,13 +11,13 @@ namespace Vivid.Visuals
     {
         public override void Init()
         {
-            Viz = new VVSimple();
+         
         }
-        public override void Render(VMesh m)
+        public override void Render(VMesh m,VVisualizer v)
         {
           
-            Viz.SetMesh(m);
-            Viz.Visualize();
+            v.SetMesh(m);
+            v.Visualize();
            
         }
     }

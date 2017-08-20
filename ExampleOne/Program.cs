@@ -69,7 +69,7 @@ namespace ExampleOne
 
             VApp e1 = new VApp("Vivid3D - Example One", 800, 600, false);
             e1.PushState(new Intro1());
-            e1.Run(60);
+            e1.Run();
 
         }
         
