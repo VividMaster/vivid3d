@@ -25,6 +25,8 @@
 *.log
 *.sql
 *.sqlite
+*.pdb
+*.ide
 
 # OS generated files #
 ######################

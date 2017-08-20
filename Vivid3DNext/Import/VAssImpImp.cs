@@ -44,7 +44,7 @@ namespace Vivid.Import
 
                     if (true)
                     {
-                        Console.WriteLine(t1.FilePath);
+                   
                         if (new FileInfo(t1.FilePath).Exists == true)
                         {
                             //  var tex = App.AppSal.CreateTex2D();
@@ -76,7 +76,7 @@ namespace Vivid.Import
                 m2.Indices = nd;
 
 
-                Console.WriteLine("Processing mesh:" + m.Name);
+         
             }
 
             ProcessNode(root, s.RootNode, ml2);
@@ -101,19 +101,19 @@ namespace Vivid.Import
             r1.LocalTurn = lt.ClearTranslation();
             r1.LocalTurn = r1.LocalTurn.ClearScale();
             r1.LocalPos = lt.ExtractTranslation();
-            Console.WriteLine("x:" + r1.LocalPos.X + " Y:" + r1.LocalPos.Y + " z:" + r1.LocalPos.Z);
+ 
             r1.LocalScale = lt.ExtractScale();
            // r1.LocalPos = new OpenTK.Vector3(r1.LocalPos.X + 100, 0, 0);
             for(int i = 0; i < s.MeshCount; i++)
             {
                 r1.AddMesh(ml[s.MeshIndices[i]]);
-                Console.WriteLine("Mesh:" + s.MeshIndices[i] + " added to node:" + r1.Name);
+          
             }
             if (s.HasChildren)
             {
                 foreach (var pn in s.Children)
                 {
-                    Console.WriteLine("Processing child node:" + pn.Name);
+             
                     ProcessNode(r1, pn, ml);
                 }
             }

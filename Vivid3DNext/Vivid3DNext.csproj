@@ -51,6 +51,7 @@
   <ItemGroup>
     <Compile Include="Draw\Pen.cs" />
     <Compile Include="Import\VAssImpImp.cs" />
+    <Compile Include="Input\VInput.cs" />
     <Compile Include="Scene\VCam.cs" />
     <Compile Include="State\VAppState.cs" />
     <Compile Include="State\VStateManager.cs" />

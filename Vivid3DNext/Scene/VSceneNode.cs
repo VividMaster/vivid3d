@@ -39,7 +39,7 @@ namespace Vivid.Scene
                 {
                     r = Top.World * r;
                 }
-                r = r * LocalTurn;
+                r = LocalTurn * r;
 
        
                 return r;
@@ -72,7 +72,7 @@ namespace Vivid.Scene
         {
             if (s == Space.Local)
             {
-                LocalTurn = Matrix4.RotateY(r.Y) * Matrix4.RotateX(r.X) * Matrix4.RotateZ(r.Z);
+                LocalTurn = Matrix4.RotateY(MathHelper.DegreesToRadians(r.Y)) * Matrix4.RotateX(MathHelper.DegreesToRadians(r.X)) * Matrix4.RotateZ(MathHelper.DegreesToRadians(r.Z));
             }
         }
         public void LookAt(Vector3 t)

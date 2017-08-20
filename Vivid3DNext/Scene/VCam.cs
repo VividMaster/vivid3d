@@ -21,7 +21,7 @@ namespace Vivid.Scene
         {
             get
             {
-                Console.WriteLine("CM");
+       
                 return Matrix4.Invert(World);
             }
         }

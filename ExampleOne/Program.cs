@@ -13,6 +13,7 @@ using Vivid.Draw;
 using Vivid.Scene;
 using Vivid.Import;
 using Vivid.Material;
+using Vivid.Input;
 namespace ExampleOne
 {
     public class Intro1 : VAppState
@@ -37,7 +38,7 @@ namespace ExampleOne
         }
         public void SetMat(VSceneEntity e,VMaterial m)
         {
-            Console.WriteLine("E:" + e.Name + " :" + e.Sub.Count + " MC:" + e.Meshes.Count);
+         
             foreach(var mm in e.Meshes)
             {
                 mm.Mat = m;
@@ -47,11 +48,15 @@ namespace ExampleOne
                 SetMat(n as VSceneEntity, m);
             }
         }
-        public float y = 0;
+        public float lx = 0, ly = 0;
+        public float y = 0, x = 0, z = 0;
         public override void Render()
         {
-            y = y + 0.1f;
-            e1.Rot(new Vector3(0,y, 0), Space.Local);
+            x = x + VInput.MX - lx;
+            y = y + VInput.MY - ly;
+            lx = VInput.MX;
+            ly = VInput.MY;
+            e1.Rot(new Vector3(x,y,z), Space.Local);
             //Console.WriteLine("Render!");
             VPen.Rect(20, 20, 200, 200);
             sg.Render();

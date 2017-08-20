@@ -28,17 +28,7 @@ namespace Vivid.Scene
         }
         public override void Present(VCam c)
         {
-            if (c.DepthTest)
-            {
-                GL.Enable(EnableCap.DepthTest);
-                GL.DepthFunc(DepthFunction.Less);
-
-            }
-            if(c.CullFace)
-            {
-           //     GL.Enable(EnableCap.CullFace);
-             //   GL.CullFace(CullFaceMode.Back);
-            }
+          
             GL.MatrixMode(MatrixMode.Projection);
             GL.LoadMatrix(ref c.ProjMat);
             GL.MatrixMode(MatrixMode.Modelview);
@@ -46,10 +36,10 @@ namespace Vivid.Scene
             mm = c.CamWorld;
             mm = mm * Matrix4.Invert(Matrix4.CreateTranslation(c.WorldPos));
 
-            Console.WriteLine("CX:" + WorldPos.X + " CY:" + WorldPos.Y + " CZ:" + WorldPos.Z);
+
             mm = World * mm;
             var wp = WorldPos;
-            mm =Matrix4.CreateTranslation(wp) * mm;
+            mm = Matrix4.CreateTranslation(wp) * mm;
             GL.LoadMatrix(ref mm);
 
             Bind();
@@ -76,12 +66,12 @@ namespace Vivid.Scene
         }
         public virtual void Render()
         {
-            Console.WriteLine("Rendering Meshes.");
+   
             foreach(var m in Meshes)
             {
                 Renderer.Render(m);
             }
-            Console.WriteLine("Rendered.");
+          
         }
         public virtual void PostRender()
         {

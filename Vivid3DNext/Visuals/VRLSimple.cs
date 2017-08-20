@@ -15,10 +15,10 @@ namespace Vivid.Visuals
         }
         public override void Render(VMesh m)
         {
-            Console.WriteLine("Rendering mesh:" + m.Name);
+          
             Viz.SetMesh(m);
             Viz.Visualize();
-            Console.WriteLine("Rendered.");
+           
         }
     }
 }
