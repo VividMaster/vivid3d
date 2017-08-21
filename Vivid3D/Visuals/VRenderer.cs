@@ -9,9 +9,11 @@ namespace Vivid.Visuals
     public class VRenderer
     {
         public List<VRenderLayer> Layers = new List<VRenderLayer>();
+        public VRLDepth RLD = null;
         public VRenderer()
         {
             Init();
+            RLD = new VRLDepth();
         }
         public virtual void Init()
         {
@@ -27,6 +29,10 @@ namespace Vivid.Visuals
             {
                 rl.Render(m, m.Viz);
             }
+        }
+        public virtual void RenderDepth(VMesh m)
+        {
+            RLD.Render(m, m.Viz);
         }
         public virtual void Release(VMesh m)
         {

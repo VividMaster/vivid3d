@@ -12,6 +12,8 @@ namespace Vivid.Material
         public VTex2D TNorm;
         public VTex2D TSpec;
         public VTex2D TAO;
+        public VTexCube TEnv;
+        public float envS = 0.1f;
         public OpenTK.Vector3 Spec = new OpenTK.Vector3(0.6f, 0.4f, 0.2f);
         public float Shine = 30.0f;
         public static VMaterial Active = null;
@@ -24,12 +26,14 @@ namespace Vivid.Material
         {
             TCol.Bind(0);
             TNorm.Bind(1);
+            TEnv.Bind(2);
             Active = this;
         }
         public virtual void Release()
         {
             TCol.Release(0);
-            TNorm.Release(0);
+            TNorm.Release(1);
+            TEnv.Release(2);
             Active = null;
         }
     }

@@ -29,6 +29,7 @@ namespace ExampleOne
             e1 = VImport.ImportNode("c:/media/test1.3ds");
             var m1 = new VMaterial();
             m1.LoadTexs("c:/media", "tex1");
+            m1.TEnv = new Vivid.Texture.VTexCube("c:/media/c2");
             var ee = e1 as VSceneEntity;
             SetMat(ee, m1);
             sg.Add(e1);

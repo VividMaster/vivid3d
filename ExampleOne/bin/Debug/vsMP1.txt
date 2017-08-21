@@ -17,12 +17,18 @@ uniform mat4 proj;
 out vec2 UV;
 out vec3 fVert;
 out vec3 fNorm;
+out vec3 pos_eye;
+out vec3 n_eye;
 
 void main(){
 
 	UV = vUV;
 	fNorm = vN;
 	fVert = vP;
+
+	pos_eye = vec3(cam * model * vec4(vP
+,1.0f));
+	n_eye = vec3(cam * model * vec4(vN,1.0f));
 
 	gl_Position = proj * cam * model * vec4(vP,1);
 

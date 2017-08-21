@@ -14,6 +14,31 @@ namespace Vivid.Effect
         }
         public override void SetPars()
         {
+            if (Material.VMaterial.Active.TCol != null)
+            {
+                SetBool("eC", true);
+            }
+            else
+            {
+                SetBool("eC", false);
+            }
+            if(Material.VMaterial.Active.TNorm != null)
+            {
+                SetBool("eN", true);
+            }
+            else
+            {
+                SetBool("eN", false);
+            }
+            if (Material.VMaterial.Active.TEnv != null)
+            {
+                SetBool("eE", true);
+            }
+            else
+            {
+                SetBool("eE", false);
+                Environment.Exit(0);
+            }
             //SetMat("MVP", Effect.FXG.Local * FXG.Proj);
             SetMat("model", Effect.FXG.Local);
             SetMat("cam", Effect.FXG.Cam.CamWorld * OpenTK.Matrix4.Invert(OpenTK.Matrix4.CreateTranslation(FXG.Cam.WorldPos)));
@@ -25,9 +50,10 @@ namespace Vivid.Effect
             SetFloat("ambCE", Lighting.VLight.Active.AmbCE);
             SetFloat("matS", Material.VMaterial.Active.Shine);
             SetVec3("matSpec", Material.VMaterial.Active.Spec);
-
+            SetFloat("envS", Material.VMaterial.Active.envS);
             SetTex("tC", 0);
             SetTex("tN", 1);
+            SetTex("tE", 2);
         }
     }
 }

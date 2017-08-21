@@ -26,16 +26,42 @@ namespace Vivid.Scene
             Meshes = new List<VMesh>();
             Renderer = null;
         }
+        public override void PresentDepth(VCam c)
+        {
+            SetMats(c);
+            Bind();
+            PreRender();
+            RenderDepth();
+            PostRender();
+            Release();
+            foreach (var s in Sub)
+            {
+                s.PresentDepth(c);
+            }
+        }
         public override void Present(VCam c)
         {
-          
-          //  GL.MatrixMode(MatrixMode.Projection);
-           // GL.LoadMatrix(ref c.ProjMat);
+            //  GL.MatrixMode(MatrixMode.Projection);
+            // GL.LoadMatrix(ref c.ProjMat);
+            SetMats(c);
+            Bind();
+            PreRender();
+            Render();
+            PostRender();
+            Release();
+            foreach (var s in Sub)
+            {
+                s.Present(c);
+            }
+        }
+
+        private void SetMats(VCam c)
+        {
             Effect.FXG.Proj = c.ProjMat;
             Effect.FXG.Cam = c;
-           // GL.MatrixMode(MatrixMode.Modelview);
+            // GL.MatrixMode(MatrixMode.Modelview);
             Matrix4 mm = Matrix4.Identity;
-           // mm = c.CamWorld;
+            // mm = c.CamWorld;
             //mm = mm * Matrix4.Invert(Matrix4.CreateTranslation(c.WorldPos));
 
 
@@ -44,20 +70,12 @@ namespace Vivid.Scene
             mm = Matrix4.CreateTranslation(wp) * mm;
             //GL.LoadMatrix(ref mm);
             Effect.FXG.Local = mm;
-            Bind();
-            PreRender();
-            Render();
-            PostRender();
-            Release();
-            foreach(var s in Sub)
-            {
-                s.Present(c);
-            }
         }
+
         /// <summary>
         /// To be called AFTER data asscoiation.
         /// </summary>
-   
+
         public virtual void Bind()
         {
 
@@ -65,6 +83,15 @@ namespace Vivid.Scene
         public virtual void PreRender()
         {
           
+        }
+        public virtual void RenderDepth()
+        {
+            Effect.FXG.Ent = this;
+            foreach (var m in Meshes)
+            {
+                Effect.FXG.Mesh = m;
+                Renderer.RenderDepth(m);
+            }
         }
         public virtual void Render()
         {

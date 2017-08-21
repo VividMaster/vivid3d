@@ -38,6 +38,7 @@
   </ItemGroup>
   <ItemGroup>
     <Compile Include="Effect\FXG.cs" />
+    <Compile Include="Effect\VEDepth.cs" />
     <Compile Include="Effect\VEMultiPass.cs" />
     <Compile Include="Lighting\VLight.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
@@ -62,9 +63,11 @@
     <Compile Include="System\VApp.cs" />
     <Compile Include="Texture\VTex2D.cs" />
     <Compile Include="Texture\VTexBase.cs" />
+    <Compile Include="Texture\VTexCube.cs" />
     <Compile Include="Visuals\VRenderer.cs" />
     <Compile Include="Visuals\VRendererSimple.cs" />
     <Compile Include="Visuals\VRenderLayer.cs" />
+    <Compile Include="Visuals\VRLDepth.cs" />
     <Compile Include="Visuals\VRLMultiPass.cs" />
     <Compile Include="Visuals\VRLSimple.cs" />
     <Compile Include="Visuals\VRMultiPass.cs" />

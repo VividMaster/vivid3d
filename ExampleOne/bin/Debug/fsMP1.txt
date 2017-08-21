@@ -1,6 +1,7 @@
 #version 330 core
 
 uniform mat4 model;
+uniform mat4 cam;
 uniform vec3 camP;
 
 uniform vec3 lP;
@@ -9,12 +10,15 @@ uniform float atten;
 uniform float ambCE;
 uniform float matS;
 uniform vec3 matSpec;
+uniform float envS;
 
 
 // Interpolated values from the vertex shaders
 in vec2 UV;
 in vec3 fVert;
 in vec3 fNorm;
+in vec3 pos_eye;
+in vec3 n_eye;
 
 // Ouput data
 out vec3 color;
@@ -22,11 +26,20 @@ out vec3 color;
 // Values that stay constant for the whole mesh.
 uniform sampler2D tC;
 uniform sampler2D tN;
+uniform samplerCube tE;
+
+uniform int eC;
+uniform int eN;
+uniform int eE;
 
 void main(){
   vec3 normal = normalize(transpose(inverse(mat3(model))) * fNorm);
     vec3 surfacePos = vec3(model * vec4(fVert, 1));
-    vec4 surfaceColor = texture(tC, UV);
+    vec3 eC = vec3(0,0,0);
+
+	
+
+    vec4 surfaceColor = texture2D(tC, UV);
     vec3 surfaceToLight = normalize(lP - surfacePos);
     vec3 surfaceToCamera = normalize(camP - surfacePos);
     
@@ -49,8 +62,26 @@ void main(){
 
     //linear color (color before gamma correction)
     vec3 linearColor = ambient + attenuation*(diffuse + specular);
+
+
+if(eE){
+		vec3 ie = normalize(pos_eye);
+		vec3 n1 = normalize(n_eye);
+		vec3 r1 = reflect(ie,n1);
+		r1 = vec3(inverse(cam) * vec4(r1,0.0f));
+		
+           //vec3 nc = texture(tN,UV).rgb;
+		//nc.x = (-1.0f + nc.x * 2.0f)*0.0001f;
+		//nc.y = (-1.0f + nc.y * 2.0f)*0.0001f;
+		//nc.z = (-1.0f + nc.z * 2.0f)*0.0001f;
+	
+		//nc = normalize(nc);
+	  eC = textureCube( tE,r1 ).rgb;
+	}
+//eC = vec4(0,0,0,0);
     
     //final color (after gamma correction)
     vec3 gamma = vec3(1.0/2.2);
-    color = vec3(pow(linearColor, gamma));
+    color = (vec3(pow(linearColor, gamma))*(1.0f-envS)
+)+(eC*envS);
 }

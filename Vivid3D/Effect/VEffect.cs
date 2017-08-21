@@ -50,6 +50,10 @@ namespace Vivid.Effect
         {
             GL.Uniform1(GL.GetUniformLocation(_Program,n), i);
         }
+        public void SetBool(string n,bool v)
+        {
+            GL.Uniform1(GL.GetUniformLocation(_Program, n), v ? 1 : 0);
+        }
         public VEffect(string geo="",string vert="",string pix="")
         {
             _GShader = geo;

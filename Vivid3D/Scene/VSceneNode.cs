@@ -88,6 +88,10 @@ namespace Vivid.Scene
                 LocalPos = LocalPos + nv;
             }
         }
+        public virtual void PresentDepth(VCam c)
+        {
+
+        }
         public virtual void Present(VCam c)
         {
 

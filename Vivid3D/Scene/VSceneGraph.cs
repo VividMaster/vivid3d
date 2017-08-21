@@ -4,7 +4,8 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 using Vivid.Lighting;
-
+using OpenTK;
+using OpenTK.Graphics.OpenGL4;
 namespace Vivid.Scene
 {
     public class VSceneGraph
@@ -35,6 +36,19 @@ namespace Vivid.Scene
         public virtual void Release()
         {
 
+        }
+        public virtual void RenderDepth()
+        {
+            GL.ClearColor(new OpenTK.Graphics.Color4(1.0f, 1.0f, 1.0f, 1.0f));
+            GL.Clear(ClearBufferMask.ColorBufferBit);
+            foreach (var c in Cams)
+            {
+
+                foreach (var n in Nodes)
+                {
+                    n.PresentDepth(c);
+                }
+            }
         }
         public virtual void Render()
         {

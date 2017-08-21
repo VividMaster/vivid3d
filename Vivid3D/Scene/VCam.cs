@@ -13,9 +13,10 @@ namespace Vivid.Scene
         public bool DepthTest = true;
         public bool AlphaTest = false;
         public bool CullFace = true;
+        public float MinZ = 1f, MaxZ = 700;
         public VCam()
         {
-            ProjMat = Matrix4.CreatePerspectiveFieldOfView(MathHelper.DegreesToRadians(35), AppInfo.W / AppInfo.H,0.4f, 1000.0f);
+            ProjMat = Matrix4.CreatePerspectiveFieldOfView(MathHelper.DegreesToRadians(35), AppInfo.W / AppInfo.H,MinZ, MaxZ);
         }
         public Matrix4 CamWorld
         {
