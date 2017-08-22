@@ -21,6 +21,28 @@ namespace Vivid.Texture
         public bool Loaded = false;
         public bool Binded = false;
         public byte[] pixs = null;
+        public bool Alpha = false;
+        public VTex2D(int w,int h,bool alpha=false)
+        {
+            Alpha = alpha;
+            W = w;
+            H = h;
+            ID = GL.GenTexture();
+            GL.BindTexture(TextureTarget.Texture2D, ID);
+            if(alpha)
+            {
+                GL.TexImage2D(TextureTarget.Texture2D, 0, PixelInternalFormat.Rgba, w, h, 0, PixelFormat.Rgba, PixelType.UnsignedByte, IntPtr.Zero);
+            }
+            else
+            {
+                GL.TexImage2D(TextureTarget.Texture2D, 0, PixelInternalFormat.Rgb, w, h, 0, PixelFormat.Rgb, PixelType.UnsignedByte, IntPtr.Zero);
+            }
+            GL.TexParameter(TextureTarget.Texture2D, TextureParameterName.TextureWrapS, (int)TextureWrapMode.Repeat);
+            GL.TexParameter(TextureTarget.Texture2D, TextureParameterName.TextureWrapT, (int)TextureWrapMode.Repeat);
+            GL.TexParameter(TextureTarget.Texture2D, TextureParameterName.TextureMinFilter, (int)TextureMinFilter.Nearest);
+            GL.TexParameter(TextureTarget.Texture2D, TextureParameterName.TextureMagFilter, (int)TextureMagFilter.Nearest);
+            GL.PixelStore(PixelStoreParameter.PackAlignment, 4 * 4);
+        }
         public VTex2D(string path,LoadMethod lm)
         {
             Path = path;

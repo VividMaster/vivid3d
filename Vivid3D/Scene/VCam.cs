@@ -4,19 +4,25 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 using OpenTK;
-using Vivid.System;
+using Vivid.App;
 namespace Vivid.Scene
 {
     public class VCam : VSceneNode
     {
-        public Matrix4 ProjMat = Matrix4.Identity;
+        public Matrix4 ProjMat
+        {
+            get
+            {
+                return Matrix4.CreatePerspectiveFieldOfView(MathHelper.DegreesToRadians(35), AppInfo.RW / AppInfo.RH, MinZ, MaxZ);
+            }
+        }
         public bool DepthTest = true;
         public bool AlphaTest = false;
         public bool CullFace = true;
         public float MinZ = 1f, MaxZ = 700;
         public VCam()
         {
-            ProjMat = Matrix4.CreatePerspectiveFieldOfView(MathHelper.DegreesToRadians(35), AppInfo.W / AppInfo.H,MinZ, MaxZ);
+           
         }
         public Matrix4 CamWorld
         {

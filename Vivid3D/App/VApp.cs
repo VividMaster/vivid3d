@@ -10,13 +10,14 @@ using Vivid.Draw;
 using Vivid.Import;
 using OpenTK.Input;
 using Vivid.Input;
-namespace Vivid.System
+namespace Vivid.App
 {
     public static class AppInfo
     {
         public static int W, H;
         public static bool Full;
         public static string App;
+        public static int RW, RH;
     }
     public class VApp : GameWindow
     {
@@ -56,6 +57,8 @@ namespace Vivid.System
             _Title = app;
             AppInfo.W = width;
             AppInfo.H = height;
+            AppInfo.RW = width;
+            AppInfo.RH = height;
             AppInfo.Full = full;
             AppInfo.App = app;
             VImport.RegDefaults();

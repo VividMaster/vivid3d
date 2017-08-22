@@ -40,7 +40,11 @@
     <Compile Include="Effect\FXG.cs" />
     <Compile Include="Effect\VEDepth.cs" />
     <Compile Include="Effect\VEMultiPass.cs" />
+    <Compile Include="FrameBuffer\VFrameBuffer.cs" />
     <Compile Include="Lighting\VLight.cs" />
+    <Compile Include="PostProcess\Processes\VPPBlur.cs" />
+    <Compile Include="PostProcess\VPostProcess.cs" />
+    <Compile Include="PostProcess\VPostProcessRenderer.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
     <Compile Include="Cam\VCam.cs" />
     <Compile Include="Data\VInfoMap.cs" />
@@ -60,10 +64,11 @@
     <Compile Include="Scene\VSceneNode.cs" />
     <Compile Include="State\VAppState.cs" />
     <Compile Include="State\VStateManager.cs" />
-    <Compile Include="System\VApp.cs" />
+    <Compile Include="App\VApp.cs" />
     <Compile Include="Texture\VTex2D.cs" />
     <Compile Include="Texture\VTexBase.cs" />
     <Compile Include="Texture\VTexCube.cs" />
+    <Compile Include="Texture\VTexDepth.cs" />
     <Compile Include="Visuals\VRenderer.cs" />
     <Compile Include="Visuals\VRendererSimple.cs" />
     <Compile Include="Visuals\VRenderLayer.cs" />

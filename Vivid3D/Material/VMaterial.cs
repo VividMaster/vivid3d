@@ -24,16 +24,20 @@ namespace Vivid.Material
         }
         public virtual void Bind()
         {
-            TCol.Bind(0);
-            TNorm.Bind(1);
-            TEnv.Bind(2);
+            if(TCol!=null) TCol.Bind(0);
+
+            if (TNorm != null) TNorm.Bind(1);
+
+            if (TEnv != null) TEnv.Bind(2);
+           
             Active = this;
         }
         public virtual void Release()
         {
-            TCol.Release(0);
-            TNorm.Release(1);
-            TEnv.Release(2);
+            if (TCol != null) TCol.Release(0);
+          
+            if(TNorm!=null) TNorm.Release(1);
+            if(TEnv!=null) TEnv.Release(2);
             Active = null;
         }
     }

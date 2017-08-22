@@ -5,7 +5,7 @@ using System.Text;
 using System.Threading.Tasks;
 using Vivid;
 using OpenTK;
-using Vivid.System;
+using Vivid.App;
 using Vivid.Visuals;
 using Vivid.Effect;
 using Vivid.State;
@@ -15,6 +15,8 @@ using Vivid.Import;
 using Vivid.Material;
 using Vivid.Input;
 using Vivid.Lighting;
+using Vivid.PostProcess;
+using Vivid.PostProcess.Processes;
 namespace ExampleOne
 {
     public class Intro1 : VAppState
@@ -23,9 +25,14 @@ namespace ExampleOne
         public VSceneGraph sg = null;
         public VSceneNode e1 = null;
         public VLight l1;
+        public VPostProcessRenderer PR;
         public override void InitState()
         {
+            PR = new VPostProcessRenderer(512,512);
+            PR.Add(new VPPBlur());
             sg = new VSceneGraph();
+            PR.Scene = sg; 
+           
             e1 = VImport.ImportNode("c:/media/test1.3ds");
             var m1 = new VMaterial();
             m1.LoadTexs("c:/media", "tex1");
@@ -69,7 +76,8 @@ namespace ExampleOne
             l1.Pos(new Vector3(px, 40, pz), Space.Local);
             //Console.WriteLine("Render!");
             VPen.Rect(20, 20, 200, 200);
-            sg.Render();
+          // sg.Render();
+            PR.Render();
         }
     }
     class Program
