@@ -37,11 +37,11 @@ namespace Vivid.Effect
             else
             {
                 SetBool("eE", false);
-                Environment.Exit(0);
+               // Environment.Exit(0);
             }
             //SetMat("MVP", Effect.FXG.Local * FXG.Proj);
             SetMat("model", Effect.FXG.Local);
-            SetMat("cam", Effect.FXG.Cam.CamWorld * OpenTK.Matrix4.Invert(OpenTK.Matrix4.CreateTranslation(FXG.Cam.WorldPos)));
+            SetMat("cam",OpenTK.Matrix4.Invert(OpenTK.Matrix4.CreateTranslation(FXG.Cam.WorldPos)) * FXG.Cam.CamWorld );
             SetMat("proj", FXG.Cam.ProjMat);
             SetVec3("camP", FXG.Cam.WorldPos);
             SetVec3("lP", Lighting.VLight.Active.WorldPos);

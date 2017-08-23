@@ -13,6 +13,7 @@ namespace Vivid.Scene
         public List<VSceneNode> Nodes = new List<VSceneNode>();
         public List<VCam> Cams = new List<VCam>();
         public List<VLight> Lights = new List<VLight>();
+        public VCam CamOverride = null;
         public virtual void Add(VCam c)
         {
             Cams.Add(c);
@@ -41,29 +42,51 @@ namespace Vivid.Scene
         {
             GL.ClearColor(new OpenTK.Graphics.Color4(1.0f, 1.0f, 1.0f, 1.0f));
             GL.Clear(ClearBufferMask.ColorBufferBit);
-            foreach (var c in Cams)
+            if (CamOverride != null)
             {
-
                 foreach (var n in Nodes)
                 {
-                    n.PresentDepth(c);
+                    n.PresentDepth(CamOverride);
                 }
-            }
+            } else
+                foreach (var c in Cams)
+                {
+
+                    foreach (var n in Nodes)
+                    {
+                        n.PresentDepth(c);
+                    }
+                }
         }
+
         public virtual void Render()
         {
-            
-            foreach(var c in Cams)
+            if (CamOverride != null)
             {
                 foreach (var l in Lights)
                 {
                     VLight.Active = l;
                     foreach (var n in Nodes)
                     {
-                        n.Present(c);
+                        n.Present(CamOverride);
                     }
                 }
             }
+            else
+            {
+                foreach (var c in Cams)
+                {
+                    foreach (var l in Lights)
+                    {
+                        VLight.Active = l;
+                        foreach (var n in Nodes)
+                        {
+                            n.Present(c);
+                        }
+                    }
+                }
+            }
+
         }
     }
 }

@@ -76,6 +76,24 @@ namespace Vivid.App
             VInput.MDX = e.XDelta;
             VInput.MDY = e.YDelta;
         }
+        protected override void OnKeyDown(KeyboardKeyEventArgs e)
+        {
+            if(VInput.Keys.ContainsKey(e.Key))
+            {
+
+            }
+            else
+            {
+                VInput.Keys.Add(e.Key, true);
+            }
+        }
+        protected override void OnKeyUp(KeyboardKeyEventArgs e)
+        {
+            if(VInput.Keys.ContainsKey(e.Key))
+            {
+                VInput.Keys.Remove(e.Key);
+            }
+        }
         protected override void OnResize(EventArgs e)
         {
             GL.Viewport(0, 0, Width, Height);

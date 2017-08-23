@@ -69,24 +69,49 @@ namespace Vivid.Scene
                 LocalPos = p;
             }
         }
-        public void Rot(Vector3 r,Space s)
+        public virtual void Rot(Vector3 r,Space s)
         {
             if (s == Space.Local)
             {
                 LocalTurn = Matrix4.RotateY(MathHelper.DegreesToRadians(r.Y)) * Matrix4.RotateX(MathHelper.DegreesToRadians(r.X)) * Matrix4.RotateZ(MathHelper.DegreesToRadians(r.Z));
             }
         }
-        public void LookAt(Vector3 t)
+        public virtual void Turn(Vector3 r,Space s)
         {
-            LocalTurn = Matrix4.LookAt(WorldPos, t, Vector3.UnitY);
+            Matrix4 t = Matrix4.RotateY(MathHelper.DegreesToRadians(r.Y)) * Matrix4.RotateX(MathHelper.DegreesToRadians(r.X)) * Matrix4.RotateZ(MathHelper.DegreesToRadians(r.Z));
+            LocalTurn = LocalTurn * t;
         }
+       // public void LookAt(Vector3 t)
+        //{
+         //   LocalTurn = Matrix4.LookAt(WorldPos, t, Vector3.UnitY);
+       // }
         public void Move(Vector3 v,Space s)
         {
+           // v.X = -v.X;
             if(s==Space.Local)
             {
-                var nv = Vector3.TransformPosition(v, LocalTurn);
-                LocalPos = LocalPos + nv;
+
+
+                var nv = Vector3.TransformPosition(v,Matrix4.Invert(LocalTurn));
+          
+                LocalPos = LocalPos + new Vector3(nv.X, nv.Y, nv.Z);
+
+
             }
+        }
+        public void LookAt(VSceneNode n)
+        {
+            LookAt(n.WorldPos, new Vector3(0, 1, 0));
+        }
+        public void LookAt(Vector3 p,Vector3 up)
+        {
+            Matrix4 m = Matrix4.LookAt(Vector3.Zero, p - WorldPos,up);
+            LocalTurn = m;
+        }
+        public void LookAtZero(Vector3 p,Vector3 up)
+        {
+            Matrix4 m = Matrix4.LookAt(Vector3.Zero, p, up);
+            LocalTurn = m;
         }
         public virtual void PresentDepth(VCam c)
         {

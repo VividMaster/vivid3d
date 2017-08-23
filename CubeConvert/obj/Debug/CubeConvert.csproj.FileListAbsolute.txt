@@ -1,0 +1,11 @@
+C:\git\VividGIT\Vivid3D\vividsutdio3d\CubeConvert\bin\Debug\CubeConvert.exe.config
+C:\git\VividGIT\Vivid3D\vividsutdio3d\CubeConvert\bin\Debug\CubeConvert.exe
+C:\git\VividGIT\Vivid3D\vividsutdio3d\CubeConvert\bin\Debug\CubeConvert.pdb
+C:\git\VividGIT\Vivid3D\vividsutdio3d\CubeConvert\bin\Debug\OpenTK.dll
+C:\git\VividGIT\Vivid3D\vividsutdio3d\CubeConvert\bin\Debug\Vivid3D.dll
+C:\git\VividGIT\Vivid3D\vividsutdio3d\CubeConvert\bin\Debug\AssimpNet.dll
+C:\git\VividGIT\Vivid3D\vividsutdio3d\CubeConvert\bin\Debug\Vivid3D.pdb
+C:\git\VividGIT\Vivid3D\vividsutdio3d\CubeConvert\obj\Debug\CubeConvert.csprojResolveAssemblyReference.cache
+C:\git\VividGIT\Vivid3D\vividsutdio3d\CubeConvert\obj\Debug\CubeConvert.csproj.CoreCompileInputs.cache
+C:\git\VividGIT\Vivid3D\vividsutdio3d\CubeConvert\obj\Debug\CubeConvert.exe
+C:\git\VividGIT\Vivid3D\vividsutdio3d\CubeConvert\obj\Debug\CubeConvert.pdb

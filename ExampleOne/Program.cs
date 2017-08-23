@@ -17,6 +17,8 @@ using Vivid.Input;
 using Vivid.Lighting;
 using Vivid.PostProcess;
 using Vivid.PostProcess.Processes;
+using Vivid.Enviro;
+using Vivid.Texture;
 namespace ExampleOne
 {
     public class Intro1 : VAppState
@@ -26,26 +28,44 @@ namespace ExampleOne
         public VSceneNode e1 = null;
         public VLight l1;
         public VPostProcessRenderer PR;
+        public VSceneNode e2 = null;
+        public VEnvRenderer ER = null;
+        bool first = true;
         public override void InitState()
         {
+            VAssImpImp.IPath = "c:/media/";
+            ER = new VEnvRenderer(512, 512);
             PR = new VPostProcessRenderer(512,512);
-            PR.Add(new VPPBlur());
+          //  PR.Add(new VPPBlur());
             sg = new VSceneGraph();
-            PR.Scene = sg; 
-           
-            e1 = VImport.ImportNode("c:/media/test1.3ds");
+            PR.Scene = sg;
+            ER.Scene = sg;
+
+            e2 = VImport.ImportNode("c:/media/obj1.3ds");
+            e1 = VImport.ImportNode("c:/media/room1.3ds");
             var m1 = new VMaterial();
             m1.LoadTexs("c:/media", "tex1");
-            m1.TEnv = new Vivid.Texture.VTexCube("c:/media/c2");
+            var m2 = new VMaterial();
+            m2.LoadTexs("c:/media", "tex1");
+            m1.TEnv = VTextureUtil.LoadCubeMap("c:/media/skybox1.jpg.cube");
+            //m2.TEnv = ER.FB.Cube;
             var ee = e1 as VSceneEntity;
+            var ee2 = e2 as VSceneEntity;
             SetMat(ee, m1);
+           // SetMat(ee2, m2);
             sg.Add(e1);
+           // sg.Add(e2);
+
             c1 = new VCam();
             sg.Add(c1);
             l1 = new VLight();
             l1.Pos(new Vector3(0, 40, 0), Space.Local);
-            c1.Pos(new Vector3(0, 0, 300), Space.Local);
+            c1.Pos(new Vector3(0, 120,300), Space.Local);
+            c1.LookAt(Vector3.Zero, new Vector3(0, 1, 0));
             sg.Add(l1);
+            //e1.Pos(new Vector3(0, -30, 0), Space.Local);
+           // e2.Pos(new Vector3(0, 20, 0), Space.Local);
+
         }
         public void SetMat(VSceneEntity e,VMaterial m)
         {
@@ -65,18 +85,51 @@ namespace ExampleOne
         public override void Render()
         {
             pa = pa + 3;
-            px = (float)Math.Cos((double)MathHelper.DegreesToRadians(pa)) * 50;
-            pz = (float)Math.Sin((double)MathHelper.DegreesToRadians(pa)) * 50;
-
-            x = x + VInput.MX - lx;
-            y = y + VInput.MY - ly;
+            px = (float)Math.Cos((double)MathHelper.DegreesToRadians(pa)) * 250;
+            pz = (float)Math.Sin((double)MathHelper.DegreesToRadians(pa)) * 250;
+            if (VInput.KeyIn(OpenTK.Input.Key.W))
+            {
+                c1.Move(new Vector3(0, 0, -1), Space.Local);
+            }
+            if (VInput.KeyIn(OpenTK.Input.Key.A))
+            {
+                c1.Move(new Vector3(-1, 0, 0), Space.Local);
+            }
+            if (VInput.KeyIn(OpenTK.Input.Key.D))
+            {
+                c1.Move(new Vector3(1, 0, 0), Space.Local);
+            }
+            if(VInput.KeyIn(OpenTK.Input.Key.S))
+            {
+                c1.Move(new Vector3(0, 0, 1),Space.Local);
+            }
+            if(first)
+            {
+                lx = VInput.MX;
+                ly = VInput.MY;
+                first = false;
+            }
+            x =  VInput.MX - lx;
+            y = VInput.MY - ly;
             lx = VInput.MX;
             ly = VInput.MY;
-            e1.Rot(new Vector3(x,y,z), Space.Local);
-            l1.Pos(new Vector3(px, 40, pz), Space.Local);
+            if (Math.Abs(x) > 15) x = 0;
+            if (Math.Abs(y) > 15) y = 0;
+            //if (VInput.KeyIn(OpenTK.Input.Key.Space))
+            // {
+
+          //  c1.LookAt(Vector3.Zero);
+            l1.Diff = new Vector3(5, 5, 5);
+               c1.Turn(new Vector3(y*0.6f, x*0.6f, 0), Space.Local);
+           // }
+                //c1.Turn(new Vector3(y, x, 0), Space.Local);
+            //1.Rot(new Vector3(x,y,z), Space.Local);
+            l1.Pos(new Vector3(px, 80, pz), Space.Local);
             //Console.WriteLine("Render!");
             VPen.Rect(20, 20, 200, 200);
-          // sg.Render();
+            // sg.Render();
+            ER.Render();
+
             PR.Render();
         }
     }

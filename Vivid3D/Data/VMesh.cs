@@ -37,6 +37,8 @@ namespace Vivid.Data
         }
         public void SetVertex(int id,Vector3 pos,Vector3 t,Vector3 b,Vector3 n,Vector2 uv)
         {
+            uv.Y = 1 - uv.Y;
+           
             Data.SetVertex(id, pos, t, b, n, uv);
         }
         public void SetIndex(int id,uint vertex)

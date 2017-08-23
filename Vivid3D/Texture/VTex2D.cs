@@ -24,6 +24,7 @@ namespace Vivid.Texture
         public bool Alpha = false;
         public VTex2D(int w,int h,bool alpha=false)
         {
+            GL.ActiveTexture(TextureUnit.Texture0);
             Alpha = alpha;
             W = w;
             H = h;
@@ -45,6 +46,7 @@ namespace Vivid.Texture
         }
         public VTex2D(string path,LoadMethod lm)
         {
+            GL.ActiveTexture(TextureUnit.Texture0);
             Path = path;
             if(lm==LoadMethod.Single)
             {

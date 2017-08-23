@@ -19,7 +19,7 @@ in vec3 fVert;
 in vec3 fNorm;
 in vec3 pos_eye;
 in vec3 n_eye;
-
+in vec3 rN;
 // Ouput data
 out vec3 color;
 
@@ -36,6 +36,7 @@ void main(){
   vec3 normal = normalize(transpose(inverse(mat3(model))) * fNorm);
     vec3 surfacePos = vec3(model * vec4(fVert, 1));
     vec3 eC = vec3(0,0,0);
+
 
 	
 
@@ -76,12 +77,13 @@ if(eE){
 		//nc.z = (-1.0f + nc.z * 2.0f)*0.0001f;
 	
 		//nc = normalize(nc);
-	  eC = textureCube( tE,r1 ).rgb;
+	  eC = textureCube( tE,rN ).rgb;
 	}
 //eC = vec4(0,0,0,0);
     
     //final color (after gamma correction)
     vec3 gamma = vec3(1.0/2.2);
-    color = (vec3(pow(linearColor, gamma))*(1.0f-envS)
-)+(eC*envS);
+    color = (vec3(pow(linearColor, gamma))*(1.0f-envS))+(eC*envS);
+
+	
 }

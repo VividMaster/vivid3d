@@ -19,18 +19,20 @@ out vec3 fVert;
 out vec3 fNorm;
 out vec3 pos_eye;
 out vec3 n_eye;
+out vec3 rN;
 
 void main(){
 
 	UV = vUV;
 	fNorm = vN;
 	fVert = vP;
+	//rN = (inverse(transpose(model)) * vec4(normalize(vN),0.0)).xyz;
 
-	pos_eye = vec3(cam * model * vec4(vP
-,1.0f));
+	pos_eye = vec3(cam * model * vec4(vP,1.0f));
 	n_eye = vec3(cam * model * vec4(vN,1.0f));
 
-	gl_Position = proj * cam * model * vec4(vP,1);
+	rN = vP;
+	gl_Position = proj * cam * model* vec4(vP,1.0);
 
 	
 }

@@ -10,16 +10,42 @@ namespace Vivid.Texture
 {
     public class VTexCube : VTexBase
     {
+        public VTexCube(int w, int h, byte[] f1, byte[] f2, byte[] f3, byte[] f4, byte[] f5, byte[] f6)
+        {
+            W = w;
+            H = h;
+            D = 1;
+            GL.ActiveTexture(TextureUnit.Texture0);
+            GenMap();
+            List<byte[]> ll = new List<byte[]>();
+            ll.Add(f1);
+            ll.Add(f2);
+            ll.Add(f3);
+            ll.Add(f4);
+            ll.Add(f5);
+            ll.Add(f6);
+            for (int i = 0; i < 6; i++)
+            {
+                GL.TexImage2D(TextureTarget.TextureCubeMapPositiveX + i, 0, PixelInternalFormat.Rgb, w, h, 0, PixelFormat.Rgb, PixelType.UnsignedByte, ll[i]);
+            }
+        }
         public VTexCube(int w,int h)
         {
             W = w;
             H = h;
             D = 1;
+            GL.ActiveTexture(TextureUnit.Texture0);
             GenMap();
+            for(int i=0;i<6;i++)
+            {
+                GL.TexImage2D(TextureTarget.TextureCubeMapPositiveX + i, 0, PixelInternalFormat.Rgb, w, h, 0, PixelFormat.Rgb, PixelType.UnsignedByte, IntPtr.Zero);
+            }
+
 
         }
         public VTexCube(string path)
         {
+            GL.ActiveTexture(TextureUnit.Texture0);
             GenMap();
             Dat(path + "/nx.png");
             GL.TexImage2D(TextureTarget.TextureCubeMapNegativeX, 0, PixelInternalFormat.Rgba, W, H, 0, PixelFormat.Rgba, PixelType.UnsignedByte, Dat(path + "/nx.png"));

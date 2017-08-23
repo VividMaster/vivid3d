@@ -65,7 +65,7 @@ namespace Vivid.Effect
         ~VEffect()
         {
 
-            GL.DeleteProgram(_Program);
+         //   GL.DeleteProgram(_Program);
 
         }
         public virtual void SetPars()
