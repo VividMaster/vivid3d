@@ -45,3 +45,13 @@ C:\git\VividGIT\Vivid3D\vividsutdio3d\ExampleOne\bin\Debug\AssimpNet.dll
 C:\git\VividGIT\Vivid3D\vividsutdio3d\ExampleOne\bin\Debug\Vivid3D.pdb
 C:\git\VividGIT\Vivid3D\vividsutdio3d\ExampleOne\obj\Debug\ExampleOne.exe
 C:\git\VividGIT\Vivid3D\vividsutdio3d\ExampleOne\obj\Debug\ExampleOne.pdb
+C:\git\VividS\vividsutdio3d\ExampleOne\bin\Debug\ExampleOne.exe
+C:\git\VividS\vividsutdio3d\ExampleOne\bin\Debug\ExampleOne.pdb
+C:\git\VividS\vividsutdio3d\ExampleOne\bin\Debug\OpenTK.dll
+C:\git\VividS\vividsutdio3d\ExampleOne\bin\Debug\Vivid3D.dll
+C:\git\VividS\vividsutdio3d\ExampleOne\bin\Debug\AssimpNet.dll
+C:\git\VividS\vividsutdio3d\ExampleOne\bin\Debug\Vivid3D.pdb
+C:\git\VividS\vividsutdio3d\ExampleOne\obj\Debug\ExampleOne.csprojResolveAssemblyReference.cache
+C:\git\VividS\vividsutdio3d\ExampleOne\obj\Debug\ExampleOne.csproj.CoreCompileInputs.cache
+C:\git\VividS\vividsutdio3d\ExampleOne\obj\Debug\ExampleOne.exe
+C:\git\VividS\vividsutdio3d\ExampleOne\obj\Debug\ExampleOne.pdb

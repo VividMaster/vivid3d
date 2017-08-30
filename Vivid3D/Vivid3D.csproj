@@ -27,15 +27,14 @@
     <ConsolePause>false</ConsolePause>
   </PropertyGroup>
   <ItemGroup>
-    <Reference Include="AssimpNet, Version=3.2.0.0, Culture=neutral, PublicKeyToken=7c35138f0d61254b, processorArchitecture=MSIL">
-      <SpecificVersion>False</SpecificVersion>
-      <HintPath>..\..\..\AssimpNet.dll</HintPath>
+    <Reference Include="AssimpNet">
+      <HintPath>..\..\..\VividGIT\AssimpNet.dll</HintPath>
+    </Reference>
+    <Reference Include="OpenTK">
+      <HintPath>..\..\..\VividGIT\Vivid3D\vividsutdio3d\ExampleOne\bin\Debug\OpenTK.dll</HintPath>
     </Reference>
     <Reference Include="System" />
     <Reference Include="System.Drawing" />
-    <Reference Include="OpenTK">
-      <HintPath>..\ExampleOne\bin\Debug\OpenTK.dll</HintPath>
-    </Reference>
   </ItemGroup>
   <ItemGroup>
     <Compile Include="Effect\FXG.cs" />

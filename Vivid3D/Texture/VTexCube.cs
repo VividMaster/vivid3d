@@ -23,7 +23,7 @@ namespace Vivid.Texture
             ll.Add(f3);
             ll.Add(f4);
             ll.Add(f5);
-            ll.Add(f6);
+            ll.Add(f5);
             for (int i = 0; i < 6; i++)
             {
                 GL.TexImage2D(TextureTarget.TextureCubeMapPositiveX + i, 0, PixelInternalFormat.Rgb, w, h, 0, PixelFormat.Rgb, PixelType.UnsignedByte, ll[i]);
@@ -38,6 +38,7 @@ namespace Vivid.Texture
             GenMap();
             for(int i=0;i<6;i++)
             {
+                //TextureTarget.
                 GL.TexImage2D(TextureTarget.TextureCubeMapPositiveX + i, 0, PixelInternalFormat.Rgb, w, h, 0, PixelFormat.Rgb, PixelType.UnsignedByte, IntPtr.Zero);
             }
 

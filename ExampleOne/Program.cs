@@ -33,25 +33,24 @@ namespace ExampleOne
         bool first = true;
         public override void InitState()
         {
-            VAssImpImp.IPath = "c:/media/";
+            VAssImpImp.IPath = "c:/med/";
             ER = new VEnvRenderer(512, 512);
             PR = new VPostProcessRenderer(512,512);
-          //  PR.Add(new VPPBlur());
+           // PR.Add(new VPPBlur());
             sg = new VSceneGraph();
             PR.Scene = sg;
             ER.Scene = sg;
 
-            e2 = VImport.ImportNode("c:/media/obj1.3ds");
-            e1 = VImport.ImportNode("c:/media/room1.3ds");
+            e1 = VImport.ImportNode("c:/med/test1.3ds");
+        
             var m1 = new VMaterial();
-            m1.LoadTexs("c:/media", "tex1");
-            var m2 = new VMaterial();
-            m2.LoadTexs("c:/media", "tex1");
-            m1.TEnv = VTextureUtil.LoadCubeMap("c:/media/skybox1.jpg.cube");
+            m1.TCol = new VTex2D("c:/med/tex1.jpg",LoadMethod.Single);
+            m1.TEnv = VTextureUtil.LoadCubeMap("c:/med/cube1.png.cube");
             //m2.TEnv = ER.FB.Cube;
             var ee = e1 as VSceneEntity;
-            var ee2 = e2 as VSceneEntity;
+            //var ee2 = e2 as VSceneEntity;
             SetMat(ee, m1);
+
            // SetMat(ee2, m2);
             sg.Add(e1);
            // sg.Add(e2);
@@ -128,9 +127,9 @@ namespace ExampleOne
             //Console.WriteLine("Render!");
             VPen.Rect(20, 20, 200, 200);
             // sg.Render();
-            ER.Render();
+          //  ER.Render();
 
-            PR.Render();
+           PR.Render();
         }
     }
     class Program

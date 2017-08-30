@@ -57,6 +57,7 @@ namespace Vivid.PostProcess
                 FB2 = ob;
 
             }
+          //  GL.Viewport(0, 0, 1024, 768);
             DrawQuad();
         }
         public int qva = 0, qvb = 0;

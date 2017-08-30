@@ -9,3 +9,14 @@ C:\git\VividGIT\Vivid3D\vividsutdio3d\CubeConvert\obj\Debug\CubeConvert.csprojRe
 C:\git\VividGIT\Vivid3D\vividsutdio3d\CubeConvert\obj\Debug\CubeConvert.csproj.CoreCompileInputs.cache
 C:\git\VividGIT\Vivid3D\vividsutdio3d\CubeConvert\obj\Debug\CubeConvert.exe
 C:\git\VividGIT\Vivid3D\vividsutdio3d\CubeConvert\obj\Debug\CubeConvert.pdb
+C:\git\VividS\vividsutdio3d\CubeConvert\bin\Debug\CubeConvert.exe.config
+C:\git\VividS\vividsutdio3d\CubeConvert\bin\Debug\CubeConvert.exe
+C:\git\VividS\vividsutdio3d\CubeConvert\bin\Debug\CubeConvert.pdb
+C:\git\VividS\vividsutdio3d\CubeConvert\bin\Debug\OpenTK.dll
+C:\git\VividS\vividsutdio3d\CubeConvert\bin\Debug\Vivid3D.dll
+C:\git\VividS\vividsutdio3d\CubeConvert\bin\Debug\AssimpNet.dll
+C:\git\VividS\vividsutdio3d\CubeConvert\bin\Debug\Vivid3D.pdb
+C:\git\VividS\vividsutdio3d\CubeConvert\obj\Debug\CubeConvert.csprojResolveAssemblyReference.cache
+C:\git\VividS\vividsutdio3d\CubeConvert\obj\Debug\CubeConvert.csproj.CoreCompileInputs.cache
+C:\git\VividS\vividsutdio3d\CubeConvert\obj\Debug\CubeConvert.exe
+C:\git\VividS\vividsutdio3d\CubeConvert\obj\Debug\CubeConvert.pdb
