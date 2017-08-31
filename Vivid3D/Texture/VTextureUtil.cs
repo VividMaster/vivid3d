@@ -59,7 +59,7 @@ namespace Vivid.Texture
             wr = new BinaryWriter(fs);
             wr.Write(bw / 4);
             wr.Write(bh / 3);
-            Write(bw / 3, 0, bw / 4, bh / 3);
+            Write(bw / 4, 0, bw / 4, bh / 3);
             Write(0, bh / 3, bw / 4, bh / 3);
             Write(bw / 4, bh / 3, bw / 4, bh / 3);
             Write(bw / 2, bh / 3, bw / 4, bh / 3);
@@ -71,19 +71,24 @@ namespace Vivid.Texture
             
 
         }
+        static int cf = 0;
         public static void Write(int x,int y,int w,int h)
         {
-            
+            Bitmap np = new Bitmap(w, h);
             for (int dy = 0; dy < h;dy++)
             {
                 for(int dx=0;dx<w;dx++)
                 {
                     var p =b.GetPixel(x+dx, y+dy);
+                    np.SetPixel(dx, dy, p);
                     wr.Write(p.R);
+
                     wr.Write(p.G);
                     wr.Write(p.B);
                 }
             }
+            np.Save("CubeFace" + cf+".png", System.Drawing.Imaging.ImageFormat.Png);
+            cf++;
         }
     }
 }

@@ -31,7 +31,7 @@ void main(){
 	pos_eye = vec3(cam * model * vec4(vP,1.0f));
 	n_eye = vec3(cam * model * vec4(vN,1.0f));
 
-	rN = vP;
+	rN = vN;
 	gl_Position = proj * cam * model* vec4(vP,1.0);
 
 	

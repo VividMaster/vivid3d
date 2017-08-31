@@ -34,3 +34,5 @@ C:\Git\vivid\CubeConvert\obj\Debug\CubeConvert.csprojResolveAssemblyReference.ca
 C:\Git\vivid\CubeConvert\obj\Debug\CubeConvert.csproj.CoreCompileInputs.cache
 C:\Git\vivid\CubeConvert\obj\Debug\CubeConvert.exe
 C:\Git\vivid\CubeConvert\obj\Debug\CubeConvert.pdb
+C:\Git\vivid\CubeConvert\bin\Debug\FreeImageNET.dll
+C:\Git\vivid\CubeConvert\bin\Debug\FreeImageNET.xml
