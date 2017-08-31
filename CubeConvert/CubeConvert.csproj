@@ -33,7 +33,7 @@
   </PropertyGroup>
   <ItemGroup>
     <Reference Include="OpenTK">
-      <HintPath>..\..\..\VividGIT\Vivid3D\vividsutdio3d\ExampleOne\bin\Debug\OpenTK.dll</HintPath>
+      <HintPath>..\..\opentk-develop\src\OpenTK\bin\Release\OpenTK.dll</HintPath>
     </Reference>
     <Reference Include="System" />
     <Reference Include="System.Core" />

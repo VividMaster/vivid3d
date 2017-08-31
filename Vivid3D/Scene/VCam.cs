@@ -34,7 +34,7 @@ namespace Vivid.Scene
             LR.Y = Wrap(LR.Y);
             LR.Z = Wrap(LR.Z);
             var r = LR;
-            Matrix4 t = Matrix4.RotateY(MathHelper.DegreesToRadians(r.Y)) * Matrix4.RotateX(MathHelper.DegreesToRadians(r.X)) * Matrix4.RotateZ(MathHelper.DegreesToRadians(r.Z));
+            Matrix4 t = Matrix4.CreateRotationY(MathHelper.DegreesToRadians(r.Y)) * Matrix4.CreateRotationX(MathHelper.DegreesToRadians(r.X)) * Matrix4.CreateRotationZ(MathHelper.DegreesToRadians(r.Z));
             LocalTurn = t;
         }
         public float Wrap(float v)
