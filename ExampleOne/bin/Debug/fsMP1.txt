@@ -83,7 +83,7 @@ if(eE){
     
     //final color (after gamma correction)
     vec3 gamma = vec3(1.0/2.2);
-    color = (vec3(pow(linearColor, gamma))*(1.0f-envS))+(eC*envS);
+    color = (vec3(pow(linearColor, gamma))*(1.0f-envS));//+(eC*envS);
 
 	
 }

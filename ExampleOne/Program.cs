@@ -44,7 +44,7 @@ namespace ExampleOne
             e1 = VImport.ImportNode("c:/med/test1.3ds");
         
             var m1 = new VMaterial();
-            m1.TCol = new VTex2D("c:/med/tex1.jpg",LoadMethod.Single);
+            m1.TCol = new VTex2D("c:/med/metal1_c.tga",LoadMethod.Single);
             m1.TEnv = VTextureUtil.LoadCubeMap("c:/med/cube1.png.cube");
             //m2.TEnv = ER.FB.Cube;
             var ee = e1 as VSceneEntity;

@@ -69,4 +69,5 @@ C:\Git\vivid\ExampleOne\obj\Debug\ExampleOne.csprojResolveAssemblyReference.cach
 C:\Git\vivid\ExampleOne\obj\Debug\ExampleOne.csproj.CoreCompileInputs.cache
 C:\Git\vivid\ExampleOne\obj\Debug\ExampleOne.exe
 C:\Git\vivid\ExampleOne\obj\Debug\ExampleOne.pdb
-C:\Git\vivid\ExampleOne\bin\Debug\DevIL.NET.dll
+C:\Git\vivid\ExampleOne\bin\Debug\FreeImageNET.dll
+C:\Git\vivid\ExampleOne\bin\Debug\FreeImageNET.xml
