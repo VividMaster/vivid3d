@@ -31,6 +31,9 @@
     <Reference Include="AssimpNet">
       <HintPath>..\..\AssimpNet.dll</HintPath>
     </Reference>
+    <Reference Include="DevIL.NET">
+      <HintPath>..\ExampleOne\bin\Debug\DevIL.NET.dll</HintPath>
+    </Reference>
     <Reference Include="OpenTK">
       <HintPath>..\..\opentk-develop\src\OpenTK\bin\Release\OpenTK.dll</HintPath>
     </Reference>

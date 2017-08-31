@@ -50,7 +50,7 @@ namespace Vivid.Texture
             Path = path;
             if(lm==LoadMethod.Single)
             {
-                TexData = new Bitmap(path);
+                TexData = DevIL.DevIL.LoadBitmap(path);
                 W = TexData.Width;
                 H = TexData.Height;
                 D = 1;
@@ -117,7 +117,7 @@ namespace Vivid.Texture
         }
         public void T_LoadTex()
         {
-            TexData = new Bitmap(Path);
+            TexData = DevIL.DevIL.LoadBitmap(Path);
             W = TexData.Width;
             H = TexData.Height;
             D = 1;

@@ -44,19 +44,7 @@ namespace Vivid.Texture
 
 
         }
-        public VTexCube(string path)
-        {
-            GL.ActiveTexture(TextureUnit.Texture0);
-            GenMap();
-            Dat(path + "/nx.png");
-            GL.TexImage2D(TextureTarget.TextureCubeMapNegativeX, 0, PixelInternalFormat.Rgba, W, H, 0, PixelFormat.Rgba, PixelType.UnsignedByte, Dat(path + "/nx.png"));
-            GL.TexImage2D(TextureTarget.TextureCubeMapNegativeY, 0, PixelInternalFormat.Rgba, W, H, 0, PixelFormat.Rgba, PixelType.UnsignedByte, Dat(path + "/ny.png"));
-            GL.TexImage2D(TextureTarget.TextureCubeMapNegativeZ, 0, PixelInternalFormat.Rgba, W, H, 0, PixelFormat.Rgba, PixelType.UnsignedByte, Dat(path + "/nz.png"));
-            GL.TexImage2D(TextureTarget.TextureCubeMapPositiveX, 0, PixelInternalFormat.Rgba, W, H, 0, PixelFormat.Rgba, PixelType.UnsignedByte, Dat(path + "/px.png"));
-            GL.TexImage2D(TextureTarget.TextureCubeMapPositiveY, 0, PixelInternalFormat.Rgba, W, H, 0, PixelFormat.Rgba, PixelType.UnsignedByte, Dat(path + "/py.png"));
-            GL.TexImage2D(TextureTarget.TextureCubeMapPositiveZ, 0, PixelInternalFormat.Rgba, W, H, 0, PixelFormat.Rgba, PixelType.UnsignedByte, Dat(path + "/pz.png"));
-
-        }
+      
         public byte[] Dat(string pf)
         {
             var TexData = new Bitmap(pf);

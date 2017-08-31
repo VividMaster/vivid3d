@@ -69,3 +69,4 @@ C:\Git\vivid\ExampleOne\obj\Debug\ExampleOne.csprojResolveAssemblyReference.cach
 C:\Git\vivid\ExampleOne\obj\Debug\ExampleOne.csproj.CoreCompileInputs.cache
 C:\Git\vivid\ExampleOne\obj\Debug\ExampleOne.exe
 C:\Git\vivid\ExampleOne\obj\Debug\ExampleOne.pdb
+C:\Git\vivid\ExampleOne\bin\Debug\DevIL.NET.dll
