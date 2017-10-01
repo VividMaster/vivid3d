@@ -1,0 +1,15 @@
+C:\Projects\Vivid3D\vividstudio3d\Vivid3D\obj\x64\Debug\Vivid3D.csprojResolveAssemblyReference.cache
+C:\Projects\Vivid3D\vividstudio3d\Vivid3D\obj\x64\Debug\Vivid3D.csproj.CoreCompileInputs.cache
+C:\Projects\Vivid3D\vividstudio3d\Vivid3D\bin\x64\Debug\Vivid3D.dll
+C:\Projects\Vivid3D\vividstudio3d\Vivid3D\bin\x64\Debug\Vivid3D.pdb
+C:\Projects\Vivid3D\vividstudio3d\Vivid3D\bin\x64\Debug\AssimpNet.dll
+C:\Projects\Vivid3D\vividstudio3d\Vivid3D\bin\x64\Debug\FreeImageNET.dll
+C:\Projects\Vivid3D\vividstudio3d\Vivid3D\bin\x64\Debug\OpenTK.dll
+C:\Projects\Vivid3D\vividstudio3d\Vivid3D\bin\x64\Debug\AssimpNet.pdb
+C:\Projects\Vivid3D\vividstudio3d\Vivid3D\bin\x64\Debug\AssimpNet.xml
+C:\Projects\Vivid3D\vividstudio3d\Vivid3D\bin\x64\Debug\FreeImageNET.xml
+C:\Projects\Vivid3D\vividstudio3d\Vivid3D\bin\x64\Debug\OpenTK.pdb
+C:\Projects\Vivid3D\vividstudio3d\Vivid3D\bin\x64\Debug\OpenTK.xml
+C:\Projects\Vivid3D\vividstudio3d\Vivid3D\bin\x64\Debug\OpenTK.dll.config
+C:\Projects\Vivid3D\vividstudio3d\Vivid3D\obj\x64\Debug\Vivid3D.dll
+C:\Projects\Vivid3D\vividstudio3d\Vivid3D\obj\x64\Debug\Vivid3D.pdb

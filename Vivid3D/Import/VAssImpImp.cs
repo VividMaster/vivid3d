@@ -18,7 +18,8 @@ namespace Vivid.Import
         {
             VSceneEntity root = new VSceneEntity();
             string file = path;
-            var e = new Assimp.AssimpImporter();
+     
+            var e = new Assimp.AssimpContext();
             var c1 = new Assimp.Configs.NormalSmoothingAngleConfig(45);
             e.SetConfig(c1);
             var s = e.ImportFile(file, PostProcessSteps.CalculateTangentSpace | PostProcessSteps.GenerateSmoothNormals | PostProcessSteps.Triangulate | PostProcessSteps.GenerateNormals);
@@ -28,8 +29,8 @@ namespace Vivid.Import
             {
 
                 var vm = new Material.VMaterial();
-
-                var m2 = new VMesh(m.VertexCount, m.GetIntIndices().Length);
+              
+                var m2 = new VMesh(m.VertexCount, m.GetIndices().Length);
                 ml2.Add(m2);
                // ml.Add(m.Name, m2);
 
@@ -38,9 +39,11 @@ namespace Vivid.Import
                 m2.Name = m.Name;
                 var mat = s.Materials[m.MaterialIndex];
                 TextureSlot t1;
-                if (mat.GetTextureCount(TextureType.Diffuse) > 0)
+               
+                if (mat.GetMaterialTextureCount(TextureType.Diffuse) > 0)
                 {
-                    t1 = mat.GetTextures(TextureType.Diffuse)[0];
+                    
+                    t1 = mat.GetMaterialTextures(TextureType.Diffuse)[0];
 
                    
                     if(t1.FilePath!=null)
@@ -64,7 +67,7 @@ namespace Vivid.Import
                 {
                     var v = m.Vertices[i];
                     var n = m.Normals[i];
-                    var t = m.GetTextureCoords(0);
+                    var t = m.TextureCoordinateChannels[0];
                     Vector3D tan, bi;
                     if (m.Tangents != null)
                     {
@@ -77,16 +80,16 @@ namespace Vivid.Import
                         tan = new Vector3D(0, 0, 0);
                         bi = new Vector3D(0, 0, 0);
                     }
-                    if (t != null)
+                    if (t.Count() == 0) 
                     {
-                        m2.SetVertex(i, Cv(v), Cv(tan), Cv(bi), Cv(n), Cv2(t[i]));
+                        m2.SetVertex(i, Cv(v), Cv(tan), Cv(bi), Cv(n), Cv2(t[0]));
                     }
                     else
                     {
                         m2.SetVertex(i, Cv(v), Cv(tan), Cv(bi), Cv(n), Cv2(new Vector3D(0, 0, 0)));
                     }
                 }
-                int[] id = m.GetIntIndices();
+                int[] id = m.GetIndices();
                 int fi = 0;
                 uint[] nd = new uint[id.Length];
                 for (int i = 0; i < id.Length; i++)
