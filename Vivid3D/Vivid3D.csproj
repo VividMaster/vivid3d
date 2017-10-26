@@ -7,7 +7,7 @@
     <OutputType>Library</OutputType>
     <RootNamespace>Vivid</RootNamespace>
     <AssemblyName>Vivid3D</AssemblyName>
-    <TargetFrameworkVersion>v4.6.1</TargetFrameworkVersion>
+    <TargetFrameworkVersion>v4.5</TargetFrameworkVersion>
     <TargetFrameworkProfile />
   </PropertyGroup>
   <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Debug|AnyCPU' ">
@@ -44,17 +44,11 @@
     <CodeAnalysisRuleSet>MinimumRecommendedRules.ruleset</CodeAnalysisRuleSet>
   </PropertyGroup>
   <ItemGroup>
-    <Reference Include="AssimpNet, Version=3.3.1.0, Culture=neutral, PublicKeyToken=0d51b391f59f42a6, processorArchitecture=AMD64">
-      <SpecificVersion>False</SpecificVersion>
-      <HintPath>..\..\..\3rdparty\assimp-net-master\AssimpNet\bin\Net45-Release\AssimpNet.dll</HintPath>
+    <Reference Include="AssimpNet">
+      <HintPath>..\..\..\..\3rdparty\Assimp\AssimpNET\AssimpNet\bin\Net45-Release\AssimpNet.dll</HintPath>
     </Reference>
-    <Reference Include="FreeImageNET, Version=3.15.1.0, Culture=neutral, processorArchitecture=AMD64">
-      <SpecificVersion>False</SpecificVersion>
-      <HintPath>..\..\..\3rdparty\FreeImage\Wrapper\FreeImage.NET\cs\Library\bin\Release\FreeImageNET.dll</HintPath>
-    </Reference>
-    <Reference Include="OpenTK, Version=3.0.0.0, Culture=neutral, PublicKeyToken=bad199fe84eb3df4, processorArchitecture=MSIL">
-      <SpecificVersion>False</SpecificVersion>
-      <HintPath>..\..\..\3rdparty\opentk-develop\src\OpenTK\bin\Release\OpenTK.dll</HintPath>
+    <Reference Include="OpenTK, Version=2.0.0.0, Culture=neutral, PublicKeyToken=bad199fe84eb3df4, processorArchitecture=MSIL">
+      <HintPath>..\packages\OpenTK.2.0.0\lib\net20\OpenTK.dll</HintPath>
     </Reference>
     <Reference Include="System" />
     <Reference Include="System.Drawing" />
@@ -107,6 +101,10 @@
     <Compile Include="Visuals\VVVBO.cs" />
     <Compile Include="Visuals\VVisualizer.cs" />
     <Compile Include="Visuals\VVSimple.cs" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="OpenTK.dll.config" />
+    <None Include="packages.config" />
   </ItemGroup>
   <Import Project="$(MSBuildBinPath)\Microsoft.CSharp.targets" />
 </Project>

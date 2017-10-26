@@ -8,7 +8,7 @@ using System.Threading;
 using System.Drawing;
 using OpenTK;
 using OpenTK.Graphics.OpenGL4;
-using FreeImageAPI;
+
 namespace Vivid.Texture
 {
     public enum LoadMethod
@@ -50,37 +50,16 @@ namespace Vivid.Texture
         {
             GL.ActiveTexture(TextureUnit.Texture0);
             Path = path;
-            if (!FreeImage.IsAvailable())
-            {
-                Console.WriteLine("FreeImage.dll seems to be missing. Aborting.");
-                return;
-            }
+          
             if (lm==LoadMethod.Single)
             {
                 // Check if FreeImage.dll is available (can be in %path%).
-                
-               
-               
-                FREE_IMAGE_FORMAT ff = FREE_IMAGE_FORMAT.FIF_UNKNOWN;
-                string ext = new FileInfo(path).Extension;
-                ext = ext.ToLower();
-                FREE_IMAGE_LOAD_FLAGS lf = FREE_IMAGE_LOAD_FLAGS.DEFAULT;
-                switch(ext)
-                {
-                    case ".bmp":
-                        ff = FREE_IMAGE_FORMAT.FIF_BMP;
-                        break;
-                    case ".tga":
-                        ff = FREE_IMAGE_FORMAT.FIF_TARGA;
-                        break;
-                    case ".png":
-                        ff = FREE_IMAGE_FORMAT.FIF_PNG;
-                        break;
-                    case ".jpg":
-                        ff = FREE_IMAGE_FORMAT.FIF_JPEG;
-                        break;
-                }
-                TexData = FreeImage.LoadBitmap(path, lf, ref ff);
+
+
+
+
+
+                TexData = new Bitmap(path);
                 
 
                 //TexData = new Bitmap(path);
@@ -150,26 +129,8 @@ namespace Vivid.Texture
         }
         public void T_LoadTex()
         {
-            FREE_IMAGE_FORMAT ff = FREE_IMAGE_FORMAT.FIF_UNKNOWN;
-            string ext = new FileInfo(Path).Extension;
-            ext = ext.ToLower();
-            FREE_IMAGE_LOAD_FLAGS lf = FREE_IMAGE_LOAD_FLAGS.DEFAULT;
-            switch (ext)
-            {
-                case ".bmp":
-                    ff = FREE_IMAGE_FORMAT.FIF_BMP;
-                    break;
-                case ".tga":
-                    ff = FREE_IMAGE_FORMAT.FIF_TARGA;
-                    break;
-                case ".png":
-                    ff = FREE_IMAGE_FORMAT.FIF_PNG;
-                    break;
-                case ".jpg":
-                    ff = FREE_IMAGE_FORMAT.FIF_JPEG;
-                    break;
-            }
-            TexData = FreeImage.LoadBitmap(Path, lf, ref ff);
+       
+            TexData = new Bitmap(Path);
 
             W = TexData.Width;
             H = TexData.Height;
