@@ -44,7 +44,7 @@ namespace ExampleOne
             e1 = VImport.ImportNode("c:/Media/test1.3ds");
         
             var m1 = new VMaterial();
-            m1.TCol = new VTex2D("c:/Media/tex1_c.png",LoadMethod.Single);
+            m1.TCol = new VTex2D("c:/Media/t_c.png",LoadMethod.Single);
             m1.TEnv = VTextureUtil.LoadCubeMap("c:/Media/cm1.png.cube");
             //m2.TEnv = ER.FB.Cube;
             var ee = e1 as VSceneEntity;
@@ -137,7 +137,7 @@ namespace ExampleOne
         static void Main(string[] args)
         {
 
-            VApp e1 = new VApp("Vivid3D - Example One", 800, 600,false);
+            VApp e1 = new VApp("Vivid3D - Example One", 800, 600, true);
             e1.PushState(new Intro1());
             e1.Run();
 

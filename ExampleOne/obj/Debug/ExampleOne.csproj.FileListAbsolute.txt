@@ -103,8 +103,3 @@ C:\Dev\Proj\Vivid3D\vividstudio3d\ExampleOne\bin\Debug\OpenTK.xml
 C:\Dev\Proj\Vivid3D\vividstudio3d\ExampleOne\bin\Debug\AssimpNet.pdb
 C:\Dev\Proj\Vivid3D\vividstudio3d\ExampleOne\bin\Debug\AssimpNet.xml
 C:\Dev\Proj\Vivid3D\vividstudio3d\ExampleOne\obj\Debug\ExampleOne.exe
-C:\Dev\Proj\Vivid3D\vividstudio3d\ExampleOne\bin\Debug\Remotion.Linq.dll
-C:\Dev\Proj\Vivid3D\vividstudio3d\ExampleOne\bin\Debug\System.Runtime.CompilerServices.Unsafe.dll
-C:\Dev\Proj\Vivid3D\vividstudio3d\ExampleOne\bin\Debug\System.ValueTuple.dll
-C:\Dev\Proj\Vivid3D\vividstudio3d\ExampleOne\bin\Debug\Remotion.Linq.xml
-C:\Dev\Proj\Vivid3D\vividstudio3d\ExampleOne\bin\Debug\System.Runtime.CompilerServices.Unsafe.xml
