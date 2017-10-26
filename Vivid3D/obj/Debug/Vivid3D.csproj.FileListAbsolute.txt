@@ -53,3 +53,8 @@ C:\Dev\Proj\Vivid3D\vividstudio3d\Vivid3D\bin\Debug\AssimpNet.xml
 C:\Dev\Proj\Vivid3D\vividstudio3d\Vivid3D\bin\Debug\OpenTK.xml
 C:\Dev\Proj\Vivid3D\vividstudio3d\Vivid3D\obj\Debug\Vivid3D.dll
 C:\Dev\Proj\Vivid3D\vividstudio3d\Vivid3D\obj\Debug\Vivid3D.pdb
+C:\Dev\Proj\Vivid3D\vividstudio3d\Vivid3D\bin\Debug\System.Runtime.CompilerServices.Unsafe.dll
+C:\Dev\Proj\Vivid3D\vividstudio3d\Vivid3D\bin\Debug\System.ValueTuple.dll
+C:\Dev\Proj\Vivid3D\vividstudio3d\Vivid3D\bin\Debug\System.Runtime.CompilerServices.Unsafe.xml
+C:\Dev\Proj\Vivid3D\vividstudio3d\Vivid3D\bin\Debug\Remotion.Linq.dll
+C:\Dev\Proj\Vivid3D\vividstudio3d\Vivid3D\bin\Debug\Remotion.Linq.xml

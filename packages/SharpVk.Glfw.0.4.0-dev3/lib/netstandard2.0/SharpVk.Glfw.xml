@@ -1,0 +1,34 @@
+<?xml version="1.0"?>
+<doc>
+    <assembly>
+        <name>SharpVk.Glfw</name>
+    </assembly>
+    <members>
+        <member name="T:SharpVk.Glfw.InstanceExtensions">
+            <summary>
+            
+            </summary>
+        </member>
+        <member name="M:SharpVk.Glfw.InstanceExtensions.CreateGlfw3Surface(SharpVk.Instance,SharpVk.Glfw.WindowHandle)">
+            <summary>
+            Create a Surface object for a GLFW3 window.
+            </summary>
+            <param name="instance"></param>
+            <param name="windowHandle"></param>
+            <returns></returns>
+        </member>
+        <member name="M:SharpVk.Glfw.InstanceExtensions.CreateGlfw3Surface(SharpVk.Instance,SharpVk.Glfw.Window)">
+            <summary>
+            Create a Surface object for a GLFW3 window.
+            </summary>
+            <param name="instance"></param>
+            <param name="window"></param>
+            <returns></returns>
+        </member>
+        <member name="T:SharpVk.Glfw.Window">
+            <summary>
+            Represents an instance of a GLFW3 Window.
+            </summary>
+        </member>
+    </members>
+</doc>
