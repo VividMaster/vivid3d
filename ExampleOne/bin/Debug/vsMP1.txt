@@ -26,12 +26,12 @@ void main(){
 	UV = vUV;
 	fNorm = vN;
 	fVert = vP;
-	//rN = (inverse(transpose(model)) * vec4(normalize(vN),0.0)).xyz;
+	rN = (inverse(transpose(model)) * vec4(normalize(vN),0.0)).xyz;
 
 	pos_eye = vec3(cam * model * vec4(vP,1.0f));
 	n_eye = vec3(cam * model * vec4(vN,1.0f));
 
-	rN = vN;
+	
 	gl_Position = proj * cam * model* vec4(vP,1.0);
 
 	

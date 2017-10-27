@@ -57,7 +57,10 @@ namespace Vivid.Texture
 
 
 
-
+                if (File.Exists(path) == false)
+                {
+                    return;
+                }
 
                 TexData = new Bitmap(path);
                 

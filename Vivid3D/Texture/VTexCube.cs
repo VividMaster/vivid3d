@@ -10,7 +10,7 @@ namespace Vivid.Texture
 {
     public class VTexCube : VTexBase
     {
-        public VTexCube(int w, int h, byte[] f1, byte[] f2, byte[] f3, byte[] f4, byte[] f5, byte[] f6)
+        public VTexCube(int w, int h, byte[] f0, byte[] f1, byte[] f2, byte[] f3, byte[] f4, byte[] f5)
         {
             W = w;
             H = h;
@@ -24,10 +24,21 @@ namespace Vivid.Texture
             ll.Add(f4);
             ll.Add(f5);
             ll.Add(f5);
-            for (int i = 0; i < 6; i++)
-            {
-                GL.TexImage2D(TextureTarget.TextureCubeMapPositiveX + i, 0, PixelInternalFormat.Rgb, w, h, 0, PixelFormat.Rgb, PixelType.UnsignedByte, ll[i]);
-            }
+
+            GL.TexImage2D(TextureTarget.TextureCubeMapNegativeZ, 0, PixelInternalFormat.Rgb, w, h, 0, PixelFormat.Rgb, PixelType.UnsignedByte, f2);
+            GL.TexImage2D(TextureTarget.TextureCubeMapPositiveZ, 0, PixelInternalFormat.Rgb, w, h, 0, PixelFormat.Rgb, PixelType.UnsignedByte, f4);
+            GL.TexImage2D(TextureTarget.TextureCubeMapNegativeX, 0, PixelInternalFormat.Rgb, w, h, 0, PixelFormat.Rgb, PixelType.UnsignedByte, f1);
+            GL.TexImage2D(TextureTarget.TextureCubeMapPositiveX, 0, PixelInternalFormat.Rgb, w, h, 0, PixelFormat.Rgb, PixelType.UnsignedByte, f3);
+            GL.TexImage2D(TextureTarget.TextureCubeMapNegativeY, 0, PixelInternalFormat.Rgb, w, h, 0, PixelFormat.Rgb, PixelType.UnsignedByte, f5);
+            GL.TexImage2D(TextureTarget.TextureCubeMapPositiveY, 0, PixelInternalFormat.Rgb, w, h, 0, PixelFormat.Rgb, PixelType.UnsignedByte, f0);
+
+
+
+
+            //for (int i = 0; i < 6; i++)
+            // {
+            //   GL.TexImage2D(TextureTarget.TextureCubeMapPositiveX + i, 0, PixelInternalFormat.Rgb, w, h, 0, PixelFormat.Rgb, PixelType.UnsignedByte, ll[i]);
+            //}
         }
         public VTexCube(int w,int h)
         {

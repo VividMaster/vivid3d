@@ -41,8 +41,9 @@ namespace ExampleOne
             PR.Scene = sg;
             ER.Scene = sg;
 
-            e1 = VImport.ImportNode("c:/Media/test1.3ds");
-        
+            e1 = VImport.ImportNode("c:/Media/dwarf2.b3d");
+            e1.LocalScale = new Vector3(1, 1, 1);
+            
             var m1 = new VMaterial();
             m1.TCol = new VTex2D("c:/Media/tex1_c.png",LoadMethod.Single);
             m1.TEnv = VTextureUtil.LoadCubeMap("c:/Media/cm1.png.cube");
@@ -59,7 +60,7 @@ namespace ExampleOne
             sg.Add(c1);
             l1 = new VLight();
             l1.Pos(new Vector3(0, 40, 0), Space.Local);
-            c1.Pos(new Vector3(0, 120,300), Space.Local);
+            c1.Pos(new Vector3(0, 0,300), Space.Local);
             c1.LookAt(Vector3.Zero, new Vector3(0, 1, 0));
             sg.Add(l1);
             //e1.Pos(new Vector3(0, -30, 0), Space.Local);
@@ -119,7 +120,7 @@ namespace ExampleOne
 
           //  c1.LookAt(Vector3.Zero);
             l1.Diff = new Vector3(5, 5, 5);
-               c1.Turn(new Vector3(y*0.6f, x*0.6f, 0), Space.Local);
+               e1.Turn(new Vector3(y*0.6f, x*0.6f, 0), Space.Local);
            // }
                 //c1.Turn(new Vector3(y, x, 0), Space.Local);
             //1.Rot(new Vector3(x,y,z), Space.Local);

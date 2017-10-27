@@ -77,7 +77,7 @@ if(eE){
 		//nc.z = (-1.0f + nc.z * 2.0f)*0.0001f;
 	
 		//nc = normalize(nc);
-	  eC = textureCube( tE,rN ).rgb;
+	  eC = textureCube( tE,r1).rgb;
 	}
 //eC = vec4(0,0,0,0);
     

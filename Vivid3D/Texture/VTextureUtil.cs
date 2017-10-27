@@ -5,7 +5,8 @@ using System.Text;
 using System.Threading.Tasks;
 using System.Drawing;
 using System.IO;
-
+using OpenTK;
+using OpenTK.Graphics.OpenGL4;
 namespace Vivid.Texture
 {
     public class VTextureUtil
@@ -27,7 +28,7 @@ namespace Vivid.Texture
             var f4 = ReadFace();
             var f5 = ReadFace();
             var f6 = ReadFace();
-
+            
             var tc = new VTexCube(fw, fh, f1, f2, f3, f4, f5, f6);
 
             return tc;

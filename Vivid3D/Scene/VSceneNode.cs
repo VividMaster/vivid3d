@@ -40,7 +40,7 @@ namespace Vivid.Scene
                 {
                     r = Top.World * r;
                 }
-                r = LocalTurn * r;
+                r = Matrix4.Scale(LocalScale) * LocalTurn * r;
 
        
                 return r;

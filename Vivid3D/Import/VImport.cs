@@ -16,6 +16,7 @@ namespace Vivid.Import
             RegImp(".fbx", new VAssImpImp());
             RegImp(".blend", new VAssImpImp());
             RegImp(".dae", new VAssImpImp());
+            RegImp(".b3d", new VAssImpImp());
         }
         public static void RegImp(string key,VImporter imp)
         {
