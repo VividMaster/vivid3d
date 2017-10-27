@@ -1,13 +1,15 @@
 ﻿
 Microsoft Visual Studio Solution File, Format Version 12.00
 # Visual Studio 15
-VisualStudioVersion = 15.0.26923.0
+VisualStudioVersion = 15.0.27004.2005
 MinimumVisualStudioVersion = 10.0.40219.1
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Vivid3D", "Vivid3D\Vivid3D.csproj", "{6850F15F-8E1F-4E93-BE21-E5A7066541C1}"
 EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "ExampleOne", "ExampleOne\ExampleOne.csproj", "{1D9F2581-ECFD-45B5-B3A9-5B0B1F06ACC1}"
 EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "CubeConvert", "CubeConvert\CubeConvert.csproj", "{6B907C4A-0260-4DA5-BC5F-8D983BE973A7}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "VividIDE", "VividIDE\VividIDE.csproj", "{B3E694AA-57AB-4517-8969-D3592AB904F6}"
 EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
@@ -41,6 +43,14 @@ Global
 		{6B907C4A-0260-4DA5-BC5F-8D983BE973A7}.Release|Any CPU.Build.0 = Release|Any CPU
 		{6B907C4A-0260-4DA5-BC5F-8D983BE973A7}.Release|x64.ActiveCfg = Release|x64
 		{6B907C4A-0260-4DA5-BC5F-8D983BE973A7}.Release|x64.Build.0 = Release|x64
+		{B3E694AA-57AB-4517-8969-D3592AB904F6}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{B3E694AA-57AB-4517-8969-D3592AB904F6}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{B3E694AA-57AB-4517-8969-D3592AB904F6}.Debug|x64.ActiveCfg = Debug|Any CPU
+		{B3E694AA-57AB-4517-8969-D3592AB904F6}.Debug|x64.Build.0 = Debug|Any CPU
+		{B3E694AA-57AB-4517-8969-D3592AB904F6}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{B3E694AA-57AB-4517-8969-D3592AB904F6}.Release|Any CPU.Build.0 = Release|Any CPU
+		{B3E694AA-57AB-4517-8969-D3592AB904F6}.Release|x64.ActiveCfg = Release|Any CPU
+		{B3E694AA-57AB-4517-8969-D3592AB904F6}.Release|x64.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE

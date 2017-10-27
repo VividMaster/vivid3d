@@ -91,6 +91,11 @@
     <Compile Include="Texture\VTexCube.cs" />
     <Compile Include="Texture\VTexDepth.cs" />
     <Compile Include="Texture\VTextureUtil.cs" />
+    <Compile Include="UI\UIManager.cs" />
+    <Compile Include="UI\UIWidget.cs" />
+    <Compile Include="UI\UIWidgets\UIButton.cs" />
+    <Compile Include="UI\UIWidgets\UIGroup.cs" />
+    <Compile Include="UI\UIWidgets\UIWindow.cs" />
     <Compile Include="Visuals\VRenderer.cs" />
     <Compile Include="Visuals\VRendererSimple.cs" />
     <Compile Include="Visuals\VRenderLayer.cs" />
@@ -106,5 +111,6 @@
     <None Include="OpenTK.dll.config" />
     <None Include="packages.config" />
   </ItemGroup>
+  <ItemGroup />
   <Import Project="$(MSBuildBinPath)\Microsoft.CSharp.targets" />
 </Project>

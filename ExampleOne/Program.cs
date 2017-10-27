@@ -49,7 +49,7 @@ namespace ExampleOne
             m1.TEnv = VTextureUtil.LoadCubeMap("c:/Media/cm1.png.cube"); // cubemap to load. use cubeconvert to convert.
             //m2.TEnv = ER.FB.Cube;
             var ee = e1 as VSceneEntity;
-            //var ee2 = e2 as VSceneEntity;
+            //var ee2 = e2 as VSceneEntity; //building project atm.
             SetMat(ee, m1);
 
            // SetMat(ee2, m2);

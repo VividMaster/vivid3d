@@ -66,7 +66,7 @@ namespace Vivid.App
             {
                 VInput.MB[i] = false;
             }
-
+            VPen.InitDraw();
         }
         protected override void OnMouseMove(MouseMoveEventArgs e)
         {
