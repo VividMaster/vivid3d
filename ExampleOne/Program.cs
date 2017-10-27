@@ -41,12 +41,12 @@ namespace ExampleOne
             PR.Scene = sg;
             ER.Scene = sg;
 
-            e1 = VImport.ImportNode("c:/Media/dwarf2.b3d");
+            e1 = VImport.ImportNode("c:/Media/dwarf2.b3d"); //file of 3d model to load.
             e1.LocalScale = new Vector3(1, 1, 1);
             
             var m1 = new VMaterial();
-            m1.TCol = new VTex2D("c:/Media/tex1_c.png",LoadMethod.Single);
-            m1.TEnv = VTextureUtil.LoadCubeMap("c:/Media/cm1.png.cube");
+            m1.TCol = new VTex2D("c:/Media/tex1_c.png",LoadMethod.Single); // texture to load 
+            m1.TEnv = VTextureUtil.LoadCubeMap("c:/Media/cm1.png.cube"); // cubemap to load. use cubeconvert to convert.
             //m2.TEnv = ER.FB.Cube;
             var ee = e1 as VSceneEntity;
             //var ee2 = e2 as VSceneEntity;
