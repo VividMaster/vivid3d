@@ -126,7 +126,7 @@ namespace ExampleOne
             //1.Rot(new Vector3(x,y,z), Space.Local);
             l1.Pos(new Vector3(px, 80, pz), Space.Local);
             //Console.WriteLine("Render!");
-            VPen.Rect(20, 20, 200, 200);
+           // VPen.Rect(20, 20, 200, 200);
             // sg.Render();
           //  ER.Render();
 

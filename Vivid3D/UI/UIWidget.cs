@@ -39,6 +39,10 @@ namespace Vivid.UI
         public string Name = "";
         public List<String> Text = new List<string>();
         public Dictionary<string, UIWidget> WidMap = new Dictionary<string, UIWidget>();
+        public void AddWidget(UIWidget w)
+        {
+            Sub.Add(w);
+        }
         public UIWidget(float x, float y, float w = 0, float h = 0, string text = "", UIWidget top = null)
         {
             Top = top;
@@ -85,6 +89,14 @@ namespace Vivid.UI
 
         }
         public virtual void OnDraw()
+        {
+            this.Draw();
+            foreach(var w in Sub)
+            {
+                w.OnDraw();
+            }
+        }
+        public virtual void Draw()
         {
 
         }

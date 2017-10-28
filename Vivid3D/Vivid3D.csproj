@@ -91,7 +91,9 @@
     <Compile Include="Texture\VTexCube.cs" />
     <Compile Include="Texture\VTexDepth.cs" />
     <Compile Include="Texture\VTextureUtil.cs" />
-    <Compile Include="UI\UIManager.cs" />
+    <Compile Include="UI\UISys.cs" />
+    <Compile Include="UI\UISkin.cs" />
+    <Compile Include="UI\UISkins\SkinNeonBlue.cs" />
     <Compile Include="UI\UIWidget.cs" />
     <Compile Include="UI\UIWidgets\UIButton.cs" />
     <Compile Include="UI\UIWidgets\UIGroup.cs" />

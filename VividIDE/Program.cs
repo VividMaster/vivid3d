@@ -15,25 +15,37 @@ using Vivid.Import;
 using Vivid.Texture;
 using Vivid.Input;
 using OpenTK;
+using Vivid.UI.UISkins;
 namespace VividIDE
 {
-
+    public static class IDE
+    {
+        public static UISys UI = null;
+    }
     public class VIDE : VAppState
     {
 
         VTex2D ti;
+        UIButton okbut = null;
         public override void InitState()
         {
             VAssImpImp.IPath = "c:/med/";
             ti = new VTex2D("test.png", LoadMethod.Multi);
-
+            IDE.UI = new UISys();
+            IDE.UI.ISkin = new SkinNeonBlue();
+            okbut = new UIButton(20, 20, 200, 20, "OK", null);
+            IDE.UI.Root.AddWidget(okbut);
         }
-
+        public override void Update()
+        {
+            IDE.UI.Update();
+        }
         public override void Render()
         {
+            IDE.UI.Render();
             //VPen.Rect(20, 20, 200, 40,new OpenTK.Vector4(1,1,1,1),new OpenTK.Vector4(0,0,0,0));
-            VPen.Rect(20, 20, 200, 200, ti, Vector4.One, Vector4.Zero);
-            VPen.Line(20, 20, VInput.MX, VInput.MY);
+          //  VPen.Rect(20, 20, 200, 200, ti, Vector4.One, Vector4.Zero);
+        //    VPen.Line(20, 20, VInput.MX, VInput.MY, Vector4.One, Vector4.Zero);
         }
     }
 

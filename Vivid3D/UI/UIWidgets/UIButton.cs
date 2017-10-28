@@ -12,10 +12,9 @@ namespace Vivid.UI.UIWidgets
         {
 
         }
-
-        public override void OnDraw()
+        public override void Draw()
         {
-          
+            UISys.Skin().DrawButton(WidX, WidY, WidW, WidH, ButState.Norm);
 
         }
 

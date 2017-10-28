@@ -119,17 +119,41 @@ namespace Vivid.Draw
             float dy = b1;
             WhiteTex.Bind(0);
             Vector4 vc = Vector4.One;
-            for (int i=0;i<steps;i++)
+            float cr1 = c1.X;
+            float cg1 = c1.Y;
+            float cb1 = c1.Z;
+            float ca1 = c1.W;
+            float ri = (c2.X - cr1) / steps;
+            float gi = (c2.Y - cg1) / steps;
+            float bi = (c2.Z - cb1) / steps;
+            float ai = (c2.W - ca1) / steps;
+
+            xi *= 2;
+            yi *= 2;
+            ri *= 2;
+            gi *= 2;
+            bi *= 2;
+            ai *= 2;
+
+            for (int i=0;i<steps;i+=2)
             {
 
-               // RectRaw((int)dx,(int) dy, 2, 2, Vector4.One,Vector4.One);
+                // RectRaw((int)dx,(int) dy, 2, 2, Vector4.One,Vector4.One);
 
+                vc.X = cr1;
+                vc.Y = cg1;
+                vc.Z = cb1;
+                vc.W = ca1;
                 GenQuad((int)dx, (int)dy, 2,2,vc,vc);
 
                 DrawQuad();
 
                 dx += xi;
                 dy += yi;
+                cr1 += ri;
+                cg1 += gi;
+                cb1 += bi;
+                ca1 += ai;
             }
             WhiteTex.Release(0);
         }
