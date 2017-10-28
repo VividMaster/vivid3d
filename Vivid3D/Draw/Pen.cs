@@ -8,6 +8,7 @@ using OpenTK.Graphics.OpenGL4;
 using OpenTK.Graphics;
 using Vivid.Effect;
 using Vivid.Texture;
+using Vivid.App;
 namespace Vivid.Draw
 {
     public class VEQuad : VEffect
@@ -20,6 +21,9 @@ namespace Vivid.Draw
         {
             SetTex("tR", 0);
 
+            SetMat("proj",Matrix4.CreateOrthographicOffCenter(0, AppInfo.RW, AppInfo.RH, 0, -1,1));
+       
+           // Console.WriteLine("W:" + AppInfo.RW + " H:" + AppInfo.RH);
         }
     }
     public enum VBlend
@@ -34,58 +38,181 @@ namespace Vivid.Draw
         public static Matrix4 DrawMat = Matrix4.Identity;
         public static Matrix4 PrevMat = Matrix4.Identity;
         public static VEQuad QFX = null;
-        public static int qva = 0, qvb = 0;
+        public static int qva = -1, qvb = -1;
         public static VTex2D WhiteTex = null;
         public static void InitDraw()
         {
             QFX = new VEQuad();
-            GenQuad();
+           
             WhiteTex = new VTex2D("white.png", LoadMethod.Single);
         }
         public static void DrawQuad()
         {
-            FB.BB.Bind(0);
+            GL.Disable(EnableCap.CullFace);
+            GL.Disable(EnableCap.DepthTest);
+            GL.Disable(EnableCap.ScissorTest);
+            GL.Viewport(0, 0, AppInfo.W, AppInfo.H);
+            GL.Disable(EnableCap.Blend);
+            //GL.Disable(EnableCap.)
+
+            //    WhiteTex.Bind(0);
 
             QFX.Bind();
 
+       
             GL.BindVertexArray(qva);
 
             GL.BindBuffer(BufferTarget.ArrayBuffer, qvb);
             GL.EnableVertexAttribArray(0);
-            GL.VertexAttribPointer(0, 3, VertexAttribPointerType.Float, false, 0, 0);
 
-            GL.DrawArrays(PrimitiveType.Triangles, 0, 6);
+            GL.VertexAttribPointer(0, 3, VertexAttribPointerType.Float, false, 9*4, 0);
+              GL.EnableVertexAttribArray(1);
+              GL.VertexAttribPointer(1, 2, VertexAttribPointerType.Float, false, 9 * 4, 3 * 4);
+            GL.EnableVertexAttribArray(2);
+            GL.VertexAttribPointer(2, 4, VertexAttribPointerType.Float, false, 9 * 4, 5 * 4);
+
+            uint[] ind = new uint[4];
+            ind[0] = 0;
+            ind[1] = 1;
+            ind[2] = 2;
+            ind[3] = 3;
+            GL.DrawElements<uint>(PrimitiveType.Quads, 4, DrawElementsType.UnsignedInt, ind);
+            //GL.DrawArrays(PrimitiveType.Quads, 0, 4);
 
             GL.DisableVertexAttribArray(0);
+            GL.DisableVertexAttribArray(1);
             // GL.BindBuffer(BufferTarget.ArrayBuffer, 0);
             QFX.Release();
 
-            FB.BB.Release(0);
+          //  WhiteTex.Release(0);
+
         }
-        public static void GenQuad()
+        public static void Line(int x,int y,int x2,int y2)
+        {
+            Line(x, y, x2, y2, Vector4.One);
+        }
+        public static void Line(int x,int y,int x2,int y2,Vector4 c)
+        {
+            Line(x, y,x2,y2, c, c);
+        }
+        public static void Line(int x,int y,int x2,int y2,Vector4 c1,Vector4 c2)
+        {
+            float a1 = x;
+            float b1 = y;
+            float a2 = x2;
+            float b2 = y2;
+
+            float steps = 0;
+            float d1 = Math.Abs(a2 - a1);
+            float d2 = Math.Abs(b2 - b1);
+            if (d1 > d2)
+            {
+                steps = d1;
+            }
+            else
+            {
+                steps = d2;
+            }
+            float xi = (a2 - a1) / steps;
+            float yi = (b2 - b1) / steps;
+            float dx = a1;
+            float dy = b1;
+            WhiteTex.Bind(0);
+            Vector4 vc = Vector4.One;
+            for (int i=0;i<steps;i++)
+            {
+
+               // RectRaw((int)dx,(int) dy, 2, 2, Vector4.One,Vector4.One);
+
+                GenQuad((int)dx, (int)dy, 2,2,vc,vc);
+
+                DrawQuad();
+
+                dx += xi;
+                dy += yi;
+            }
+            WhiteTex.Release(0);
+        }
+        public static void GenQuad(int x, int y, int w, int h, Vector4 c1, Vector4 c2)
         {
 
-            qva = GL.GenVertexArray();
 
+            if (qva == -1)
+            {
+                qva = GL.GenVertexArray();
+            }
             GL.BindVertexArray(qva);
 
-            float[] qd = new float[18];
+            float z = 0;
 
-            qd[0] = -1.0f;
-            qd[1] = -1.0f;
-            qd[2] = 0.0f;
-            qd[3] = 1.0f; qd[4] = -1.0f; qd[5] = 0.0f;
-            qd[6] = -1.0f; qd[7] = 1.0f; qd[8] = 0.0f;
-            qd[9] = -1.0f; qd[10] = 1.0f; qd[11] = 0.0f;
-            qd[12] = 1.0f; qd[13] = -1.0f; qd[14] = 0.0f;
-            qd[15] = 1.0f; qd[16] = 1.0f; qd[17] = 0.0f;
+            float[] qd = new float[36];
+
+            qd[0] = x;
+            qd[1] = y;
+            qd[2] = z;
+            qd[3] = 0;
+            qd[4] = 0;
+            qd[5] = c1.X;
+            qd[6] = c1.Y;
+            qd[7] = c1.Z;
+            qd[8] = c1.W;
+
+
+            qd[9] = x+w;
+            qd[10] = y;
+            qd[11] = z;
+            qd[12] = 1;
+            qd[13] = 0;
+            qd[14] = c1.X;
+            qd[15] = c1.Y;
+            qd[16] = c1.Z;
+            qd[17] = c1.W;
+
+
+            qd[18] = x+w;
+            qd[19] = y+h;
+            qd[20] = z;
+            qd[21] = 1;
+            qd[22] = 1;
+            qd[23] = c2.X;
+            qd[24] = c2.Y;
+            qd[25] = c2.Z;
+            qd[26] = c2.W;
+
+
+            qd[27] = x;
+            qd[28] = y+h;
+            qd[29] = z;
+            qd[30] = 0;
+            qd[31] = 1;
+            qd[32] = c2.X;
+            qd[33] = c2.Y;
+            qd[34] = c2.Z;
+            qd[35] = c2.W;
 
 
 
+            /*
+            qd[20] = x;
+            qd[21] = y+h;
+            qd[22] = z;
+            qd[23] = 0;
+            qd[24] = 1;
 
-            qvb = GL.GenBuffer();
+            qd[25] = x;
+            qd[26] = y;
+            qd[27] = z;
+            qd[28] = 0;
+            qd[29] = 0;
+            */
+
+
+            if (qvb == -1)
+            {
+                qvb = GL.GenBuffer();
+            }
             GL.BindBuffer(BufferTarget.ArrayBuffer, qvb);
-            GL.BufferData(BufferTarget.ArrayBuffer, new IntPtr(18 * 4), qd, BufferUsageHint.StaticDraw);
+            GL.BufferData(BufferTarget.ArrayBuffer, new IntPtr(36 * 4), qd, BufferUsageHint.StaticDraw);
             //  GL.BindBuffer(BufferTarget.ArrayBuffer, 0);
 
         }
@@ -113,16 +240,61 @@ namespace Vivid.Draw
         {
 
         }
-        public static void Rect(int x,int y,int width,int height)
+        public static void Rect(int x,int y,int w,int h,VTex2D img)
+        {
+            Rect(x, y, w, h, img, Vector4.One);
+        }
+        public static void Rect(int x,int y,int w,int h,VTex2D img,Vector4 c)
+        {
+            Rect(x, y, w, h, img, c, c);
+        }
+        public static void RectRaw(int x,int y,int w,int h,Vector4 t1,Vector4 t2)
+        {
+            GenQuad(x, y, w, h, t1, t2);
+        
+            DrawQuad();
+       
+            // GL.Begin(BeginMode.Quads);
+            // GL.Vertex2(x, y);
+            //GL.Vertex2(x + width, y);
+            //GL.Vertex2(x + width, y + height);
+            //GL.Vertex2(x, y + height);
+            //GL.End();
+         
+        }
+        public static void Rect(int x,int y,int w,int h,VTex2D img,Vector4 tc,Vector4 bc)
         {
             Bind();
-           // GL.Begin(BeginMode.Quads);
-           // GL.Vertex2(x, y);
+            GenQuad(x, y, w, h, tc, bc);
+            img.Bind(0);
+            DrawQuad();
+            img.Release(0);
+            // GL.Begin(BeginMode.Quads);
+            // GL.Vertex2(x, y);
             //GL.Vertex2(x + width, y);
             //GL.Vertex2(x + width, y + height);
             //GL.Vertex2(x, y + height);
             //GL.End();
             Release();
+        }
+        public static void Rect(int x,int y,int w,int h,Vector4 tc,Vector4 bc)
+        {
+            Bind();
+            GenQuad(x, y, w, h, tc, bc);
+            WhiteTex.Bind(0);
+            DrawQuad();
+            WhiteTex.Release(0);
+            // GL.Begin(BeginMode.Quads);
+            // GL.Vertex2(x, y);
+            //GL.Vertex2(x + width, y);
+            //GL.Vertex2(x + width, y + height);
+            //GL.Vertex2(x, y + height);
+            //GL.End();
+            Release();
+        }
+        public static void Rect(int x,int y,int width,int height,Vector4 col)
+        {
+            Rect(x, y, width, height, col, col);
         }
         
     }

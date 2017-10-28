@@ -9,24 +9,31 @@ using Vivid.State;
 using Vivid.Scene;
 using Vivid.Visuals;
 using Vivid.UI;
+using Vivid.Draw;
 using Vivid.UI.UIWidgets;
 using Vivid.Import;
+using Vivid.Texture;
+using Vivid.Input;
+using OpenTK;
 namespace VividIDE
 {
 
     public class VIDE : VAppState
     {
-     
+
+        VTex2D ti;
         public override void InitState()
         {
             VAssImpImp.IPath = "c:/med/";
-          
+            ti = new VTex2D("test.png", LoadMethod.Multi);
 
         }
 
         public override void Render()
         {
-      
+            //VPen.Rect(20, 20, 200, 40,new OpenTK.Vector4(1,1,1,1),new OpenTK.Vector4(0,0,0,0));
+            VPen.Rect(20, 20, 200, 200, ti, Vector4.One, Vector4.Zero);
+            VPen.Line(20, 20, VInput.MX, VInput.MY);
         }
     }
 
