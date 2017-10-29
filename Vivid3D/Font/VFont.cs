@@ -11,6 +11,20 @@ namespace Vivid.Font
     {
         public string Path = "";
         public List<VGlyph> Glypth = new List<VGlyph>();
+        public int Width(string t)
+        {
+            int sw = 0;
+            foreach(char c in t)
+            {
+                VGlyph v = Glypth[(int)c];
+                sw += v.W;
+            }
+            return sw;
+        }
+        public int Height()
+        {
+            return Glypth[0].H;
+        }
         public VFont(string path)
         {
             Path = path;

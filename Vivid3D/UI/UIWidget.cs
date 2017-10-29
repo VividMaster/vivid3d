@@ -8,7 +8,21 @@ namespace Vivid.UI
 {
     public class UIWidget
     {
+        public UISys Owner = null;
         public UIWidget Top;
+        public float AR = 1.0f;
+        public UISys GetOwn
+        {
+            get
+            {
+                if (Owner != null) return Owner;
+                if (Top != null)
+                {
+                    return Top.GetOwn;
+                }
+                return null;
+            }
+        }
         public List<UIWidget> Sub = new List<UIWidget>();
         public float WidX
         {

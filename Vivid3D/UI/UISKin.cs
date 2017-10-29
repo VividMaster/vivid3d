@@ -6,6 +6,8 @@ using System.Threading.Tasks;
 using Vivid.Texture;
 using Vivid.App;
 using Vivid.Draw;
+using Vivid.UI.UIWidgets;
+using Vivid.Font;
 namespace Vivid.UI
 {
     public class UISkin
@@ -13,6 +15,8 @@ namespace Vivid.UI
         public VTex2D But_Norm;
         public VTex2D But_Hover;
         public VTex2D But_Press;
+        public VFont BigFont = null;
+        public VFont SmallFont = null;
         public UISkin()
         {
             InitSkin();
@@ -21,7 +25,7 @@ namespace Vivid.UI
         {
 
         }
-        public virtual void DrawButton(float x, float y, float w,float h,ButState bs)
+        public virtual void DrawButton(UIButton w,ButState bs)
         {
 
         }
