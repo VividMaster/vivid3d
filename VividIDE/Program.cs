@@ -15,6 +15,7 @@ using Vivid.Import;
 using Vivid.Texture;
 using Vivid.Input;
 using OpenTK;
+using Vivid.Font;
 using Vivid.UI.UISkins;
 namespace VividIDE
 {
@@ -27,6 +28,7 @@ namespace VividIDE
 
         VTex2D ti;
         UIButton okbut = null;
+        VFont sysfont = null;
         public override void InitState()
         {
             VAssImpImp.IPath = "c:/med/";
@@ -35,6 +37,7 @@ namespace VividIDE
             IDE.UI.ISkin = new SkinNeonBlue();
             okbut = new UIButton(20, 20, 200, 20, "OK", null);
             IDE.UI.Root.AddWidget(okbut);
+            sysfont = new VFont("data/font/f2.ttf.vf");
         }
         public override void Update()
         {
@@ -43,6 +46,8 @@ namespace VividIDE
         public override void Render()
         {
             IDE.UI.Render();
+
+            VFontRenderer.Draw(sysfont, "YO Testing Testing 123$%^$", VInput.MX, VInput.MY);
             //VPen.Rect(20, 20, 200, 40,new OpenTK.Vector4(1,1,1,1),new OpenTK.Vector4(0,0,0,0));
           //  VPen.Rect(20, 20, 200, 200, ti, Vector4.One, Vector4.Zero);
         //    VPen.Line(20, 20, VInput.MX, VInput.MY, Vector4.One, Vector4.Zero);
@@ -56,6 +61,7 @@ namespace VividIDE
             VApp e1 = new VApp("Vivid3D - IDE", 1024, 768, false);
             e1.PushState(new VIDE());
             e1.Run();
+        
         }
     }
 }

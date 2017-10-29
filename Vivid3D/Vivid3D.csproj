@@ -58,6 +58,8 @@
     <Compile Include="Effect\VEDepth.cs" />
     <Compile Include="Effect\VEMultiPass.cs" />
     <Compile Include="Enviro\VEnvRenderer.cs" />
+    <Compile Include="Font\VFont.cs" />
+    <Compile Include="Font\VFontRenderer.cs" />
     <Compile Include="FrameBuffer\VFrameBuffer.cs" />
     <Compile Include="FrameBuffer\VFrameBufferCube.cs" />
     <Compile Include="Lighting\VLight.cs" />

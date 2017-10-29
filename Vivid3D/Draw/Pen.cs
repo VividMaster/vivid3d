@@ -52,7 +52,7 @@ namespace Vivid.Draw
             GL.Disable(EnableCap.DepthTest);
             GL.Disable(EnableCap.ScissorTest);
             GL.Viewport(0, 0, AppInfo.W, AppInfo.H);
-            GL.Disable(EnableCap.Blend);
+          //  GL.Disable(EnableCap.Blend);
             //GL.Disable(EnableCap.)
 
             //    WhiteTex.Bind(0);
@@ -251,6 +251,10 @@ namespace Vivid.Draw
             {
                 case VBlend.Solid:
                     GL.Disable(EnableCap.Blend);
+                    break;
+                case VBlend.Alpha:
+                    GL.Enable(EnableCap.Blend);
+                    GL.BlendFunc(BlendingFactorSrc.SrcAlpha, BlendingFactorDest.OneMinusSrcAlpha);
                     break;
             }
             

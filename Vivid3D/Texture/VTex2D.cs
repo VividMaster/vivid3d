@@ -46,6 +46,28 @@ namespace Vivid.Texture
             GL.TexParameter(TextureTarget.Texture2D, TextureParameterName.TextureMagFilter, (int)TextureMagFilter.Nearest);
             GL.PixelStore(PixelStoreParameter.PackAlignment, 4 * 4);
         }
+        public VTex2D(int w,int h,byte[] dat,bool alpha = true)
+        {
+            GL.ActiveTexture(TextureUnit.Texture0);
+            Alpha = alpha;
+            W = w;
+            H = h;
+            ID = GL.GenTexture();
+            GL.BindTexture(TextureTarget.Texture2D, ID);
+            if (alpha)
+            {
+                GL.TexImage2D(TextureTarget.Texture2D, 0, PixelInternalFormat.Rgba, w, h, 0, PixelFormat.Rgba, PixelType.UnsignedByte, dat);
+            }
+            else
+            {
+                GL.TexImage2D(TextureTarget.Texture2D, 0, PixelInternalFormat.Rgb, w, h, 0, PixelFormat.Rgb, PixelType.UnsignedByte, dat);
+            }
+            GL.TexParameter(TextureTarget.Texture2D, TextureParameterName.TextureWrapS, (int)TextureWrapMode.Repeat);
+            GL.TexParameter(TextureTarget.Texture2D, TextureParameterName.TextureWrapT, (int)TextureWrapMode.Repeat);
+            GL.TexParameter(TextureTarget.Texture2D, TextureParameterName.TextureMinFilter, (int)TextureMinFilter.Nearest);
+            GL.TexParameter(TextureTarget.Texture2D, TextureParameterName.TextureMagFilter, (int)TextureMagFilter.Nearest);
+            GL.PixelStore(PixelStoreParameter.PackAlignment, 4 * 4);
+        }
         public VTex2D(string path,LoadMethod lm)
         {
             GL.ActiveTexture(TextureUnit.Texture0);

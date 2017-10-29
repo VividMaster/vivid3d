@@ -3,11 +3,12 @@
 in vec2 UV;
 in vec3 col;
 
-out vec3 color;
+out vec4 color;
 
 uniform sampler2D tR;
 
 
 void main(){
-    color = texture(tR,UV).rgb * col;
+    vec4 co = texture(tR,UV);
+    color = co;
 }
