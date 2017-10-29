@@ -9,6 +9,13 @@ namespace Vivid.Input
 {
     public class VInput
     {
+        public static void InitInput()
+        {
+            for(int i=0;i<32;i++)
+            {
+                MB[i] = false;
+            }
+        }
         public static int MX=0, MY=0, MZ=0;
         public static int MDX=0, MDY=0, MDZ=0;
         public static bool[] MB = new bool[32];

@@ -14,7 +14,10 @@ namespace Vivid.UI
     public class UISys
     {
         public static List<UISkin> Skins = new List<UISkin>();
-      
+        public static UIWidget Active = null;
+        public static UIWidget Over = null;
+        public static UIWidget Pressed = null;
+
     
         public static void PushSkin(UISkin s)
         {

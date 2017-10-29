@@ -67,6 +67,38 @@ namespace Vivid.App
                 VInput.MB[i] = false;
             }
             VPen.InitDraw();
+            VInput.InitInput();
+        }
+        protected override void OnMouseDown(MouseButtonEventArgs e)
+        {
+            int bid = 0;
+            bid = GetBID(e);
+            VInput.MB[bid] = true;
+        }
+
+        private static int GetBID(MouseButtonEventArgs e)
+        {
+            int bid = 0;
+            switch (e.Button)
+            {
+                case MouseButton.Left:
+                    bid = 0;
+                    break;
+                case MouseButton.Right:
+                    bid = 1;
+                    break;
+                case MouseButton.Middle:
+                    bid = 2;
+                    break;
+            }
+
+            return bid;
+        }
+
+        protected override void OnMouseUp(MouseButtonEventArgs e)
+        {
+            int bid = GetBID(e);
+            VInput.MB[bid] = false;
         }
         protected override void OnMouseMove(MouseMoveEventArgs e)
         {

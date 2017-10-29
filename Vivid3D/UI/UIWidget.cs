@@ -3,7 +3,7 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
-
+using Vivid.Input;
 namespace Vivid.UI
 {
     public class UIWidget
@@ -98,8 +98,98 @@ namespace Vivid.UI
         {
 
         }
+        public virtual bool InBounds()
+        {
+            return false;
+        }
         public virtual void OnUpdate()
         {
+            foreach (var w in Sub)
+            {
+                w.OnUpdate();
+            }
+            if (InBounds())
+            {
+                if (UISys.Over == this)
+                {
+                    this.OnHover();
+                }
+                if (UISys.Over == null)
+                {
+                    UISys.Over = this;
+                    this.OnEnter();
+                }
+                if (UISys.Over != null && UISys.Over != this)
+                {
+                    UISys.Over.OnLeave();
+                    UISys.Over = this;
+                    UISys.Over.OnEnter();
+                }
+
+            }
+            else
+            {
+                if (UISys.Over == this)
+                {
+                    UISys.Over.OnLeave();
+                    UISys.Over = null;
+                }
+            }
+            if (VInput.MB[0])
+            {
+                if (UISys.Over != null)
+                {
+                    if (UISys.Over == this)
+                    {
+                        if (UISys.Active != this)
+                        {
+                            if (UISys.Active != null)
+                            {
+                                UISys.Active.OnDeactivate();
+                            }
+                            UISys.Active = this;
+                            this.OnActivate();
+                        }
+                    }
+                }
+                else
+                {
+
+                }
+            }
+            if (InBounds())
+            {
+                if (VInput.MB[0])
+                {
+                   
+                    if (UISys.Pressed == null)
+                    {
+                        Console.WriteLine("Pushed:" + Name);
+                        OnMouseDown(UIMouseButton.Left);
+                        UISys.Pressed = this;
+                    }
+
+                }
+                else
+                {
+                    if (UISys.Pressed == this)
+                    {
+                        Console.WriteLine("Released.");
+                        OnMouseUp(UIMouseButton.Left);
+                        UISys.Pressed = null;
+                    }
+                }
+            }
+            else
+            {
+                if (UISys.Pressed != null)
+                {
+                   // UISys.Pressed.OnMouseUp(UIMouseButton.Left);
+                    //UISys.Pressed = null;
+                }
+            }
+
+
 
         }
         public virtual void OnDraw()

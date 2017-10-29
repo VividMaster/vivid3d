@@ -25,7 +25,7 @@ namespace Vivid.UI
         {
 
         }
-        public virtual void DrawButton(UIButton w,ButState bs)
+        public virtual void DrawButton(UIButton w)
         {
 
         }
