@@ -10,24 +10,33 @@ namespace Vivid.UI.UIWidgets
     public class UIButton : UIWidget
     {
         public ButState State = ButState.Norm;
+        public EventHandler Click;
+        public EventHandler Enter;
+        public EventHandler Leave;
+        public EventHandler Pressed;
         public UIButton(float x, float y, float w, float h, string text, UIWidget root) : base(x, y, w, h, text, root)
         {
 
         }
         public override void OnEnter()
         {
+            if (Enter != null) Enter(this, null);
             State = ButState.Hover;
         }
         public override void OnLeave()
         {
+            if (Leave != null) Leave(this, null);
             State = ButState.Norm;
         }
         public override void OnMouseDown(UIMouseButton b)
         {
             State = ButState.Press;
+
         }
         public override void OnMouseUp(UIMouseButton b)
         {
+
+            if(Click!=null) Click(this, null);
             State = ButState.Norm;
         }
         public override void OnActivate()

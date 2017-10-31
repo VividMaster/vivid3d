@@ -129,7 +129,7 @@ namespace Vivid.UI
             }
             else
             {
-                if (UISys.Over == this)
+                if (UISys.Over == this && UISys.Pressed!=this)
                 {
                     UISys.Over.OnLeave();
                     UISys.Over = null;
@@ -182,6 +182,15 @@ namespace Vivid.UI
             }
             else
             {
+                if(VInput.MB[0]==false)
+                {
+                    if(UISys.Pressed == this)
+                    {
+                        Console.WriteLine("Released.");
+                        UISys.Pressed.OnMouseUp(UIMouseButton.Left);
+                        UISys.Pressed = null;
+                    }
+                }
                 if (UISys.Pressed != null)
                 {
                    // UISys.Pressed.OnMouseUp(UIMouseButton.Left);

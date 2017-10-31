@@ -93,6 +93,7 @@
     <Compile Include="Texture\VTexCube.cs" />
     <Compile Include="Texture\VTexDepth.cs" />
     <Compile Include="Texture\VTextureUtil.cs" />
+    <Compile Include="UI\UIEventHandler.cs" />
     <Compile Include="UI\UISys.cs" />
     <Compile Include="UI\UISkin.cs" />
     <Compile Include="UI\UISkins\SkinNeonBlue.cs" />
