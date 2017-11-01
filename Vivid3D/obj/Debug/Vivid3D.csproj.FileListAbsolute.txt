@@ -53,3 +53,14 @@ C:\Dev\Proj\Vivid3D\vividstudio3d\Vivid3D\bin\Debug\AssimpNet.xml
 C:\Dev\Proj\Vivid3D\vividstudio3d\Vivid3D\bin\Debug\OpenTK.xml
 C:\Dev\Proj\Vivid3D\vividstudio3d\Vivid3D\obj\Debug\Vivid3D.dll
 C:\Dev\Proj\Vivid3D\vividstudio3d\Vivid3D\obj\Debug\Vivid3D.pdb
+H:\Dev\Proj\Vivid3D\vividstudio3d\Vivid3D\bin\Debug\AssimpNet.dll
+H:\Dev\Proj\Vivid3D\vividstudio3d\Vivid3D\bin\Debug\OpenTK.dll
+H:\Dev\Proj\Vivid3D\vividstudio3d\Vivid3D\bin\Debug\AssimpNet.pdb
+H:\Dev\Proj\Vivid3D\vividstudio3d\Vivid3D\bin\Debug\AssimpNet.xml
+H:\Dev\Proj\Vivid3D\vividstudio3d\Vivid3D\bin\Debug\OpenTK.xml
+H:\Dev\Proj\Vivid3D\vividstudio3d\Vivid3D\obj\Debug\Vivid3D.csprojResolveAssemblyReference.cache
+H:\Dev\Proj\Vivid3D\vividstudio3d\Vivid3D\obj\Debug\Vivid3D.csproj.CoreCompileInputs.cache
+H:\Dev\Proj\Vivid3D\vividstudio3d\Vivid3D\bin\Debug\-Vivid3D.dll
+H:\Dev\Proj\Vivid3D\vividstudio3d\Vivid3D\bin\Debug\-Vivid3D.pdb
+H:\Dev\Proj\Vivid3D\vividstudio3d\Vivid3D\obj\Debug\-Vivid3D.dll
+H:\Dev\Proj\Vivid3D\vividstudio3d\Vivid3D\obj\Debug\-Vivid3D.pdb

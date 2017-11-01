@@ -103,3 +103,17 @@ C:\Dev\Proj\Vivid3D\vividstudio3d\ExampleOne\bin\Debug\OpenTK.xml
 C:\Dev\Proj\Vivid3D\vividstudio3d\ExampleOne\bin\Debug\AssimpNet.pdb
 C:\Dev\Proj\Vivid3D\vividstudio3d\ExampleOne\bin\Debug\AssimpNet.xml
 C:\Dev\Proj\Vivid3D\vividstudio3d\ExampleOne\obj\Debug\ExampleOne.exe
+H:\Dev\Proj\Vivid3D\vividstudio3d\ExampleOne\bin\Debug\ExampleOne.exe.config
+H:\Dev\Proj\Vivid3D\vividstudio3d\ExampleOne\bin\Debug\ExampleOne.exe
+H:\Dev\Proj\Vivid3D\vividstudio3d\ExampleOne\bin\Debug\ExampleOne.pdb
+H:\Dev\Proj\Vivid3D\vividstudio3d\ExampleOne\bin\Debug\OpenTK.dll
+H:\Dev\Proj\Vivid3D\vividstudio3d\ExampleOne\bin\Debug\Vivid3D.dll
+H:\Dev\Proj\Vivid3D\vividstudio3d\ExampleOne\bin\Debug\AssimpNet.dll
+H:\Dev\Proj\Vivid3D\vividstudio3d\ExampleOne\bin\Debug\Vivid3D.pdb
+H:\Dev\Proj\Vivid3D\vividstudio3d\ExampleOne\bin\Debug\OpenTK.xml
+H:\Dev\Proj\Vivid3D\vividstudio3d\ExampleOne\bin\Debug\AssimpNet.pdb
+H:\Dev\Proj\Vivid3D\vividstudio3d\ExampleOne\bin\Debug\AssimpNet.xml
+H:\Dev\Proj\Vivid3D\vividstudio3d\ExampleOne\obj\Debug\ExampleOne.csprojResolveAssemblyReference.cache
+H:\Dev\Proj\Vivid3D\vividstudio3d\ExampleOne\obj\Debug\ExampleOne.csproj.CoreCompileInputs.cache
+H:\Dev\Proj\Vivid3D\vividstudio3d\ExampleOne\obj\Debug\ExampleOne.exe
+H:\Dev\Proj\Vivid3D\vividstudio3d\ExampleOne\obj\Debug\ExampleOne.pdb

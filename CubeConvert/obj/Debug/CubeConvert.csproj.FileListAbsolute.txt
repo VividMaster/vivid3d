@@ -68,3 +68,17 @@ C:\Dev\Proj\Vivid3D\vividstudio3d\CubeConvert\bin\Debug\AssimpNet.pdb
 C:\Dev\Proj\Vivid3D\vividstudio3d\CubeConvert\bin\Debug\AssimpNet.xml
 C:\Dev\Proj\Vivid3D\vividstudio3d\CubeConvert\obj\Debug\CubeConvert.exe
 C:\Dev\Proj\Vivid3D\vividstudio3d\CubeConvert\obj\Debug\CubeConvert.pdb
+H:\Dev\Proj\Vivid3D\vividstudio3d\CubeConvert\bin\Debug\CubeConvert.exe.config
+H:\Dev\Proj\Vivid3D\vividstudio3d\CubeConvert\bin\Debug\CubeConvert.exe
+H:\Dev\Proj\Vivid3D\vividstudio3d\CubeConvert\bin\Debug\CubeConvert.pdb
+H:\Dev\Proj\Vivid3D\vividstudio3d\CubeConvert\bin\Debug\OpenTK.dll
+H:\Dev\Proj\Vivid3D\vividstudio3d\CubeConvert\bin\Debug\Vivid3D.dll
+H:\Dev\Proj\Vivid3D\vividstudio3d\CubeConvert\bin\Debug\AssimpNet.dll
+H:\Dev\Proj\Vivid3D\vividstudio3d\CubeConvert\bin\Debug\Vivid3D.pdb
+H:\Dev\Proj\Vivid3D\vividstudio3d\CubeConvert\bin\Debug\OpenTK.xml
+H:\Dev\Proj\Vivid3D\vividstudio3d\CubeConvert\bin\Debug\AssimpNet.pdb
+H:\Dev\Proj\Vivid3D\vividstudio3d\CubeConvert\bin\Debug\AssimpNet.xml
+H:\Dev\Proj\Vivid3D\vividstudio3d\CubeConvert\obj\Debug\CubeConvert.csprojResolveAssemblyReference.cache
+H:\Dev\Proj\Vivid3D\vividstudio3d\CubeConvert\obj\Debug\CubeConvert.csproj.CoreCompileInputs.cache
+H:\Dev\Proj\Vivid3D\vividstudio3d\CubeConvert\obj\Debug\CubeConvert.exe
+H:\Dev\Proj\Vivid3D\vividstudio3d\CubeConvert\obj\Debug\CubeConvert.pdb

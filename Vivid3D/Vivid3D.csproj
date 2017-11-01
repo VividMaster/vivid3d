@@ -6,7 +6,7 @@
     <ProjectGuid>{6850F15F-8E1F-4E93-BE21-E5A7066541C1}</ProjectGuid>
     <OutputType>Library</OutputType>
     <RootNamespace>Vivid</RootNamespace>
-    <AssemblyName>Vivid3D</AssemblyName>
+    <AssemblyName>-Vivid3D</AssemblyName>
     <TargetFrameworkVersion>v4.5</TargetFrameworkVersion>
     <TargetFrameworkProfile />
   </PropertyGroup>
