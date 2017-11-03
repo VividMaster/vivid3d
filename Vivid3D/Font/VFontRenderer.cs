@@ -9,7 +9,10 @@ namespace Vivid.Font
 {
     public class VFontRenderer
     {
-
+        public static void Draw(VFont font,string text,float x,float y)
+        {
+            Draw(font, text, (int)x, (int)y);
+        }
         public static void Draw(VFont font,string text,int x,int y)
         {
             int dx = x;

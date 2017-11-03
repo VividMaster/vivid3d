@@ -39,6 +39,14 @@ namespace Vivid.UI
         public UIWidget Root;
         public UIWidget TopRoot;
         public bool BlurRoot = false;
+        public void BeginDesign()
+        {
+            PushSkin(ISkin);
+        }
+        public void EndDesign()
+        {
+            PopSkin();
+        }
         public UISys()
         {
             Root = new UIGroup();
@@ -49,7 +57,11 @@ namespace Vivid.UI
         }
         public void Update()
         {
+            PushSkin(ISkin);
             Root.OnUpdate();
+            Root.UpdateAll();
+            PopSkin();
+
         }
         public void Render()
         {

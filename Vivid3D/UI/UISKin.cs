@@ -18,10 +18,17 @@ namespace Vivid.UI
         public VTex2D But_Press;
         public VFont BigFont = null;
         public VFont SmallFont = null;
-        public Vector4 WinBackCol = new Vector4(0, 0, 0.6f, 0.75f);
+        public Vector4 WinBackCol = new Vector4(0.7f, 0.5f, 0.6f, 0.75f);
         public Vector4 WinTitCol = new Vector4(0.4f, 0.4f, 0.4f, 0.8f);
         public Vector4 WinTitTextCol = new Vector4(0.9f, 0.9f, 0.9f, 1.0f);
         public Vector4 WinStatTextCol = new Vector4(0.2f, 0.7f, 0.2f, 1.0f);
+        public virtual int TitleHeight
+        {
+            get
+            {
+                return 20;
+            }
+        }
         public UISkin()
         {
             InitSkin();

@@ -99,6 +99,7 @@
     <Compile Include="UI\UISkins\SkinNeonBlue.cs" />
     <Compile Include="UI\UIWidget.cs" />
     <Compile Include="UI\UIWidgets\UIButton.cs" />
+    <Compile Include="UI\UIWidgets\UIDragZone.cs" />
     <Compile Include="UI\UIWidgets\UIGroup.cs" />
     <Compile Include="UI\UIWidgets\UIWindow.cs" />
     <Compile Include="Visuals\VRenderer.cs" />

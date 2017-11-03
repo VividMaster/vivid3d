@@ -14,6 +14,15 @@ namespace Vivid.UI.UISkins
 {
     public class SkinNeonBlue : UISkin 
     {
+        private int titleHeight = 20;
+        public override int TitleHeight
+        {
+            get
+            {
+                return titleHeight;
+            }
+        }
+
         public SkinNeonBlue()
         {
 
@@ -50,8 +59,9 @@ namespace Vivid.UI.UISkins
         }
         public override void DrawWindow(UIWindow w)
         {
-            VPen.Rect(w.WidX, w.WidY, w.WidW, w.WidH, WinTitCol);
-            VPen.Rect(w.WidX, w.WidY, w.WidW, 20, WinTitCol);
+            VPen.Rect(w.WidX, w.WidY, w.WidW, w.WidH, WinBackCol);
+            VPen.Rect(w.WidX, w.WidY, w.WidW, TitleHeight, WinTitCol);
+            VFontRenderer.Draw(SmallFont, w.Name, w.WidX+5,w.WidY+2);
         }
     }
       

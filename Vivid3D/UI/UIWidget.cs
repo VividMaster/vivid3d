@@ -48,6 +48,20 @@ namespace Vivid.UI
                 _WidY = value;
             }
         }
+        public float LocX
+        {
+            set
+            {
+                _WidX = value;
+            }
+        }
+        public float LocY
+        {
+            set
+            {
+                _WidY = value;
+            }
+        }
         public float WidW = 0, WidH = 0;
         private float _WidX = 0, _WidY = 0;
         public string Name = "";
@@ -56,15 +70,34 @@ namespace Vivid.UI
         public void AddWidget(UIWidget w)
         {
             Sub.Add(w);
+            w.Top = this;
         }
         public UIWidget(float x, float y, float w = 0, float h = 0, string text = "", UIWidget top = null)
         {
-            Top = top;
+            if(top!=null)
+            {
+                top.AddWidget(this);
+            }
+          
             WidX = x;
             WidY = y;
             WidW = w;
             WidH = h;
             Name = text;
+        
+        }
+        public virtual void OwnerResized()
+        {
+
+        }
+        public virtual void OnOwnerResized()
+        {
+            OwnerResized();
+
+            foreach(var w in Sub)
+            {
+                w.OnOwnerResized();
+            }   
         }
         public virtual void OnEnter()
         {
@@ -115,11 +148,16 @@ namespace Vivid.UI
             }
             return false;
         }
-        public virtual void OnUpdate()
+        public virtual bool OnUpdate()
         {
             foreach (var w in Sub)
             {
-                w.OnUpdate();
+                if (w.OnUpdate())
+                {
+
+                    return true;
+                }
+
             }
             if (InBounds())
             {
@@ -169,6 +207,7 @@ namespace Vivid.UI
                 {
 
                 }
+             
             }
             if (InBounds())
             {
@@ -210,9 +249,33 @@ namespace Vivid.UI
                     //UISys.Pressed = null;
                 }
             }
+            //this.Update();
+            if(UISys.Over==this || UISys.Pressed == this)
+            {
+                return true;
+            }
+            return false;
+        }
+        public virtual void Move(int x,int y)
+        {
+            _WidX += x;
+            _WidY += y;
+        }
+        public virtual void Resized()
+        {
 
-
-
+        }
+        public virtual void Resize(int x,int y)
+        {
+            WidW += x;
+            WidH += y;
+            Resized();
+        }
+        public virtual void ChangeSize(int w,int h)
+        {
+            WidW = w;
+            WidH = h;
+            Resized();
         }
         public virtual void OnDraw()
         {
@@ -221,6 +284,18 @@ namespace Vivid.UI
             {
                 w.OnDraw();
             }
+        }
+        public virtual void UpdateAll()
+        {
+            Update();
+            foreach(var w in Sub)
+            {
+                w.UpdateAll();
+            }
+        }
+        public virtual void Update()
+        {
+
         }
         public virtual void Draw()
         {
