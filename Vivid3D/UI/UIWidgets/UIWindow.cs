@@ -12,5 +12,9 @@ namespace Vivid.UI.UIWidgets
         {
 
         }
+        public override void OnDraw()
+        {
+            UISys.Skin().DrawWindow(this);
+        }
     }
 }

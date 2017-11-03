@@ -324,6 +324,37 @@ namespace Vivid.Draw
         {
             Rect(x, y, width, height, col, col);
         }
-        
+        public static void Rect(float x,float y,float w,float h,Vector4 col)
+        {
+            Rect((int)x, (int)y, (int)w, (int)h, col);
+        }
+        public static void Rect(float x,float y,float w,float h,Vector4 tc,Vector4 bc)
+        {
+            Rect((int)x, (int)y, (int)w, (int)h, tc, bc);
+        }
+        public static void Rect(float x,float y,float w,float h,VTex2D img)
+        {
+            Rect((int)x, (int)y, (int)w, (int)h, img);
+        }
+        public static void Rect(float x,float y,float w,float h,VTex2D img,Vector4 col)
+        {
+            Rect((int)x, (int)y, (int)w, (int)h, img, col);
+        }
+        public static void Rect(float x,float y,float w,float h,VTex2D img,Vector4 tc,Vector4 bc)
+        {
+            Rect((int)x, (int)y, (int)w, (int)h, img, tc, bc);
+        }
+        public static void Line(float x,float y,float x2,float y2)
+        {
+            Line((int)x, (int)y, (int)x2, (int)y2);
+        }
+        public static void Line(float x,float y,float x2,float y2,Vector4 col)
+        {
+            Line((int)x, (int)y, (int)x2, (int)y2, col);
+        }
+        public static void Line(float x,float y,float x2,float y2,Vector4 c1,Vector4 c2)
+        {
+            Line((int)x, (int)y, (int)x2, (int)y2, c1, c2);
+        }
     }
 }

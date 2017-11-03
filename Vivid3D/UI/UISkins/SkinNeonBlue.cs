@@ -48,8 +48,11 @@ namespace Vivid.UI.UISkins
             VPen.Rect((int)b.WidX, (int)b.WidY, (int)b.WidW, (int)b.WidH, bi, col);
             VFontRenderer.Draw(SmallFont, b.Name, (int)(b.WidX + b.WidW / 2 - (fw / 2)),(int)( b.WidY + (b.WidH) / 2 - (fh / 2)));
         }
-
-
-        
+        public override void DrawWindow(UIWindow w)
+        {
+            VPen.Rect(w.WidX, w.WidY, w.WidW, w.WidH, WinTitCol);
+            VPen.Rect(w.WidX, w.WidY, w.WidW, 20, WinTitCol);
+        }
     }
+      
 }

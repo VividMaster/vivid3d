@@ -100,6 +100,19 @@ namespace Vivid.UI
         }
         public virtual bool InBounds()
         {
+            if (VInput.MX >= WidX)
+            {
+                if (VInput.MY >= WidY)
+                {
+                    if (VInput.MX <= WidX + WidW)
+                    {
+                        if (VInput.MY <= WidY + WidH)
+                        {
+                            return true;
+                        }
+                    }
+                }
+            }
             return false;
         }
         public virtual void OnUpdate()
