@@ -17,7 +17,7 @@ namespace Vivid.UI
         public static UIWidget Active = null;
         public static UIWidget Over = null;
         public static UIWidget Pressed = null;
-
+        public static bool Lock = false;
     
         public static void PushSkin(UISkin s)
         {

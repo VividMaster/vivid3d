@@ -189,8 +189,13 @@ namespace Vivid.UI
                     UISys.Over = null;
                 }
             }
-            if (VInput.MB[0])
+            if(VInput.MB[0]==false && UISys.Lock == true)
             {
+                UISys.Lock = false;
+            }
+            if (VInput.MB[0] && UISys.Lock == false) 
+            {
+               
                 if (UISys.Over != null)
                 {
                     if (UISys.Over == this)
@@ -203,6 +208,7 @@ namespace Vivid.UI
                             }
                             UISys.Active = this;
                             this.OnActivate();
+                            UISys.Lock = true;
                         }
                     }
                 }

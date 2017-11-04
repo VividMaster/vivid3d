@@ -25,5 +25,22 @@ namespace Vivid.Input
             if (Keys.ContainsKey(k)) return true;
             return false;
         }
+        public static List<Key> KeysIn()
+        {
+            List<Key> ki = new List<Key>();
+            foreach(var k in Keys)
+            {
+                ki.Add(k.Key);
+            }
+            return ki;
+        }
+        public static bool IsKeyIn(Key k)
+        {
+            return Keys.ContainsKey(k);
+        }
+        public static bool AnyKey()
+        {
+            return Keys.Count > 0;
+        }
     }
 }
