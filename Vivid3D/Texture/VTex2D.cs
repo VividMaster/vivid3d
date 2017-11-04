@@ -24,6 +24,68 @@ namespace Vivid.Texture
         public bool Binded = false;
         public byte[] pixs = null;
         public bool Alpha = false;
+
+        public void ReadBitmap(BinaryReader r)
+        {
+            short bw = r.ReadInt16();
+            short bh = r.ReadInt16();
+            TexData = new Bitmap(bw, bh);
+            pixs = r.ReadBytes(bw * bh * 4);
+            W = bw;
+            H = bh;
+            Alpha = true;
+            return;
+            for(int y = 0; y < bh; y++)
+            {
+                for(int x = 0; x < bw; x++)
+                {
+                    byte[] col = r.ReadBytes(4);
+                    System.Drawing.Color nc = System.Drawing.Color.FromArgb(col[3], col[0], col[1], col[2]);
+                    TexData.SetPixel(x, y, nc);
+                }
+            }
+            W = bw;
+            H = bh;
+        }
+        public void SkipBitmap(BinaryReader r)
+        {
+            short bw = r.ReadInt16();
+            short bh = r.ReadInt16();
+            r.BaseStream.Seek(bw * bh * 4, SeekOrigin.Current);
+        }
+        public void SaveTex(string p)
+        {
+            if (string.IsNullOrEmpty(p))
+            {
+                return;
+            }
+            FileStream fs = new FileStream(p, FileMode.Create, FileAccess.Write);
+            BinaryWriter w = new BinaryWriter(fs);
+          
+            
+                var sd = new Bitmap(TexData, 32, 32);
+                WriteBitmap(sd,w);
+                WriteBitmap(TexData,w);
+          
+            fs.Flush();
+            fs.Close();
+        }
+        public void WriteBitmap(Bitmap b,BinaryWriter w)
+        {
+            w.Write((short)b.Width);
+            w.Write((short)b.Height);
+            for(int y = 0; y < b.Height; y++)
+            {
+                for(int x = 0; x < b.Width; x++)
+                {
+                    var p = b.GetPixel(x, y);
+                    w.Write(p.R);
+                    w.Write(p.G);
+                    w.Write(p.B);
+                    w.Write(p.A);
+                }
+            }
+        }
         public VTex2D(int w,int h,bool alpha=false)
         {
             GL.ActiveTexture(TextureUnit.Texture0);
@@ -45,6 +107,7 @@ namespace Vivid.Texture
             GL.TexParameter(TextureTarget.Texture2D, TextureParameterName.TextureMinFilter, (int)TextureMinFilter.Nearest);
             GL.TexParameter(TextureTarget.Texture2D, TextureParameterName.TextureMagFilter, (int)TextureMagFilter.Nearest);
             GL.PixelStore(PixelStoreParameter.PackAlignment, 4 * 4);
+           
         }
         public VTex2D(int w,int h,byte[] dat,bool alpha = true)
         {
@@ -67,6 +130,7 @@ namespace Vivid.Texture
             GL.TexParameter(TextureTarget.Texture2D, TextureParameterName.TextureMinFilter, (int)TextureMinFilter.Nearest);
             GL.TexParameter(TextureTarget.Texture2D, TextureParameterName.TextureMagFilter, (int)TextureMagFilter.Nearest);
             GL.PixelStore(PixelStoreParameter.PackAlignment, 4 * 4);
+            pixs = dat;
         }
         public VTex2D(string path,LoadMethod lm)
         {
@@ -76,30 +140,95 @@ namespace Vivid.Texture
             if (lm==LoadMethod.Single)
             {
                 // Check if FreeImage.dll is available (can be in %path%).
-
-
-
-                if (File.Exists(path) == false)
+                bool sl = false;
+                if(File.Exists(Path+".vtex"))
                 {
-                    return;
+                    FileStream fs = new FileStream(Path + ".vtex", FileMode.Open, FileAccess.Read);
+                    BinaryReader r = new BinaryReader(fs);
+
+                    SkipBitmap(r);
+                    ReadBitmap(r);
+                    r.Close();
+                    sl = true;
                 }
 
-                TexData = new Bitmap(path);
-                
+                if (sl == false)
+                {
+                    if (File.Exists(path) == false)
+                    {
+                        return;
+                    }
+
+
+                   
+                        TexData = new Bitmap(path);
+                    W = TexData.Width;
+                    H = TexData.Height;
+
+                }
+
 
                 //TexData = new Bitmap(path);
-                W = TexData.Width;
-                H = TexData.Height;
+            
                 D = 1;
                 Loaded = true;
-                SetPix();
+                Alpha = true;
+                //SetPix();
                 BindData();
-
+                if (sl == false)
+                {
+                    SaveTex(path + ".vtex");
+                }
             } else
             {
-                LoadThread = new Thread(new ThreadStart(T_LoadTex));
-                LoadThread.Start();
+                bool sl = false;
+                if (File.Exists(Path + ".vtex"))
+                {
+                    
+                    sl = true;
+                }
+
+                if (sl == false)
+                {
+                    LoadThread = new Thread(new ThreadStart(T_LoadTex));
+                    LoadThread.Start();
+                }
+                else
+                {
+                    FileStream fs = new FileStream(Path + ".vtex", FileMode.Open, FileAccess.Read);
+                    BinaryReader r = new BinaryReader(fs);
+                    ReadBitmap(r);
+                    D = 1;
+                    PreLoaded = true;
+                    Alpha = true;
+                  //  SetPix();
+                    BindData();
+                    nf = fs;
+                    nr = r;
+
+                    LoadThread = new Thread(new ThreadStart(T_LoadVTex));
+                    LoadThread.Start();
+                }
             }
+        }
+        bool PreLoaded = false;
+        FileStream nf;
+        BinaryReader nr;
+        public void T_LoadVTex()
+        {
+            ReadBitmap(nr);
+
+            //W = TexData.Width;
+            //H = TexData.Height;
+            D = 1;
+            Alpha = true;
+            //SetPix();
+            //SaveTex(Path + ".vtex");
+            Loaded = true;
+            nf.Close();
+            nf = null;
+            nr = null;
+
         }
         public override void Bind(int texu)
         {
@@ -160,7 +289,9 @@ namespace Vivid.Texture
             W = TexData.Width;
             H = TexData.Height;
             D = 1;
+            Alpha = true;
             SetPix();
+            SaveTex(Path + ".vtex");
             Loaded = true;
         }
     }

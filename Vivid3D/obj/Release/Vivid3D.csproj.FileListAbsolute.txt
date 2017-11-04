@@ -1,0 +1,7 @@
+C:\Proj\Vivid3D\vividstudio3d\Vivid3D\obj\Release\Vivid3D.csprojResolveAssemblyReference.cache
+C:\Proj\Vivid3D\vividstudio3d\Vivid3D\obj\Release\Vivid3D.csproj.CoreCompileInputs.cache
+C:\Proj\Vivid3D\vividstudio3d\Vivid3D\bin\Release\-Vivid3D.dll
+C:\Proj\Vivid3D\vividstudio3d\Vivid3D\bin\Release\AssimpNet.dll
+C:\Proj\Vivid3D\vividstudio3d\Vivid3D\bin\Release\OpenTK.dll
+C:\Proj\Vivid3D\vividstudio3d\Vivid3D\bin\Release\OpenTK.xml
+C:\Proj\Vivid3D\vividstudio3d\Vivid3D\obj\Release\-Vivid3D.dll
