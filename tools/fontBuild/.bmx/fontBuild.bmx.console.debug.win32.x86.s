@@ -56,6 +56,7 @@
 	extrn	_brl_max2d_SetImageFont
 	extrn	_brl_max2d_TextHeight
 	extrn	_brl_max2d_TextWidth
+	extrn	_brl_pixmap_CreatePixmap
 	extrn	_brl_standardio_Print
 	extrn	_brl_stream_WriteByte
 	extrn	_brl_stream_WriteShort
@@ -64,12 +65,12 @@
 __bb_main:
 	push	ebp
 	mov	ebp,esp
-	sub	esp,44
+	sub	esp,48
 	push	ebx
 	push	esi
 	push	edi
-	cmp	dword [_145],0
-	je	_146
+	cmp	dword [_146],0
+	je	_147
 	mov	eax,0
 	pop	edi
 	pop	esi
@@ -77,8 +78,8 @@ __bb_main:
 	mov	esp,ebp
 	pop	ebp
 	ret
-_146:
-	mov	dword [_145],1
+_147:
+	mov	dword [_146],1
 	mov	dword [ebp-4],_bbEmptyString
 	mov	dword [ebp-8],0
 	mov	dword [ebp-12],_bbNullObject
@@ -87,12 +88,13 @@ _146:
 	mov	dword [ebp-24],0
 	mov	dword [ebp-28],0
 	mov	dword [ebp-32],_bbNullObject
-	mov	dword [ebp-36],0
+	mov	dword [ebp-36],_bbNullObject
 	mov	dword [ebp-40],0
 	mov	dword [ebp-44],0
+	mov	dword [ebp-48],0
 	mov	eax,ebp
 	push	eax
-	push	_136
+	push	_137
 	call	dword [_bbOnDebugEnterScope]
 	add	esp,8
 	call	___bb_blitz_blitz
@@ -126,7 +128,7 @@ _146:
 	call	___bb_freeprocess_freeprocess
 	call	___bb_glew_glew
 	call	___bb_macos_macos
-	push	_40
+	push	_39
 	call	dword [_bbOnDebugEnterStm]
 	add	esp,4
 	push	2
@@ -134,7 +136,7 @@ _146:
 	push	eax
 	call	_brl_graphics_SetGraphicsDriver
 	add	esp,8
-	push	_42
+	push	_41
 	call	dword [_bbOnDebugEnterStm]
 	add	esp,4
 	push	0
@@ -144,82 +146,82 @@ _146:
 	push	640
 	call	_brl_graphics_Graphics
 	add	esp,20
-	push	_43
+	push	_42
 	call	dword [_bbOnDebugEnterStm]
 	add	esp,4
 	mov	dword [ebp-4],_1
-	push	_45
+	push	_44
 	call	dword [_bbOnDebugEnterStm]
 	add	esp,4
 	mov	dword [ebp-8],12
-	push	_47
+	push	_46
 	call	dword [_bbOnDebugEnterStm]
 	add	esp,4
 	mov	eax,dword [_bbAppArgs]
 	cmp	dword [eax+20],1
-	jle	_48
+	jle	_47
 	mov	eax,ebp
 	push	eax
-	push	_52
+	push	_51
 	call	dword [_bbOnDebugEnterScope]
 	add	esp,8
-	push	_49
+	push	_48
 	call	dword [_bbOnDebugEnterStm]
 	add	esp,4
 	mov	ebx,1
 	mov	eax,dword [_bbAppArgs]
 	cmp	ebx,dword [eax+20]
-	jb	_51
+	jb	_50
 	call	_brl_blitz_ArrayBoundsError
-_51:
+_50:
 	mov	eax,dword [_bbAppArgs]
 	mov	eax,dword [eax+ebx*4+24]
 	mov	dword [ebp-4],eax
 	call	dword [_bbOnDebugLeaveScope]
-_48:
-	push	_53
+_47:
+	push	_52
 	call	dword [_bbOnDebugEnterStm]
 	add	esp,4
 	mov	eax,dword [_bbAppArgs]
 	cmp	dword [eax+20],2
-	jle	_54
+	jle	_53
 	mov	eax,ebp
 	push	eax
-	push	_58
+	push	_57
 	call	dword [_bbOnDebugEnterScope]
 	add	esp,8
-	push	_55
+	push	_54
 	call	dword [_bbOnDebugEnterStm]
 	add	esp,4
 	mov	ebx,2
 	mov	eax,dword [_bbAppArgs]
 	cmp	ebx,dword [eax+20]
-	jb	_57
+	jb	_56
 	call	_brl_blitz_ArrayBoundsError
-_57:
+_56:
 	mov	eax,dword [_bbAppArgs]
 	push	dword [eax+ebx*4+24]
 	call	_bbStringToInt
 	add	esp,4
 	mov	dword [ebp-8],eax
 	call	dword [_bbOnDebugLeaveScope]
-_54:
-	push	_59
+_53:
+	push	_58
 	call	dword [_bbOnDebugEnterStm]
 	add	esp,4
 	mov	dword [ebp-12],_bbNullObject
-	push	_61
+	push	_60
 	call	dword [_bbOnDebugEnterStm]
 	add	esp,4
 	mov	eax,dword [ebp-4]
 	cmp	dword [eax+8],1
-	jle	_62
+	jle	_61
 	mov	eax,ebp
 	push	eax
-	push	_70
+	push	_69
 	call	dword [_bbOnDebugEnterScope]
 	add	esp,8
-	push	_63
+	push	_62
 	call	dword [_bbOnDebugEnterStm]
 	add	esp,4
 	push	4
@@ -228,37 +230,37 @@ _54:
 	call	_brl_max2d_LoadImageFont
 	add	esp,12
 	mov	dword [ebp-12],eax
-	push	_64
+	push	_63
 	call	dword [_bbOnDebugEnterStm]
 	add	esp,4
 	cmp	dword [ebp-12],_bbNullObject
-	jne	_65
+	jne	_64
 	mov	eax,ebp
 	push	eax
-	push	_68
+	push	_67
 	call	dword [_bbOnDebugEnterScope]
 	add	esp,8
-	push	_66
+	push	_65
 	call	dword [_bbOnDebugEnterStm]
 	add	esp,4
 	push	_22
 	call	_brl_standardio_Print
 	add	esp,4
-	push	_67
+	push	_66
 	call	dword [_bbOnDebugEnterStm]
 	add	esp,4
 	call	_bbEnd
 	call	dword [_bbOnDebugLeaveScope]
-_65:
-	push	_69
+_64:
+	push	_68
 	call	dword [_bbOnDebugEnterStm]
 	add	esp,4
 	push	dword [ebp-12]
 	call	_brl_max2d_SetImageFont
 	add	esp,4
 	call	dword [_bbOnDebugLeaveScope]
-_62:
-	push	_71
+_61:
+	push	_70
 	call	dword [_bbOnDebugEnterStm]
 	add	esp,4
 	push	dword [ebp-4]
@@ -268,7 +270,7 @@ _62:
 	push	eax
 	call	_brl_standardio_Print
 	add	esp,4
-	push	_72
+	push	_71
 	call	dword [_bbOnDebugEnterStm]
 	add	esp,4
 	push	dword [ebp-8]
@@ -281,7 +283,7 @@ _62:
 	push	eax
 	call	_brl_standardio_Print
 	add	esp,4
-	push	_73
+	push	_72
 	call	dword [_bbOnDebugEnterStm]
 	add	esp,4
 	push	_25
@@ -292,23 +294,23 @@ _62:
 	call	_brl_filesystem_WriteFile
 	add	esp,4
 	mov	dword [ebp-16],eax
-	push	_75
+	push	_74
 	call	dword [_bbOnDebugEnterStm]
 	add	esp,4
 	mov	dword [ebp-20],0
 	mov	dword [ebp-20],0
-	jmp	_77
+	jmp	_76
 _28:
 	mov	eax,ebp
 	push	eax
 	push	_121
 	call	dword [_bbOnDebugEnterScope]
 	add	esp,8
-	push	_78
+	push	_77
 	call	dword [_bbOnDebugEnterStm]
 	add	esp,4
 	call	_brl_max2d_Cls
-	push	_79
+	push	_78
 	call	dword [_bbOnDebugEnterStm]
 	add	esp,4
 	push	1073741824
@@ -319,7 +321,7 @@ _28:
 	push	eax
 	call	_brl_max2d_DrawText
 	add	esp,12
-	push	_80
+	push	_79
 	call	dword [_bbOnDebugEnterStm]
 	add	esp,4
 	push	dword [ebp-20]
@@ -329,7 +331,7 @@ _28:
 	call	_brl_max2d_TextWidth
 	add	esp,4
 	mov	dword [ebp-24],eax
-	push	_82
+	push	_81
 	call	dword [_bbOnDebugEnterStm]
 	add	esp,4
 	push	dword [ebp-20]
@@ -339,29 +341,39 @@ _28:
 	call	_brl_max2d_TextHeight
 	add	esp,4
 	mov	dword [ebp-28],eax
-	push	_84
+	push	_83
 	call	dword [_bbOnDebugEnterStm]
 	add	esp,4
 	add	dword [ebp-24],4
-	push	_85
+	push	_84
 	call	dword [_bbOnDebugEnterStm]
 	add	esp,4
 	add	dword [ebp-28],4
-	push	_86
+	push	_85
 	call	dword [_bbOnDebugEnterStm]
 	add	esp,4
 	push	dword [ebp-24]
 	push	dword [ebp-16]
 	call	_brl_stream_WriteShort
 	add	esp,8
-	push	_87
+	push	_86
 	call	dword [_bbOnDebugEnterStm]
 	add	esp,4
 	push	dword [ebp-28]
 	push	dword [ebp-16]
 	call	_brl_stream_WriteShort
 	add	esp,8
-	push	_88
+	push	_87
+	call	dword [_bbOnDebugEnterStm]
+	add	esp,4
+	push	4
+	push	6
+	push	dword [ebp-28]
+	push	dword [ebp-24]
+	call	_brl_pixmap_CreatePixmap
+	add	esp,16
+	mov	dword [ebp-32],eax
+	push	_89
 	call	dword [_bbOnDebugEnterStm]
 	add	esp,4
 	push	dword [ebp-28]
@@ -370,63 +382,53 @@ _28:
 	push	0
 	call	_brl_max2d_GrabPixmap
 	add	esp,16
-	mov	dword [ebp-32],eax
-	push	_90
+	mov	dword [ebp-36],eax
+	push	_91
 	call	dword [_bbOnDebugEnterStm]
 	add	esp,4
-	mov	dword [ebp-36],0
-	mov	dword [ebp-36],0
+	mov	dword [ebp-40],0
+	mov	dword [ebp-40],0
 	mov	edi,dword [ebp-28]
-	jmp	_92
+	jmp	_93
 _31:
 	mov	eax,ebp
 	push	eax
 	push	_118
 	call	dword [_bbOnDebugEnterScope]
 	add	esp,8
-	push	_94
+	push	_95
 	call	dword [_bbOnDebugEnterStm]
 	add	esp,4
-	mov	dword [ebp-40],0
-	mov	dword [ebp-40],0
+	mov	dword [ebp-44],0
+	mov	dword [ebp-44],0
 	mov	esi,dword [ebp-24]
-	jmp	_96
+	jmp	_97
 _34:
 	mov	eax,ebp
 	push	eax
 	push	_113
 	call	dword [_bbOnDebugEnterScope]
 	add	esp,8
-	push	_98
+	push	_99
 	call	dword [_bbOnDebugEnterStm]
 	add	esp,4
-	mov	ebx,dword [ebp-32]
+	mov	ebx,dword [ebp-36]
 	cmp	ebx,_bbNullObject
-	jne	_100
+	jne	_101
 	call	_brl_blitz_NullObjectError
-_100:
-	push	dword [ebp-36]
+_101:
 	push	dword [ebp-40]
+	push	dword [ebp-44]
 	push	ebx
 	mov	eax,dword [ebx]
 	call	dword [eax+52]
 	add	esp,12
-	mov	dword [ebp-44],eax
-	push	_102
-	call	dword [_bbOnDebugEnterStm]
-	add	esp,4
-	mov	eax,dword [ebp-44]
-	movzx	eax,byte [eax]
-	mov	eax,eax
-	push	eax
-	push	dword [ebp-16]
-	call	_brl_stream_WriteByte
-	add	esp,8
+	mov	dword [ebp-48],eax
 	push	_103
 	call	dword [_bbOnDebugEnterStm]
 	add	esp,4
-	mov	eax,dword [ebp-44]
-	movzx	eax,byte [eax+1]
+	mov	eax,dword [ebp-48]
+	movzx	eax,byte [eax]
 	mov	eax,eax
 	push	eax
 	push	dword [ebp-16]
@@ -435,8 +437,8 @@ _100:
 	push	_104
 	call	dword [_bbOnDebugEnterStm]
 	add	esp,4
-	mov	eax,dword [ebp-44]
-	movzx	eax,byte [eax+2]
+	mov	eax,dword [ebp-48]
+	movzx	eax,byte [eax+1]
 	mov	eax,eax
 	push	eax
 	push	dword [ebp-16]
@@ -445,25 +447,35 @@ _100:
 	push	_105
 	call	dword [_bbOnDebugEnterStm]
 	add	esp,4
-	mov	eax,dword [ebp-44]
+	mov	eax,dword [ebp-48]
+	movzx	eax,byte [eax+2]
+	mov	eax,eax
+	push	eax
+	push	dword [ebp-16]
+	call	_brl_stream_WriteByte
+	add	esp,8
+	push	_106
+	call	dword [_bbOnDebugEnterStm]
+	add	esp,4
+	mov	eax,dword [ebp-48]
 	movzx	eax,byte [eax]
 	mov	eax,eax
-	mov	edx,dword [ebp-44]
+	mov	edx,dword [ebp-48]
 	movzx	edx,byte [edx+1]
 	mov	edx,edx
 	add	eax,edx
-	mov	edx,dword [ebp-44]
+	mov	edx,dword [ebp-48]
 	movzx	edx,byte [edx+2]
 	mov	edx,edx
 	add	eax,edx
 	cmp	eax,0
-	jle	_106
+	jle	_107
 	mov	eax,ebp
 	push	eax
-	push	_108
+	push	_109
 	call	dword [_bbOnDebugEnterScope]
 	add	esp,8
-	push	_107
+	push	_108
 	call	dword [_bbOnDebugEnterStm]
 	add	esp,4
 	push	255
@@ -471,19 +483,13 @@ _100:
 	call	_brl_stream_WriteByte
 	add	esp,8
 	call	dword [_bbOnDebugLeaveScope]
-	jmp	_109
-_106:
+	jmp	_110
+_107:
 	mov	eax,ebp
 	push	eax
 	push	_112
 	call	dword [_bbOnDebugEnterScope]
 	add	esp,8
-	push	_110
-	call	dword [_bbOnDebugEnterStm]
-	add	esp,4
-	push	_35
-	call	_brl_standardio_Print
-	add	esp,4
 	push	_111
 	call	dword [_bbOnDebugEnterStm]
 	add	esp,4
@@ -492,30 +498,30 @@ _106:
 	call	_brl_stream_WriteByte
 	add	esp,8
 	call	dword [_bbOnDebugLeaveScope]
-_109:
+_110:
 	call	dword [_bbOnDebugLeaveScope]
 _32:
-	add	dword [ebp-40],1
-_96:
-	cmp	dword [ebp-40],esi
+	add	dword [ebp-44],1
+_97:
+	cmp	dword [ebp-44],esi
 	jl	_34
 _33:
 	call	dword [_bbOnDebugLeaveScope]
 _29:
-	add	dword [ebp-36],1
-_92:
-	cmp	dword [ebp-36],edi
+	add	dword [ebp-40],1
+_93:
+	cmp	dword [ebp-40],edi
 	jl	_31
 _30:
 	push	_120
 	call	dword [_bbOnDebugEnterStm]
 	add	esp,4
-	push	_37
+	push	_36
 	push	dword [ebp-20]
 	call	_bbStringFromInt
 	add	esp,4
 	push	eax
-	push	_36
+	push	_35
 	call	_bbStringConcat
 	add	esp,8
 	push	eax
@@ -527,51 +533,51 @@ _30:
 	call	dword [_bbOnDebugLeaveScope]
 _26:
 	add	dword [ebp-20],1
-_77:
+_76:
 	cmp	dword [ebp-20],255
 	jl	_28
 _27:
-	push	_127
+	push	_128
 	call	dword [_bbOnDebugEnterStm]
 	add	esp,4
 	mov	ebx,dword [ebp-16]
 	cmp	ebx,_bbNullObject
-	jne	_129
+	jne	_130
 	call	_brl_blitz_NullObjectError
-_129:
+_130:
 	push	ebx
 	mov	eax,dword [ebx]
 	call	dword [eax+64]
 	add	esp,4
-	push	_130
+	push	_131
 	call	dword [_bbOnDebugEnterStm]
 	add	esp,4
 	mov	ebx,dword [ebp-16]
 	cmp	ebx,_bbNullObject
-	jne	_132
+	jne	_133
 	call	_brl_blitz_NullObjectError
-_132:
+_133:
 	push	ebx
 	mov	eax,dword [ebx]
 	call	dword [eax+68]
 	add	esp,4
-	push	_133
+	push	_134
 	call	dword [_bbOnDebugEnterStm]
 	add	esp,4
 	mov	dword [ebp-16],_bbNullObject
-	push	_134
+	push	_135
 	call	dword [_bbOnDebugEnterStm]
 	add	esp,4
 	push	1000
 	call	_bbDelay
 	add	esp,4
-	push	_135
+	push	_136
 	call	dword [_bbOnDebugEnterStm]
 	add	esp,4
 	call	_bbEnd
 	mov	ebx,0
-	jmp	_38
-_38:
+	jmp	_37
+_37:
 	call	dword [_bbOnDebugLeaveScope]
 	mov	eax,ebx
 	pop	edi
@@ -582,62 +588,62 @@ _38:
 	ret
 	section	"data" data writeable align 8
 	align	4
-_145:
+_146:
 	dd	0
-_137:
-	db	"fontBuild",0
 _138:
-	db	"font_name",0
+	db	"fontBuild",0
 _139:
-	db	"$",0
+	db	"font_name",0
 _140:
+	db	"$",0
+_141:
 	db	"font_size",0
 _115:
 	db	"i",0
-_141:
-	db	"tf",0
 _142:
-	db	":TImageFont",0
+	db	"tf",0
 _143:
-	db	"fo",0
+	db	":TImageFont",0
 _144:
+	db	"fo",0
+_145:
 	db	":TStream",0
 	align	4
-_136:
+_137:
 	dd	1
-	dd	_137
-	dd	2
 	dd	_138
+	dd	2
 	dd	_139
+	dd	_140
 	dd	-4
 	dd	2
-	dd	_140
+	dd	_141
 	dd	_115
 	dd	-8
 	dd	2
-	dd	_141
 	dd	_142
+	dd	_143
 	dd	-12
 	dd	2
-	dd	_143
 	dd	_144
+	dd	_145
 	dd	-16
 	dd	0
-_41:
-	db	"C:/Dev/Proj/Vivid3D/vividstudio3d/tools/fontBuild/fontBuild.bmx",0
-	align	4
 _40:
-	dd	_41
+	db	"C:/Proj/Vivid3D/vividstudio3d/tools/fontBuild/fontBuild.bmx",0
+	align	4
+_39:
+	dd	_40
 	dd	4
 	dd	1
 	align	4
-_42:
-	dd	_41
+_41:
+	dd	_40
 	dd	6
 	dd	1
 	align	4
-_43:
-	dd	_41
+_42:
+	dd	_40
 	dd	9
 	dd	1
 	align	4
@@ -646,73 +652,73 @@ _1:
 	dd	2147483647
 	dd	0
 	align	4
-_45:
-	dd	_41
+_44:
+	dd	_40
 	dd	10
 	dd	1
 	align	4
-_47:
-	dd	_41
+_46:
+	dd	_40
 	dd	12
 	dd	1
 	align	4
-_52:
+_51:
 	dd	3
 	dd	0
 	dd	0
 	align	4
-_49:
-	dd	_41
+_48:
+	dd	_40
 	dd	13
 	dd	2
 	align	4
-_53:
-	dd	_41
+_52:
+	dd	_40
 	dd	16
 	dd	1
 	align	4
-_58:
+_57:
 	dd	3
 	dd	0
 	dd	0
 	align	4
-_55:
-	dd	_41
+_54:
+	dd	_40
 	dd	18
 	dd	3
 	align	4
-_59:
-	dd	_41
+_58:
+	dd	_40
 	dd	22
 	dd	1
 	align	4
-_61:
-	dd	_41
+_60:
+	dd	_40
 	dd	24
 	dd	1
 	align	4
-_70:
+_69:
 	dd	3
 	dd	0
 	dd	0
 	align	4
-_63:
-	dd	_41
+_62:
+	dd	_40
 	dd	26
 	dd	3
 	align	4
-_64:
-	dd	_41
+_63:
+	dd	_40
 	dd	27
 	dd	2
 	align	4
-_68:
+_67:
 	dd	3
 	dd	0
 	dd	0
 	align	4
-_66:
-	dd	_41
+_65:
+	dd	_40
 	dd	29
 	dd	3
 	align	4
@@ -723,18 +729,18 @@ _22:
 	dw	102,97,105,108,101,100,32,116,111,32,108,111,97,100,32,102
 	dw	111,110,116,46
 	align	4
-_67:
-	dd	_41
+_66:
+	dd	_40
 	dd	30
 	dd	3
 	align	4
-_69:
-	dd	_41
+_68:
+	dd	_40
 	dd	33
 	dd	2
 	align	4
-_71:
-	dd	_41
+_70:
+	dd	_40
 	dd	38
 	dd	1
 	align	4
@@ -744,8 +750,8 @@ _23:
 	dd	13
 	dw	80,97,114,115,105,110,103,32,70,111,110,116,58
 	align	4
-_72:
-	dd	_41
+_71:
+	dd	_40
 	dd	39
 	dd	1
 	align	4
@@ -755,8 +761,8 @@ _24:
 	dd	9
 	dw	70,111,110,116,83,105,122,101,58
 	align	4
-_73:
-	dd	_41
+_72:
+	dd	_40
 	dd	41
 	dd	1
 	align	4
@@ -766,8 +772,8 @@ _25:
 	dd	3
 	dw	46,118,102
 	align	4
-_75:
-	dd	_41
+_74:
+	dd	_40
 	dd	43
 	dd	1
 _122:
@@ -777,9 +783,11 @@ _123:
 _124:
 	db	"ch",0
 _125:
-	db	"cp",0
+	db	"np",0
 _126:
 	db	":TPixmap",0
+_127:
+	db	"cp",0
 	align	4
 _121:
 	dd	3
@@ -800,56 +808,65 @@ _121:
 	dd	_125
 	dd	_126
 	dd	-32
+	dd	2
+	dd	_127
+	dd	_126
+	dd	-36
 	dd	0
 	align	4
-_78:
-	dd	_41
+_77:
+	dd	_40
 	dd	45
 	dd	2
 	align	4
-_79:
-	dd	_41
+_78:
+	dd	_40
 	dd	47
 	dd	2
 	align	4
-_80:
-	dd	_41
+_79:
+	dd	_40
 	dd	49
 	dd	2
 	align	4
-_82:
-	dd	_41
+_81:
+	dd	_40
 	dd	50
 	dd	2
 	align	4
-_84:
-	dd	_41
+_83:
+	dd	_40
 	dd	52
 	dd	2
 	align	4
-_85:
-	dd	_41
+_84:
+	dd	_40
 	dd	53
 	dd	2
 	align	4
-_86:
-	dd	_41
+_85:
+	dd	_40
 	dd	55
 	dd	2
 	align	4
-_87:
-	dd	_41
+_86:
+	dd	_40
 	dd	56
 	dd	2
 	align	4
-_88:
-	dd	_41
+_87:
+	dd	_40
 	dd	58
 	dd	2
 	align	4
-_90:
-	dd	_41
-	dd	60
+_89:
+	dd	_40
+	dd	61
+	dd	2
+	align	4
+_91:
+	dd	_40
+	dd	103
 	dd	2
 _119:
 	db	"y",0
@@ -860,12 +877,12 @@ _118:
 	dd	2
 	dd	_119
 	dd	_115
-	dd	-36
+	dd	-40
 	dd	0
 	align	4
-_94:
-	dd	_41
-	dd	61
+_95:
+	dd	_40
+	dd	104
 	dd	2
 _114:
 	db	"x",0
@@ -880,46 +897,46 @@ _113:
 	dd	2
 	dd	_114
 	dd	_115
-	dd	-40
+	dd	-44
 	dd	2
 	dd	_116
 	dd	_117
-	dd	-44
+	dd	-48
 	dd	0
 	align	4
-_98:
-	dd	_41
-	dd	63
-	dd	3
-	align	4
-_102:
-	dd	_41
-	dd	65
+_99:
+	dd	_40
+	dd	106
 	dd	3
 	align	4
 _103:
-	dd	_41
-	dd	66
+	dd	_40
+	dd	108
 	dd	3
 	align	4
 _104:
-	dd	_41
-	dd	67
+	dd	_40
+	dd	109
 	dd	3
 	align	4
 _105:
-	dd	_41
-	dd	69
+	dd	_40
+	dd	110
 	dd	3
+	align	4
+_106:
+	dd	_40
+	dd	112
+	dd	3
+	align	4
+_109:
+	dd	3
+	dd	0
+	dd	0
 	align	4
 _108:
-	dd	3
-	dd	0
-	dd	0
-	align	4
-_107:
-	dd	_41
-	dd	71
+	dd	_40
+	dd	114
 	dd	4
 	align	4
 _112:
@@ -927,60 +944,49 @@ _112:
 	dd	0
 	dd	0
 	align	4
-_110:
-	dd	_41
-	dd	74
-	dd	4
-	align	4
-_35:
-	dd	_bbStringClass
-	dd	2147483647
-	dd	7
-	dw	65,108,112,104,97,32,48
-	align	4
 _111:
-	dd	_41
-	dd	75
+	dd	_40
+	dd	118
 	dd	4
 	align	4
 _120:
-	dd	_41
-	dd	82
+	dd	_40
+	dd	125
 	dd	2
 	align	4
-_37:
+_36:
 	dd	_bbStringClass
 	dd	2147483647
 	dd	4
 	dw	47,50,53,53
 	align	4
-_36:
+_35:
 	dd	_bbStringClass
 	dd	2147483647
 	dd	13
 	dw	80,97,114,115,101,100,32,73,110,100,101,120,58
 	align	4
-_127:
-	dd	_41
-	dd	87
+_128:
+	dd	_40
+	dd	130
 	dd	1
 	align	4
-_130:
-	dd	_41
-	dd	89
-	dd	1
-	align	4
-_133:
-	dd	_41
-	dd	91
+_131:
+	dd	_40
+	dd	132
 	dd	1
 	align	4
 _134:
-	dd	_41
-	dd	93
+	dd	_40
+	dd	134
 	dd	1
 	align	4
 _135:
-	dd	_41
-	dd	95
+	dd	_40
+	dd	136
+	dd	1
+	align	4
+_136:
+	dd	_40
+	dd	138
 	dd	1

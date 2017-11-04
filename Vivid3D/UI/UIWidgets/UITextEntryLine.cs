@@ -10,71 +10,191 @@ namespace Vivid.UI.UIWidgets
 {
     public class UITextEntryLine : UIWidget
     {
-        public UITextEntryLine(int x, int y, int w, string def = "", UIWidget top = null) : base(x, y, w, 25, def, top)
+        public int CarrotPos = 0;
+        public UITextEntryLine(int x, int y, int w, string def = "", UIWidget top = null) : base(x, y, w, 30, def, top)
         {
             Name = "";
+            NextOn = Environment.TickCount;
+        }
+        bool CarrotDraw = true;
+        public bool CarrotOn = false;
+        public int NextOn = 0;
+        public override void OnActivate()
+        {
+            CarrotOn = true;
+        }
+        public override void OnDeactivate()
+        {
+            CarrotOn = false;
+        }
+        public override void Update()
+        {
+            if(Environment.TickCount>NextOn+500)
+            {
+                if (CarrotDraw)
+                {
+                    CarrotDraw = false;
+                }
+                else
+                {
+                    CarrotDraw = true;
+                }
+                NextOn = Environment.TickCount;
+            }
         }
         public override void Draw()
         {
+           
+           
             UISys.Skin().DrawBox((int)WidX, (int)WidY, (int)WidW, (int)WidH);
-            UISys.Skin().DrawBoxText((int)WidX + 3, (int)WidY + 3, Name);
+            string nt = Name;
+            if (CarrotOn && CarrotDraw)
+            {
+                if (Name.Length == 0)
+                {
+                    nt = "|";
+                }
+                else
+                {
+                    if (Name.Length == 1)
+                    {
+                        if(CarrotPos==0)
+                        {
+                            nt = "|" + nt;
+                        }
+                        else
+                        {
+                            nt = nt + "|";
+                        }
+                    }
+                    else
+                    {
+                        nt = nt.Substring(0, CarrotPos ) + "|" + nt.Substring(CarrotPos);
+                    }
+                }
+            }
+            UISys.Skin().DrawBoxText((int)WidX + 3, (int)WidY + 3, nt);
+           
+        }
+        private void Add(string k)
+        {
+          
+            if(Name.Length ==0)
+            {
+                Name = k;
+                CarrotPos = 1;
+                Console.WriteLine("=0");
+                return;
+            }
+            if(CarrotPos == Name.Length)
+            {
+                Name += k;
+                CarrotPos++;
+                Console.WriteLine("1=1");
+                return;
+            }
+            if(Name.Length==1 && CarrotPos ==1)
+            {
+                Name += k;
+                CarrotPos++;
+                return;
+            }
+            if(CarrotPos==0)
+            {
+                Name = k + Name;
+                CarrotPos++;
+                return;
+            }
+            Name = Name.Substring(0, CarrotPos) + k + Name.Substring(CarrotPos);
+            CarrotPos++;
+        }
+        private void Del()
+        {
+
+           
+            if (Name.Length == 1)
+            {
+                Name = "";
+                CarrotPos = 0;
+                return;
+            }
+            if (CarrotPos < Name.Length)
+            {
+                Name = Name.Substring(0, CarrotPos - 1) + Name.Substring(CarrotPos);
+                CarrotPos--;
+            }
+            else
+            {
+                Name = Name.Substring(0, Name.Length - 1);
+                CarrotPos--;
+            }
+            if (CarrotPos < 0) CarrotPos = 0;
+        }
+        public override void KeyLeft()
+        {
+            if (CarrotPos > 0) CarrotPos--;
+        }
+        public override void KeyRight()
+        {
+            if (CarrotPos < Name.Length) CarrotPos++;
         }
         public override void KeyAdd(Key k, bool shift)
         {
+            
             if (k == Key.Minus)
             {
                 if (shift)
                 {
-                    Name += "_";
+                    Add("_");
                 }
                 else
                 {
-                    Name += "-";
+                    Add("-");
                 }
             }
             if(k == Key.Plus)
             {
                 if (shift)
                 {
-                    Name += "+";
+                    Add("+");
                 }
                 else
                 {
-                    Name += "=";
+                    Add("=");
                 }
             }
             if(k == Key.Comma)
             {
                 if (shift)
                 {
-                    Name += "<";
-                    Console.WriteLine("<");
+                    Add("<");
+                  
                 }
                 else
                 {
-                    Name += ",";
+                    Add(",");
                 }
             }
             if (k == Key.Period)
             {
                 if (shift)
                 {
-                    Name += ">";
+                    Add(">");
                 }
                 else
                 {
-                    Name += ".";
+                    Add(".");
                 }
             }
             
             if(k == Key.Space)
             {
-                Name += " ";
+                Add(" ");
                 return;
             }
             if(k == Key.Tab)
             {
-                Name += " ";
+                Add(" ");
                 return;
             }
             if (VInput.TextKey(k))
@@ -120,31 +240,52 @@ namespace Vivid.UI.UIWidgets
                                 ac = ")";
                                 break;
                         }
-                        Name += ac;
+                        Add(ac);
                         return;
                     }
                     else
                     {
-                        Name += ac;
+                        Add(ac);
                     }
                     return;
                 }
                 if (shift)
                 {
-                    Name += k.ToString().ToUpper();
+                    Add(k.ToString().ToUpper());
                 }
                 else
                 {
-                    Name += k.ToString().ToLower();
+                    Add(k.ToString().ToLower());
                 }
             }
         }
         public override void KeyDel()
         {
+            if(CarrotPos ==0)
+            {
+                if(Name.Length>0)
+                {
+                    Name = Name.Substring(1);
+                    return;
+                }
+                return;
+            }
+            if (CarrotPos < Name.Length)
+            {
+                if (CarrotPos + 1 <= Name.Length)
+                {
+                    Name = Name.Substring(0, CarrotPos) + Name.Substring(CarrotPos + 1);
+                }
+            }
+
+        }
+        public override void KeyBackSpace()
+        {
             if (Name.Length > 1)
             {
-                Name = Name.Substring(0, Name.Length - 1);
 
+                //Name = Name.Substring(0, Name.Length - 1);
+                Del();
             }
             else
             {

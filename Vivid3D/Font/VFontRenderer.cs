@@ -26,7 +26,7 @@ namespace Vivid.Font
             {
                 VGlyph cg = font.Glypth[(int)c];
                 VPen.Rect(dx, y, cg.W, cg.H, cg.Img,col);
-                dx += cg.W;
+                dx += (int)((float)cg.W / 1.3f);
             }
         }
         public static void Draw(VFont font,string text,int x,int y)

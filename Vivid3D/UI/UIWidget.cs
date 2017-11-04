@@ -178,9 +178,21 @@ namespace Vivid.UI
                         UISys.LastStroke = Environment.TickCount;
                         UISys.NextStroke = UISys.LastStroke + UISys.FirstStrokeWait;
                         UISys.Active.KeyIn(UISys.KeyIn, VInput.IsShiftIn());
+
                         if (UISys.KeyIn == OpenTK.Input.Key.BackSpace)
                         {
+                            this.KeyBackSpace();
+                        }else if(UISys.KeyIn == OpenTK.Input.Key.Delete)
+                        {
                             this.KeyDel();
+                        }
+                        else if (UISys.KeyIn == OpenTK.Input.Key.Left)
+                        {
+                            this.KeyLeft();
+                        }
+                        else if (UISys.KeyIn == OpenTK.Input.Key.Right)
+                        {
+                            this.KeyRight();
                         }
                         else
                         {
@@ -197,7 +209,19 @@ namespace Vivid.UI
                                 UISys.NextStroke = UISys.LastStroke + UISys.NextStrokeWait;
                                 if (UISys.KeyIn == OpenTK.Input.Key.BackSpace)
                                 {
-                                    KeyDel();
+                                    KeyBackSpace();
+                                }
+                                else if (UISys.KeyIn == OpenTK.Input.Key.Delete)
+                                {
+                                    this.KeyDel();
+                                }
+                                else if (UISys.KeyIn == OpenTK.Input.Key.Left)
+                                {
+                                    this.KeyLeft();
+                                }
+                                else if (UISys.KeyIn == OpenTK.Input.Key.Right)
+                                {
+                                    this.KeyRight();
                                 }
                                 else
                                 {
@@ -221,15 +245,29 @@ namespace Vivid.UI
                             UISys.LastStroke = Environment.TickCount;
                             UISys.NextStroke = UISys.LastStroke + UISys.FirstStrokeWait;
                             UISys.Active.KeyIn(UISys.KeyIn, VInput.IsShiftIn());
-                            if (VInput.IsShiftIn())
+                            if (UISys.KeyIn == OpenTK.Input.Key.BackSpace)
                             {
-                                KeyAdd(UISys.KeyIn, true);
+                                KeyDel();
+                            }
+                            else if (UISys.KeyIn == OpenTK.Input.Key.Left)
+                            {
+                                this.KeyLeft();
+                            }
+                            else if (UISys.KeyIn == OpenTK.Input.Key.Right)
+                            {
+                                this.KeyRight();
                             }
                             else
                             {
-                                KeyAdd(UISys.KeyIn, false);
+                                if (VInput.IsShiftIn())
+                                {
+                                    KeyAdd(UISys.KeyIn, true);
+                                }
+                                else
+                                {
+                                    KeyAdd(UISys.KeyIn, false);
+                                }
                             }
-
                         }
                     }
                 }
@@ -357,11 +395,22 @@ namespace Vivid.UI
         {
 
         }
-        public virtual void KeyAdd(OpenTK.Input.Key k,bool shift)
+        public virtual void KeyLeft()
+        {
+
+        }
+        public virtual void KeyRight()
         {
 
         }
         public virtual void KeyDel()
+        {
+        }
+        public virtual void KeyAdd(OpenTK.Input.Key k,bool shift)
+        {
+
+        }
+        public virtual void KeyBackSpace()
         {
 
         }

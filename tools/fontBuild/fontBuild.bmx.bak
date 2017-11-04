@@ -55,12 +55,55 @@ For Local c:Int = 0 Until 255
 	WriteShort fo,cw
 	WriteShort fo,ch
 	
+	Local np:TPixmap = CreatePixmap(cw,ch,PF_RGBA8888)
+	
+	
 	Local cp:TPixmap = GrabPixmap(0,0,cw,ch)
+	Rem
+	For Local y:Int =0 Until ch
+	For Local x:Int =0 Until cw
+		
+		Local col:Int = 0
+		Local ic:Int =0
+		
+		For Local sy:Int = y-2 To y+2
+		For Local sx:Int = x-2 To x+2
+		
+			If sx>=0 And sx<cw And sy>=0 And sy<ch	
+			
+				Local p1:Byte Ptr = cp.pixelptr(sx,sy)
+				col:+p1[0]
+				ic:+1
+			
+			EndIf
+			
+		
+		Next
+		Next
+		
+		col = col / ic
+		
+		Local p2:Byte Ptr = np.pixelptr(x,y)
+		
+		Local p3:Byte Ptr = cp.pixelptr(x,y)
+		
+		If p3[0] > 128
+			p2[0] = 255
+			p2[1] = 255
+			p2[2] = 255
+		EndIf
+		
+		p2[3] = col
+		
+	Next
+	Next
+	
+	End Rem
 	
 	For Local y:Int = 0 Until ch
 	For Local x:Int = 0 Until cw
 	
-		Local pp:Byte Ptr = cp.pixelptr(x,y)
+		Local pp:Byte Ptr = np.pixelptr(x,y)
 	
 		WriteByte fo,pp[0]
 		WriteByte fo,pp[1]
@@ -71,7 +114,7 @@ For Local c:Int = 0 Until 255
 			WriteByte fo,255
 		
 		Else
-		
+		 
 			WriteByte fo,0
 		
 		EndIf
