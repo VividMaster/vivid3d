@@ -5,6 +5,8 @@ using System.Text;
 using System.Threading.Tasks;
 using Vivid.UI.UIWidgets;
 using Vivid.Font;
+using OpenTK;
+using OpenTK.Input;
 namespace Vivid.UI
 {
     public enum UIMouseButton
@@ -13,6 +15,12 @@ namespace Vivid.UI
     }
     public class UISys
     {
+        public static Key KeyIn = Key.A;
+        public static bool IsKeyIn = false;
+        public static int LastStroke = 0;
+        public static int NextStroke = 0;
+        public static int FirstStrokeWait = 200;
+        public static int NextStrokeWait = 30;
         public static List<UISkin> Skins = new List<UISkin>();
         public static UIWidget Active = null;
         public static UIWidget Over = null;

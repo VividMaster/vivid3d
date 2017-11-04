@@ -110,6 +110,11 @@ namespace Vivid.App
         }
         protected override void OnKeyDown(KeyboardKeyEventArgs e)
         {
+            if(e.Key == Key.ShiftLeft || e.Key == Key.ShiftRight)
+            {
+                VInput.ShiftIn = true;
+                return;
+            }
             if(VInput.Keys.ContainsKey(e.Key))
             {
 
@@ -121,7 +126,12 @@ namespace Vivid.App
         }
         protected override void OnKeyUp(KeyboardKeyEventArgs e)
         {
-            if(VInput.Keys.ContainsKey(e.Key))
+            if (e.Key == Key.ShiftLeft || e.Key == Key.ShiftRight)
+            {
+                VInput.ShiftIn = false;
+                return;
+            }
+            if (VInput.Keys.ContainsKey(e.Key))
             {
                 VInput.Keys.Remove(e.Key);
             }

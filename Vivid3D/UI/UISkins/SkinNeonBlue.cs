@@ -32,7 +32,7 @@ namespace Vivid.UI.UISkins
             But_Norm = new VTex2D("data/ui/skin/neonblue/button_normal.png", LoadMethod.Multi);
             But_Hover = But_Norm;
             But_Press = But_Norm;
-            SmallFont = new VFont("data/font/f1.ttf.vf");
+            SmallFont = new VFont("data/font/times.ttf.vf");
             BigFont = new VFont("data/font/f2.ttf.vf");
             WinBord = new VTex2D("data/ui/skin/neonblue/winbord.png", LoadMethod.Multi);
             WinCon = new VTex2D("data/ui/skin/neonblue/wincon.png", LoadMethod.Multi);

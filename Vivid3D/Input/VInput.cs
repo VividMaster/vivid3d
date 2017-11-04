@@ -16,6 +16,7 @@ namespace Vivid.Input
                 MB[i] = false;
             }
         }
+        public static bool ShiftIn = false;
         public static int MX=0, MY=0, MZ=0;
         public static int MDX=0, MDY=0, MDZ=0;
         public static bool[] MB = new bool[32];
@@ -33,6 +34,60 @@ namespace Vivid.Input
                 ki.Add(k.Key);
             }
             return ki;
+        }
+        public static string ValidKeys = "abcdefghijklmnopqrstuvwxyzNumber1Number2Number3Number4Number5Number6Number7Number8Number9Number0!@#$%^&*()_,./<>?||   ";
+        public static bool TextKey(Key k)
+        {
+            Console.WriteLine("Key:"+k.ToString());
+            string ks = k.ToString().ToLower();
+            if (ValidKeys.Contains(ks))
+            {
+                return true;
+            }
+            if(ValidKeys.Contains(k.ToString()))
+            {
+                return true;
+            }
+            return false;
+        }
+        public static bool IsShiftIn()
+        {
+            return ShiftIn;
+            if (Keys.ContainsKey(Key.ShiftLeft))
+            {
+                return true;
+            }
+            if (Keys.ContainsKey(Key.ShiftRight))
+            {
+                return true;
+            }
+            return false;
+        }
+        public static Key KeyIn()
+        {
+            if (Keys.Count == 0) return Key.ShiftLeft;
+            if (Keys.Count > 1)
+            {
+                foreach(var k in Keys)
+                {
+                    if(k.Key == Key.ShiftLeft || k.Key == Key.ShiftRight || k.Key == Key.LShift || k.Key == Key.RShift)
+                    {
+
+                    }
+                    else
+                    {
+                        return k.Key;
+                    }
+                }
+            }
+            else
+            {
+                foreach(var k in Keys)
+                {
+                    return k.Key;
+                }
+            }
+            return Key.LastKey;
         }
         public static bool IsKeyIn(Key k)
         {

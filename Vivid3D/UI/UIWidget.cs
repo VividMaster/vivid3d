@@ -162,6 +162,82 @@ namespace Vivid.UI
                 }
 
             }
+            if (UISys.Active == null)
+            {
+                UISys.IsKeyIn = false;
+            }
+
+            if (UISys.Active == this)
+            {
+                if (VInput.AnyKey())
+                {
+                    if (UISys.IsKeyIn == false)
+                    {
+                        UISys.IsKeyIn = true;
+                        UISys.KeyIn = VInput.KeyIn();
+                        UISys.LastStroke = Environment.TickCount;
+                        UISys.NextStroke = UISys.LastStroke + UISys.FirstStrokeWait;
+                        UISys.Active.KeyIn(UISys.KeyIn, VInput.IsShiftIn());
+                        if (UISys.KeyIn == OpenTK.Input.Key.BackSpace)
+                        {
+                            this.KeyDel();
+                        }
+                        else
+                        {
+                            this.KeyAdd(UISys.KeyIn, VInput.IsShiftIn());
+                        }
+                    }
+                    else
+                    {
+                        if (VInput.KeyIn() == UISys.KeyIn)
+                        {
+                            if (Environment.TickCount >= (UISys.NextStroke))
+                            {
+                                UISys.LastStroke = Environment.TickCount;
+                                UISys.NextStroke = UISys.LastStroke + UISys.NextStrokeWait;
+                                if (UISys.KeyIn == OpenTK.Input.Key.BackSpace)
+                                {
+                                    KeyDel();
+                                }
+                                else
+                                {
+                                    if (VInput.IsShiftIn())
+                                    {
+                                        KeyAdd(UISys.KeyIn, true);
+                                    }
+                                    else
+                                    {
+                                        KeyAdd(UISys.KeyIn, false);
+                                    }
+                                }
+                            }
+                        }
+                        else
+                        {
+
+                            this.KeyUp(UISys.KeyIn, VInput.IsShiftIn());
+                            UISys.IsKeyIn = true;
+                            UISys.KeyIn = VInput.KeyIn();
+                            UISys.LastStroke = Environment.TickCount;
+                            UISys.NextStroke = UISys.LastStroke + UISys.FirstStrokeWait;
+                            UISys.Active.KeyIn(UISys.KeyIn, VInput.IsShiftIn());
+                            if (VInput.IsShiftIn())
+                            {
+                                KeyAdd(UISys.KeyIn, true);
+                            }
+                            else
+                            {
+                                KeyAdd(UISys.KeyIn, false);
+                            }
+
+                        }
+                    }
+                }
+                else
+                {
+                    UISys.IsKeyIn = false;
+                }
+            }
             if (InBounds())
             {
                 if (UISys.Over == this)
@@ -183,19 +259,19 @@ namespace Vivid.UI
             }
             else
             {
-                if (UISys.Over == this && UISys.Pressed!=this)
+                if (UISys.Over == this && UISys.Pressed != this)
                 {
                     UISys.Over.OnLeave();
                     UISys.Over = null;
                 }
             }
-            if(VInput.MB[0]==false && UISys.Lock == true)
+            if (VInput.MB[0] == false && UISys.Lock == true)
             {
                 UISys.Lock = false;
             }
-            if (VInput.MB[0] && UISys.Lock == false) 
+            if (VInput.MB[0] && UISys.Lock == false)
             {
-               
+
                 if (UISys.Over != null)
                 {
                     if (UISys.Over == this)
@@ -204,8 +280,15 @@ namespace Vivid.UI
                         {
                             if (UISys.Active != null)
                             {
+                                if (UISys.IsKeyIn)
+                                {
+                                    UISys.Active.KeyUp(UISys.KeyIn, VInput.IsShiftIn());
+                                    UISys.IsKeyIn = false;
+                                }
                                 UISys.Active.OnDeactivate();
                             }
+                            UISys.IsKeyIn = false;
+
                             UISys.Active = this;
                             this.OnActivate();
                             UISys.Lock = true;
@@ -216,13 +299,13 @@ namespace Vivid.UI
                 {
 
                 }
-             
+
             }
             if (InBounds())
             {
                 if (VInput.MB[0])
                 {
-                   
+
                     if (UISys.Pressed == null)
                     {
                         Console.WriteLine("Pushed:" + Name);
@@ -243,9 +326,9 @@ namespace Vivid.UI
             }
             else
             {
-                if(VInput.MB[0]==false)
+                if (VInput.MB[0] == false)
                 {
-                    if(UISys.Pressed == this)
+                    if (UISys.Pressed == this)
                     {
                         Console.WriteLine("Released.");
                         UISys.Pressed.OnMouseUp(UIMouseButton.Left);
@@ -254,16 +337,37 @@ namespace Vivid.UI
                 }
                 if (UISys.Pressed != null)
                 {
-                   // UISys.Pressed.OnMouseUp(UIMouseButton.Left);
+                    // UISys.Pressed.OnMouseUp(UIMouseButton.Left);
                     //UISys.Pressed = null;
                 }
             }
             //this.Update();
-            if(UISys.Over==this || UISys.Pressed == this)
+            if (UISys.Over == this || UISys.Pressed == this)
             {
                 return true;
             }
             return false;
+        }
+        
+        public virtual void KeyIn(OpenTK.Input.Key k,bool shift)
+        {
+
+        }
+        public virtual void KeyUp(OpenTK.Input.Key k,bool shift)
+        {
+
+        }
+        public virtual void KeyAdd(OpenTK.Input.Key k,bool shift)
+        {
+
+        }
+        public virtual void KeyDel()
+        {
+
+        }
+        public virtual void KeyEnter()
+        {
+            
         }
         public virtual void Move(int x,int y)
         {
