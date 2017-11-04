@@ -13,6 +13,8 @@ namespace Vivid.UI
 {
     public class UISkin
     {
+        public VTex2D WinBord;
+        public VTex2D WinCon;
         public VTex2D But_Norm;
         public VTex2D But_Hover;
         public VTex2D But_Press;
@@ -62,6 +64,38 @@ namespace Vivid.UI
             }
 
             return bi;
+        }
+        public virtual void DrawText(int x,int y,string text)
+        {
+            VFontRenderer.Draw(SmallFont, text, x, y);
+        }
+        public virtual void DrawBoxText(int x,int y,string text)
+        {
+
+        }
+        public virtual void DrawBox(int x,int y,int w,int h)
+        {
+
+        }
+        public virtual void DrawRect(int x,int y,int w,int h)
+        {
+            DrawRect(x, y, w, h, Vector4.One);
+        }
+        public virtual void DrawRect(int x,int y,int w,int h,Vector4 c1)
+        {
+            DrawRect(x, y, w, h, c1, c1);
+        }
+        public virtual void DrawRect(int x,int y,int w,int h,Vector4 c1,Vector4 c2)
+        {
+            VPen.Rect(x, y, w, h, c1, c2);
+        }
+        public virtual void DrawImg(int x,int y,int w,int h,VTex2D img)
+        {
+            DrawImg(x, y, w, h, img, Vector4.One);
+        }
+        public virtual void DrawImg(int x,int y,int w,int h,VTex2D img,Vector4 col)
+        {
+            VPen.Rect(x, y, w, h, img, col);
         }
     }
     public enum ButState

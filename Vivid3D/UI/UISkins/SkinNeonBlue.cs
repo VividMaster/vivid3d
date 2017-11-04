@@ -34,6 +34,9 @@ namespace Vivid.UI.UISkins
             But_Press = But_Norm;
             SmallFont = new VFont("data/font/f1.ttf.vf");
             BigFont = new VFont("data/font/f2.ttf.vf");
+            WinBord = new VTex2D("data/ui/skin/neonblue/winbord.png", LoadMethod.Multi);
+            WinCon = new VTex2D("data/ui/skin/neonblue/wincon.png", LoadMethod.Multi);
+            WinBackCol.W = 0.5f;
         }
         public override void DrawButton(UIButton b)
         {
@@ -59,9 +62,22 @@ namespace Vivid.UI.UISkins
         }
         public override void DrawWindow(UIWindow w)
         {
-            VPen.Rect(w.WidX, w.WidY, w.WidW, w.WidH, WinBackCol);
+            WinBackCol.W = w.Alpha;
+            VPen.Rect(w.WidX, w.WidY, w.WidW, w.WidH,WinBord, WinBackCol);
+            VPen.Rect(w.WidX, w.WidY, w.WidW, w.WidH, WinCon, WinBackCol);
             VPen.Rect(w.WidX, w.WidY, w.WidW, TitleHeight, WinTitCol);
             VFontRenderer.Draw(SmallFont, w.Name, w.WidX+5,w.WidY+2);
+        }
+        public override void DrawBox(int x, int y, int w, int h)
+        {
+            VPen.Rect(x, y, w, h, new Vector4(0.2f, 0.2f, 0.2f, 0.8f));
+            VPen.Rect(x + 2, y + 2, w - 4, h - 4, new Vector4(0.9f, 0.9f, 0.9f, 0.8f));
+            
+        }
+        public override void DrawBoxText(int x, int y, string text)
+        {
+
+            VFontRenderer.Draw(SmallFont, text, x, y, new Vector4(0.1f, 0.1f, 0.1f, 0.9f));
         }
     }
       

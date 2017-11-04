@@ -4,6 +4,8 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 using Vivid.Input;
+using OpenTK;
+using OpenTK.Graphics.OpenGL4;
 namespace Vivid.UI
 {
     public class UIWidget
@@ -67,6 +69,7 @@ namespace Vivid.UI
         public string Name = "";
         public List<String> Text = new List<string>();
         public Dictionary<string, UIWidget> WidMap = new Dictionary<string, UIWidget>();
+        public bool EnableScissorTest = false;
         public void AddWidget(UIWidget w)
         {
             Sub.Add(w);
@@ -279,10 +282,27 @@ namespace Vivid.UI
         }
         public virtual void OnDraw()
         {
-            this.Draw();
-            foreach(var w in Sub)
+        
+           this.Draw();
+            if (EnableScissorTest)
             {
-                w.OnDraw();
+                GL.Enable(EnableCap.ScissorTest);
+                GL.Scissor((int)WidX,Vivid.App.AppInfo.H-((int)WidY+(int)WidH), (int)WidW, (int)WidH);
+                //GL.Viewport((int)WidX, (int)WidY, (int)WidW, (int)WidH);
+
+                foreach (var w in Sub)
+                {
+                   
+                    w.OnDraw();
+                }
+                GL.Disable(EnableCap.ScissorTest);
+            }
+            else
+            {
+                foreach(var w in Sub)
+                {
+                    w.OnDraw();
+                }
             }
         }
         public virtual void UpdateAll()

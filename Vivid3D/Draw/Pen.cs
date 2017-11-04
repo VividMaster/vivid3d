@@ -50,7 +50,7 @@ namespace Vivid.Draw
         {
             GL.Disable(EnableCap.CullFace);
             GL.Disable(EnableCap.DepthTest);
-            GL.Disable(EnableCap.ScissorTest);
+         
             GL.Viewport(0, 0, AppInfo.W, AppInfo.H);
           //  GL.Disable(EnableCap.Blend);
             //GL.Disable(EnableCap.)

@@ -101,6 +101,9 @@
     <Compile Include="UI\UIWidgets\UIButton.cs" />
     <Compile Include="UI\UIWidgets\UIDragZone.cs" />
     <Compile Include="UI\UIWidgets\UIGroup.cs" />
+    <Compile Include="UI\UIWidgets\UIImage.cs" />
+    <Compile Include="UI\UIWidgets\UILabel.cs" />
+    <Compile Include="UI\UIWidgets\UITextEntryLine.cs" />
     <Compile Include="UI\UIWidgets\UIWindow.cs" />
     <Compile Include="Visuals\VRenderer.cs" />
     <Compile Include="Visuals\VRendererSimple.cs" />
