@@ -37,6 +37,9 @@ namespace Vivid.UI.UISkins
             WinBord = new VTex2D("data/ui/skin/neonblue/winbord.png", LoadMethod.Multi);
             WinCon = new VTex2D("data/ui/skin/neonblue/wincon.png", LoadMethod.Multi);
             WinBackCol.W = 0.5f;
+            Click = new Sound.VSoundSource("data/ui/skin/neonblue/click.wav");
+            Type = new Sound.VSoundSource("data/ui/skin/neonblue/type.wav");
+            EOE = new Sound.VSoundSource("data/ui/skin/neonblue/eoe.wav");
         }
         public override void DrawButton(UIButton b)
         {
@@ -44,40 +47,42 @@ namespace Vivid.UI.UISkins
             bi = StateImg(b.State);
             int fw = SmallFont.Width(b.Name);
             int fh = SmallFont.Height();
-            Vector4 col = new Vector4(1, 1, 1, 1);
+            Vector4 col = new Vector4(1, 1, 1, 1*UISys.AlphaMod);
             switch(b.State)
             {
                 case ButState.Norm:
-                    col = new Vector4(0.6f, 0.6f, 0.6f, 0.6f);
+                    col = new Vector4(0.6f, 0.6f, 0.6f, 0.6f*UISys.AlphaMod);
                     break;
                 case ButState.Hover:
-                    col = new Vector4(0.8f, 0.8f, 0.8f, 0.8f);
+                    col = new Vector4(0.8f, 0.8f, 0.8f, 0.8f*UISys.AlphaMod);
                     break;
                 case ButState.Press:
                     col = Vector4.One;
+                    col.W = col.W * UISys.AlphaMod;
                     break;
             }
             VPen.Rect((int)b.WidX, (int)b.WidY, (int)b.WidW, (int)b.WidH, bi, col);
-            VFontRenderer.Draw(SmallFont, b.Name, (int)(b.WidX + b.WidW / 2 - (fw / 2)),(int)( b.WidY + (b.WidH) / 2 - (fh / 2)));
+            VFontRenderer.Draw(SmallFont, b.Name, (int)(b.WidX + b.WidW / 2 - (fw / 2)),(int)( b.WidY + (b.WidH) / 2 - (fh / 2)),new Vector4(1,1,1,UISys.AlphaMod));
         }
         public override void DrawWindow(UIWindow w)
         {
-            WinBackCol.W = w.Alpha;
+            WinBackCol.W = w.Alpha * UISys.AlphaMod;
             VPen.Rect(w.WidX, w.WidY, w.WidW, w.WidH,WinBord, WinBackCol);
             VPen.Rect(w.WidX, w.WidY, w.WidW, w.WidH, WinCon, WinBackCol);
+            WinTitCol.W = w.Alpha * UISys.AlphaMod;
             VPen.Rect(w.WidX, w.WidY, w.WidW, TitleHeight, WinTitCol);
-            VFontRenderer.Draw(SmallFont, w.Name, w.WidX+5,w.WidY+2);
+            VFontRenderer.Draw(SmallFont, w.Name, w.WidX+5,w.WidY+2,new Vector4(1,1,1,UISys.AlphaMod));
         }
         public override void DrawBox(int x, int y, int w, int h)
         {
-            VPen.Rect(x, y, w, h, new Vector4(0.2f, 0.2f, 0.2f, 0.8f));
-            VPen.Rect(x + 2, y + 2, w - 4, h - 4, new Vector4(0.9f, 0.9f, 0.9f, 0.8f));
+            VPen.Rect(x, y, w, h, new Vector4(0.2f, 0.2f, 0.2f, 0.8f*UISys.AlphaMod));
+            VPen.Rect(x + 2, y + 2, w - 4, h - 4, new Vector4(0.9f, 0.9f, 0.9f, 0.8f*UISys.AlphaMod));
             
         }
         public override void DrawBoxText(int x, int y, string text)
         {
 
-            VFontRenderer.Draw(SmallFont, text, x, y, new Vector4(0.1f, 0.1f, 0.1f, 0.9f));
+            VFontRenderer.Draw(SmallFont, text, x, y, new Vector4(0.1f, 0.1f, 0.1f, 0.9f * UISys.AlphaMod));
         }
     }
       

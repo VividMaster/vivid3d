@@ -73,3 +73,4 @@ C:\Proj\Vivid3D\vividstudio3d\Vivid3D\obj\Debug\-Vivid3D.dll
 C:\Proj\Vivid3D\vividstudio3d\Vivid3D\obj\Debug\-Vivid3D.pdb
 C:\Proj\Vivid3D\vividstudio3d\Vivid3D\bin\Debug\AssimpNet.dll
 C:\Proj\Vivid3D\vividstudio3d\Vivid3D\bin\Debug\OpenTK.dll
+C:\Proj\Vivid3D\vividstudio3d\Vivid3D\bin\Debug\irrKlang.NET4.dll

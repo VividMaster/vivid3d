@@ -26,7 +26,10 @@ namespace Vivid.UI
         public static UIWidget Over = null;
         public static UIWidget Pressed = null;
         public static bool Lock = false;
-    
+        public static float AlphaMod = 0.0f;
+        public static float DesAlpha = 1.0f;
+        public float DA=1.0f;
+        public float AA=0.0f;
         public static void PushSkin(UISkin s)
         {
             Skins.Add(s);
@@ -65,6 +68,9 @@ namespace Vivid.UI
         }
         public void Update()
         {
+
+            AA+= (DA - AA) * 0.009f;
+            UISys.AlphaMod = AA;
             PushSkin(ISkin);
             Root.OnUpdate();
             Root.UpdateAll();

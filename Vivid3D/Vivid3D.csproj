@@ -47,6 +47,9 @@
     <Reference Include="AssimpNet">
       <HintPath>..\..\vividide2\bin\Release\AssimpNet.dll</HintPath>
     </Reference>
+    <Reference Include="irrKlang.NET4">
+      <HintPath>..\..\vividide2\bin\Debug\irrKlang.NET4.dll</HintPath>
+    </Reference>
     <Reference Include="OpenTK, Version=3.0.0.0, Culture=neutral, PublicKeyToken=bad199fe84eb3df4, processorArchitecture=MSIL">
       <HintPath>..\..\vividide2\packages\OpenTK.3.0.0-pre\lib\net20\OpenTK.dll</HintPath>
     </Reference>
@@ -85,6 +88,7 @@
     <Compile Include="Scene\VSceneEntity.cs" />
     <Compile Include="Scene\VSceneGraph.cs" />
     <Compile Include="Scene\VSceneNode.cs" />
+    <Compile Include="Sound\VSoundSys.cs" />
     <Compile Include="State\VAppState.cs" />
     <Compile Include="State\VStateManager.cs" />
     <Compile Include="App\VApp.cs" />

@@ -9,6 +9,7 @@ using Vivid.Draw;
 using Vivid.UI.UIWidgets;
 using Vivid.Font;
 using OpenTK;
+using Vivid.Sound;
 namespace Vivid.UI
 {
     public class UISkin
@@ -24,6 +25,11 @@ namespace Vivid.UI
         public Vector4 WinTitCol = new Vector4(0.4f, 0.4f, 0.4f, 0.8f);
         public Vector4 WinTitTextCol = new Vector4(0.9f, 0.9f, 0.9f, 1.0f);
         public Vector4 WinStatTextCol = new Vector4(0.2f, 0.7f, 0.2f, 1.0f);
+        public float AlphaMod = 0.0f;
+        public float DesAlphaMod = 1.0f;
+        public VSoundSource Click;
+        public VSoundSource EOE;
+        public VSoundSource Type;
         public virtual int TitleHeight
         {
             get
@@ -42,6 +48,18 @@ namespace Vivid.UI
         public virtual void DrawButton(UIButton w)
         {
 
+        }
+        public virtual void TypeSound()
+        {
+            Type.Play2D(false);
+        }
+        public virtual void EOESound()
+        {
+            EOE.Play2D(false);
+        }
+        public virtual void ClickSound()
+        {
+            Click.Play2D(false);
         }
         public virtual void DrawWindow(UIWindow w)
         {

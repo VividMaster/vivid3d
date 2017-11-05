@@ -68,6 +68,7 @@ namespace Vivid.App
             }
             VPen.InitDraw();
             VInput.InitInput();
+            Vivid.Sound.VSoundSys.Init();
         }
         protected override void OnMouseDown(MouseButtonEventArgs e)
         {
@@ -171,6 +172,7 @@ namespace Vivid.App
 
         protected override void OnUpdateFrame(FrameEventArgs e)
         {
+            Sound.VSoundSys.Update();
             Stater.Update();
             VInput.MDX = 0;
             VInput.MDY = 0;

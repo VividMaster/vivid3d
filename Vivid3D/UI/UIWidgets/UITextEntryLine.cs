@@ -78,19 +78,19 @@ namespace Vivid.UI.UIWidgets
         }
         private void Add(string k)
         {
-          
+            UISys.Skin().TypeSound();
             if(Name.Length ==0)
             {
                 Name = k;
                 CarrotPos = 1;
-                Console.WriteLine("=0");
+          
                 return;
             }
             if(CarrotPos == Name.Length)
             {
                 Name += k;
                 CarrotPos++;
-                Console.WriteLine("1=1");
+               
                 return;
             }
             if(Name.Length==1 && CarrotPos ==1)
@@ -110,10 +110,15 @@ namespace Vivid.UI.UIWidgets
         }
         private void Del()
         {
-
+            if(Name.Length==0)
+            {
+                UISys.Skin().EOESound();
+                return;
+            }
            
             if (Name.Length == 1)
             {
+                UISys.Skin().TypeSound();
                 Name = "";
                 CarrotPos = 0;
                 return;
@@ -122,11 +127,13 @@ namespace Vivid.UI.UIWidgets
             {
                 Name = Name.Substring(0, CarrotPos - 1) + Name.Substring(CarrotPos);
                 CarrotPos--;
+                UISys.Skin().TypeSound();
             }
             else
             {
                 Name = Name.Substring(0, Name.Length - 1);
                 CarrotPos--;
+                UISys.Skin().TypeSound();
             }
             if (CarrotPos < 0) CarrotPos = 0;
         }
@@ -261,11 +268,19 @@ namespace Vivid.UI.UIWidgets
         }
         public override void KeyDel()
         {
+            if(Name.Length ==0)
+            {
+                CarrotPos = 0;
+                UISys.Skin().EOESound();
+                return;
+            }
             if(CarrotPos ==0)
             {
                 if(Name.Length>0)
                 {
                     Name = Name.Substring(1);
+                    UISys.Skin().TypeSound();
+
                     return;
                 }
                 return;
@@ -275,7 +290,16 @@ namespace Vivid.UI.UIWidgets
                 if (CarrotPos + 1 <= Name.Length)
                 {
                     Name = Name.Substring(0, CarrotPos) + Name.Substring(CarrotPos + 1);
+                    UISys.Skin().TypeSound();
                 }
+                else
+                {
+                    UISys.Skin().EOESound();
+                }
+            }
+            else
+            {
+                UISys.Skin().EOESound();
             }
 
         }
@@ -289,6 +313,7 @@ namespace Vivid.UI.UIWidgets
             }
             else
             {
+                UISys.Skin().EOESound();
                 Name = "";
             }
                     
