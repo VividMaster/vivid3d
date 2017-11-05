@@ -54,6 +54,13 @@ namespace Vivid.Sound
             Src.Stop();
             Src = null;
         }
+        public bool Playing
+        {
+            get
+            {
+                return Src.Finished == false;
+            }
+        }
         public void Stop()
         {
             Src.Stop();

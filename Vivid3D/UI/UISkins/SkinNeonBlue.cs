@@ -14,7 +14,7 @@ namespace Vivid.UI.UISkins
 {
     public class SkinNeonBlue : UISkin 
     {
-        private int titleHeight = 20;
+        private int titleHeight = 25;
         public override int TitleHeight
         {
             get

@@ -31,6 +31,7 @@ namespace Vivid.UI.UIWidgets
         public override void OnMouseDown(UIMouseButton b)
         {
             State = ButState.Press;
+            UISys.Skin().ClickSound();
 
         }
         public override void OnMouseUp(UIMouseButton b)
@@ -38,6 +39,7 @@ namespace Vivid.UI.UIWidgets
 
             if(Click!=null) Click(this, null);
             State = ButState.Norm;
+            Event(new UIEvent(this, EventType.Click));
         }
         public override void OnActivate()
         {

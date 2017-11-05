@@ -386,7 +386,18 @@ namespace Vivid.UI
             }
             return false;
         }
-        
+        public virtual void Event(UIEvent e)
+        {
+            OnEvent(e);
+            if (Top != null)
+            {
+                Top.Event(e);
+            }
+        }
+        public virtual void OnEvent(UIEvent e)
+        {
+
+        }
         public virtual void KeyIn(OpenTK.Input.Key k,bool shift)
         {
 
