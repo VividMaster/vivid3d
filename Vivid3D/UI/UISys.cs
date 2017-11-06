@@ -69,7 +69,7 @@ namespace Vivid.UI
         public void Update()
         {
 
-            AA+= (DA - AA) * 0.009f;
+            AA+= (DA - AA) * 0.02f;
             UISys.AlphaMod = AA;
             PushSkin(ISkin);
             Root.OnUpdate();

@@ -13,6 +13,7 @@ namespace Vivid.UI
         public UISys Owner = null;
         public UIWidget Top;
         public float AR = 1.0f;
+        public UIItem ItemRoot = new UIItem();
         public UISys GetOwn
         {
             get
@@ -70,6 +71,11 @@ namespace Vivid.UI
         public List<String> Text = new List<string>();
         public Dictionary<string, UIWidget> WidMap = new Dictionary<string, UIWidget>();
         public bool EnableScissorTest = false;
+        public UIItem AddItem(UIItem i)
+        {
+            ItemRoot.Add(i);
+            return i;
+        }
         public void AddWidget(UIWidget w)
         {
             Sub.Add(w);
@@ -153,15 +159,15 @@ namespace Vivid.UI
         }
         public virtual bool OnUpdate()
         {
-            foreach (var w in Sub)
+           for(int wi = Sub.Count - 1; wi > -1; wi--)
             {
-                if (w.OnUpdate())
+                UIWidget w = Sub[wi];
+                if(w.OnUpdate())
                 {
-
                     return true;
                 }
-
             }
+          
             if (UISys.Active == null)
             {
                 UISys.IsKeyIn = false;

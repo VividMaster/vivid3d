@@ -14,7 +14,7 @@ namespace Vivid.UI.UIWidgets
         private UIDragZone rightDrag;
         private UIDragZone leftDrag;
         private UIDragZone botDrag;
-        public float Alpha = 0.6f;
+        public float Alpha = 0.85f;
         public Vector4 DragCol = new Vector4(0.4f, 0.4f, 0.4f, 0.4f); 
         public UIWindow(int x, int y, int w, int h, string title, UIWidget top=null) : base(x, y, w, h, title, top)
         {

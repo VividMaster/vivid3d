@@ -36,6 +36,7 @@ namespace Vivid.UI.UISkins
             BigFont = new VFont("data/font/f2.ttf.vf");
             WinBord = new VTex2D("data/ui/skin/neonblue/winbord.png", LoadMethod.Multi);
             WinCon = new VTex2D("data/ui/skin/neonblue/wincon.png", LoadMethod.Multi);
+            WinTitle = new VTex2D("data/ui/skin/neonblue/wintitle.png", LoadMethod.Multi);
             WinBackCol.W = 0.5f;
             Click = new Sound.VSoundSource("data/ui/skin/neonblue/click.wav");
             Type = new Sound.VSoundSource("data/ui/skin/neonblue/type.wav");
@@ -70,7 +71,7 @@ namespace Vivid.UI.UISkins
             VPen.Rect(w.WidX, w.WidY, w.WidW, w.WidH,WinBord, WinBackCol);
             VPen.Rect(w.WidX, w.WidY, w.WidW, w.WidH, WinCon, WinBackCol);
             WinTitCol.W = w.Alpha * UISys.AlphaMod;
-            VPen.Rect(w.WidX, w.WidY, w.WidW, TitleHeight, WinTitCol);
+            VPen.Rect(w.WidX, w.WidY, w.WidW, TitleHeight,WinTitle, WinTitCol);
             VFontRenderer.Draw(SmallFont, w.Name, w.WidX+5,w.WidY+2,new Vector4(1,1,1,UISys.AlphaMod));
         }
         public override void DrawBox(int x, int y, int w, int h)

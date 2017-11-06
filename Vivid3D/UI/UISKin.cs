@@ -16,14 +16,15 @@ namespace Vivid.UI
     {
         public VTex2D WinBord;
         public VTex2D WinCon;
+        public VTex2D WinTitle;
         public VTex2D But_Norm;
         public VTex2D But_Hover;
         public VTex2D But_Press;
         public VFont BigFont = null;
         public VFont SmallFont = null;
-        public Vector4 WinBackCol = new Vector4(0.7f, 0.5f, 0.6f, 0.75f);
-        public Vector4 WinTitCol = new Vector4(0.4f, 0.4f, 0.4f, 0.8f);
-        public Vector4 WinTitTextCol = new Vector4(0.9f, 0.9f, 0.9f, 1.0f);
+        public Vector4 WinBackCol = new Vector4(0.9f, 0.9f, 0.9f, 0.96f);
+        public Vector4 WinTitCol = new Vector4(0.9f, 0.9f, 0.9f, 0.96f);
+        public Vector4 WinTitTextCol = new Vector4(0.2f, 0.2f, 0.2f, 1.0f);
         public Vector4 WinStatTextCol = new Vector4(0.2f, 0.7f, 0.2f, 1.0f);
         public float AlphaMod = 0.0f;
         public float DesAlphaMod = 1.0f;
