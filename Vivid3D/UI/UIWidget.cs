@@ -87,6 +87,11 @@ namespace Vivid.UI
                 _WidH = value / App.AppInfo.H;
             }
         }
+        public bool WidOpen = true;
+        public void Close()
+        {
+            WidOpen = false;
+        }
         public float _WidW = 0, _WidH = 0;
         public float _WidX = 0, _WidY = 0;
         public string Name = "";
@@ -183,7 +188,7 @@ namespace Vivid.UI
         }
         public virtual bool OnUpdate()
         {
-          
+            if (this.WidOpen == false) return false; 
            for(int wi = Sub.Count - 1; wi > -1; wi--)
             {
                 UIWidget w = Sub[wi];
@@ -215,7 +220,31 @@ namespace Vivid.UI
                         if (UISys.KeyIn == OpenTK.Input.Key.BackSpace)
                         {
                             this.KeyBackSpace();
-                        }else if(UISys.KeyIn == OpenTK.Input.Key.Delete)
+                        }
+                        else if (UISys.KeyIn == OpenTK.Input.Key.Tab)
+                        {
+                            if(UISys.Active == this)
+                            {
+                                int ci = 0;
+                                foreach(var w in UISys.Active.Top.Sub)
+                                {
+                                    if (w == UISys.Active) break;
+                                    ci++;
+                                }
+                                UISys.Active.OnDeactivate();
+                                if(ci<UISys.Active.Top.Sub.Count-1)
+                                {
+                                    UISys.Active = UISys.Active.Top.Sub[ci + 1];
+                                    UISys.Active.OnActivate();
+                                }
+                                else
+                                {
+                                    UISys.Active = UISys.Active.Top.Sub[0];
+                                    UISys.Active.OnActivate();
+                                }
+                            }
+                        }
+                        else if (UISys.KeyIn == OpenTK.Input.Key.Delete)
                         {
                             this.KeyDel();
                         }
@@ -524,6 +553,7 @@ namespace Vivid.UI
         }
         public virtual void OnDraw()
         {
+            if (this.WidOpen == false) return;
             if (EnableScissorTest)
             {
                 GL.Enable(EnableCap.ScissorTest);

@@ -39,50 +39,61 @@ namespace Vivid.UI.UIWidgets
         private float sy, ey;
         public int DrawItem(UIItem i, int y, int lc = 0)
         {
-            int dx = lc * 25 + 15;
-
-            if (i.Open)
+            if (y > 0 || y < WidH)
             {
-                UISys.Skin().DrawLine((int)WidX + dx - 10, (int)WidY + y + 12, (int)WidX + dx - 4, (int)WidY + y + 12, new OpenTK.Vector4(1, 0.3f, 0.3f, 1.0f));
 
-            }
-            else
-            {
-                UISys.Skin().DrawLine((int)WidX + dx - 7, (int)WidY + y + 6, (int)WidX + dx - 7, (int)WidY + y + 18, new OpenTK.Vector4(1, 0.3f, 0.3f, 1.0f));
-                UISys.Skin().DrawLine((int)WidX + dx - 10, (int)WidY + y + 12, (int)WidX + dx - 4, (int)WidY + y + 12, new OpenTK.Vector4(1, 0.3f, 0.3f, 1.0f));
 
-            }
-            if ((WidY + y) > WidY)
-            {
-                if (sy < 0) sy = y;
 
-            }
-            if ((WidY + y) < WidY + WidH)
-            {
-                ey = y;
-            }
-            UISys.Skin().DrawBoxText((int)WidX + dx, (int)WidY + y, i.Name);
-            UIPatch p = new UIPatch();
-            p.X = (int)WidX + dx - 8;
-            p.Y = (int)WidY + y + 4;
-            p.W = (int)WidW;
-            p.H = (int)25;
-            p.Action = () => {
+
+                int dx = lc * 25 + 15;
 
                 if (i.Open)
                 {
-                    i.Open = false;
+                    UISys.Skin().DrawLine((int)WidX + dx - 10, (int)WidY + y + 12, (int)WidX + dx - 4, (int)WidY + y + 12, new OpenTK.Vector4(1, 0.3f, 0.3f, 1.0f));
+
                 }
                 else
                 {
-                    i.Open = true;
-                    Open(i);
+                    UISys.Skin().DrawLine((int)WidX + dx - 7, (int)WidY + y + 6, (int)WidX + dx - 7, (int)WidY + y + 18, new OpenTK.Vector4(1, 0.3f, 0.3f, 1.0f));
+                    UISys.Skin().DrawLine((int)WidX + dx - 10, (int)WidY + y + 12, (int)WidX + dx - 4, (int)WidY + y + 12, new OpenTK.Vector4(1, 0.3f, 0.3f, 1.0f));
+
                 }
+                if ((WidY + y) > WidY)
+                {
+                    if (sy < 0) sy = y;
+
+                }
+                if ((WidY + y) < WidY + WidH)
+                {
+                    ey = y;
+                }
+                UISys.Skin().DrawBoxText((int)WidX + dx, (int)WidY + y, i.Name);
+                UIPatch p = new UIPatch();
+                p.X = (int)WidX + dx - 8;
+                p.Y = (int)WidY + y + 4;
+                p.W = (int)WidW;
+                p.H = (int)25;
+                if ((p.X + p.W) > WidX + WidW)
+                {
+                    p.W = (int)WidW - (p.X - (int)WidX);
+                }
+                p.Action = () =>
+                {
+
+                    if (i.Open)
+                    {
+                        i.Open = false;
+                    }
+                    else
+                    {
+                        i.Open = true;
+                        Open(i);
+                    }
 
 
-            };
-            AddPatch(p);
-
+                };
+                AddPatch(p);
+            }
             if (i.Open)
             {
                  y += 25;

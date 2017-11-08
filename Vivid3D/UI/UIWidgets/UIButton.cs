@@ -8,10 +8,12 @@ using Vivid.Input;
 namespace Vivid.UI.UIWidgets
 {
     public delegate void Drag(int x,int y);
+    public delegate void Clicked();
     public class UIButton : UIWidget
     {
+        public Clicked Click;
         public ButState State = ButState.Norm;
-        public EventHandler Click;
+ 
         public EventHandler Enter;
         public EventHandler Leave;
         public EventHandler Pressed;
@@ -41,7 +43,10 @@ namespace Vivid.UI.UIWidgets
         public override void OnMouseUp(UIMouseButton b)
         {
 
-            if(Click!=null) Click(this, null);
+            if (Click != null)
+            {
+                Click();
+            }
             State = ButState.Norm;
             Event(new UIEvent(this, EventType.Click));
             lx = 0;

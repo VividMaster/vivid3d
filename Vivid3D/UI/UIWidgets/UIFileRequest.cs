@@ -8,14 +8,18 @@ using Vivid.Texture;
 using System.IO;
 namespace Vivid.UI.UIWidgets
 {
+    public delegate void SelectFile(string f);
     public class UIFileRequest : UIWindow
     {
+        public SelectFile Selected = null;
         public List<String> Exts = new List<string>();
         public string StartPath = "";
         public UIList Contents;
         public UITextEntryLine File;
         public UIButton OK, Cancel;
         public UITreeView Folders = null;
+        public string SelectedPath = "";
+        public string SelectedDir = "";
         public UIFileRequest(string path,string title="Select File") : base(AppInfo.W/2-330,AppInfo.H/2-260,660,520,title,null)
         {
             Folders = new UITreeView(34, 35, 262, 390, "Folders", this);
@@ -29,7 +33,9 @@ namespace Vivid.UI.UIWidgets
                     {
                         n.Sub.Clear();
                     }
+                    
                     DirectoryInfo f = new DirectoryInfo(n.Name);
+                    SelectedDir = f.FullName;
                     Console.WriteLine("Reading Folder:" + n.Name);
                     foreach(var of in f.GetDirectories())
                     {
@@ -37,6 +43,11 @@ namespace Vivid.UI.UIWidgets
                         nf.Name = of.FullName;
                         nf.Open = false;
                         n.Add(nf);
+                    }
+                    Contents.ItemRoot.Sub.Clear();
+                    foreach(var ff in f.GetFiles())
+                    {
+                        Contents.ItemRoot.Sub.Add(new UIItem(ff.Name));
                     }
                     
                 }
@@ -47,7 +58,18 @@ namespace Vivid.UI.UIWidgets
             OK = new UIButton(34, 470, 100, 30, "OK", this);
             Cancel = new UIButton(160, 470, 100, 30, "Cancel", this);
             Folders.AddItem(new UIItem("Drives")).Add(new UIItem("c:/"));
+            Contents.Select = (i) =>
+            {
+                File.Name = i.Name;
+            };
+            OK.Click = () =>
+            {
 
+                Selected(SelectedDir+"\\"+File.Name);
+                SelectedPath = File.Name;
+                this.Close();
+
+            };
         }
     }
 }

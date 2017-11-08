@@ -64,6 +64,10 @@ namespace Vivid.UI.UISkins
             }
             VPen.Rect((int)b.WidX, (int)b.WidY, (int)b.WidW, (int)b.WidH, bi, col);
             VFontRenderer.Draw(SmallFont, b.Name, (int)(b.WidX + b.WidW / 2 - (fw / 2)),(int)( b.WidY + (b.WidH) / 2 - (fh / 2)),new Vector4(1,1,1,UISys.AlphaMod));
+            if(b==UISys.Active)
+            {
+                VPen.Line(b.WidX, b.WidY + 4, b.WidX + b.WidW, b.WidY + 4, new Vector4(1, 1, 1, 1));
+            }
         }
         public override void DrawWindow(UIWindow w)
         {

@@ -7,20 +7,65 @@ using Vivid.Font;
 
 namespace Vivid.UI.UIWidgets
 {
-    public class UIList : UIWidget
+    public delegate void SelectNode(UIItem i);
+    public class UIList: UIWidget
     {
-       
-        public UIList(int x, int y, int w, int h, string tit = "", UIWidget top = null) : base(x, y, w, h, tit, top)
+        public UIScrollBarV Scroll;
+        public SelectNode Select= null;
+        public UIList(int x, int y, int w, int h, string title, UIWidget root = null) : base(x, y, w, h, title, root)
         {
-
+            Scroll = new UIScrollBarV(w, 0, h, this);
+            EnableScissorTest = true;
         }
         public override void Draw()
         {
-            UISys.Skin().DrawBox((int)WidX, (int)WidY, (int)WidW, (int)WidH);
-            UISys.Skin().DrawBoxText((int)(WidX + WidW / 2 - UISys.Skin().SmallFont.Width(Name) / 2), (int)WidY+8, Name);
 
+            Patches.Clear();
+            UISys.Skin().DrawBox((int)WidX, (int)WidY, (int)WidW, (int)WidH);
+            UISys.Skin().DrawBoxText((int)(WidX + WidW / 2 - UISys.Skin().SmallFont.Width(Name) / 2), (int)WidY + 8, Name);
+            int oy = Scroll.Current;
+            int dy = 30 - oy;
+            Console.WriteLine("Cur:" + Scroll.Current);
+            sy = -1;
+            ey = -1;
+            foreach (var i in ItemRoot.Sub)
+            {
+
+                dy = DrawItem(i, dy);
+            }
+            Scroll.Max = (dy + oy);
+            Scroll.ViewH = (ey - sy);
+            Scroll.Rebuild();
         }
-       
+        private float sy, ey;
+        public int DrawItem(UIItem i, int y, int lc = 0)
+        {
+            int dx = lc * 25 + 15;
+
+            if ((WidY + y) > WidY)
+            {
+                if (sy < 0) sy = y;
+
+            }
+            if ((WidY + y) < WidY + WidH)
+            {
+                ey = y;
+            }
+            UISys.Skin().DrawBoxText((int)WidX + dx, (int)WidY + y, i.Name);
+            UIPatch p = new UIPatch();
+            p.X = (int)WidX + dx - 8;
+            p.Y = (int)WidY + y + 4;
+            p.W = (int)WidW;
+            p.H = (int)25;
+            p.Action = () => {
+
+                Select(i);
+
+            };
+            AddPatch(p);
+
+
+            return y + 25;
+        }
     }
-   
 }
