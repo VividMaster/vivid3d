@@ -21,7 +21,7 @@ namespace Vivid.App
     }
     public class VApp : GameWindow
     {
-
+        public static VApp Link = null;
         private string _Title = "";
         private OpenTK.Graphics.Color4 _BgCol = OpenTK.Graphics.Color4.Black;
         public VStateManager Stater = new VStateManager();
@@ -51,9 +51,22 @@ namespace Vivid.App
             get { return _Title; }
             set { _Title = value;Title = value; }
         }
+        public void MakeFixed()
+        {
+            WindowBorder = WindowBorder.Fixed;
+        }
+        public void MakeWindowless()
+        {
+            this.WindowBorder = WindowBorder.Hidden;
+        }
+        public void MakeFullscreen()
+        {
+            this.WindowState = WindowState.Fullscreen;
+        }
         public VApp(string app, int width, int height, bool full) : base(width, height, OpenTK.Graphics.GraphicsMode.Default, app, full ? GameWindowFlags.Fullscreen : GameWindowFlags.Default, DisplayDevice.Default, 4, 5, OpenTK.Graphics.GraphicsContextFlags.ForwardCompatible)
 
         {
+            Link = this;
             _Title = app;
             AppInfo.W = width;
             AppInfo.H = height;
@@ -139,6 +152,10 @@ namespace Vivid.App
         }
         protected override void OnResize(EventArgs e)
         {
+            AppInfo.W = Width;
+            AppInfo.H = Height;
+            AppInfo.RW = Width;
+            AppInfo.RH = Height;
             GL.Viewport(0, 0, Width, Height);
             GL.Scissor(0, 0, Width, Height);
             GL.Disable(EnableCap.Blend);

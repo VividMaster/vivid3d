@@ -8,7 +8,7 @@ namespace Vivid.UI
 {
     public class UIItem
     {
-        public bool Open = true;
+        public bool Open = false;
         public string Name = "";
         public VTex2D Img = null;
         public object Link = "";

@@ -31,24 +31,24 @@ namespace Vivid.UI
         {
             get
             {
-                if (Top == null) return _WidX;
-                return Top.WidX + _WidX;
+                if (Top == null) return _WidX * Vivid.App.AppInfo.RW;
+                return Top.WidX + _WidX * Vivid.App.AppInfo.RW;
             }
             set
             {
-                _WidX = value;
+                _WidX = value / Vivid.App.AppInfo.W;
             }
         }
         public float WidY
         {
             get
             {
-                if (Top == null) return _WidY;
-                return Top.WidY + _WidY;
+                if (Top == null) return _WidY * Vivid.App.AppInfo.RW;
+                return Top.WidY + _WidY * Vivid.App.AppInfo.RH;
             }
             set
             {
-                _WidY = value;
+                _WidY = value / Vivid.App.AppInfo.H;
             }
         }
         public float LocX
@@ -65,12 +65,35 @@ namespace Vivid.UI
                 _WidY = value;
             }
         }
-        public float WidW = 0, WidH = 0;
-        private float _WidX = 0, _WidY = 0;
+        public float WidW
+        {
+            get
+            {
+                return _WidW * Vivid.App.AppInfo.RW;
+            }
+            set
+            {
+                _WidW = value / App.AppInfo.W;
+            }
+        }
+        public float WidH
+        {
+            get
+            {
+                return _WidH * Vivid.App.AppInfo.H;
+            }
+            set
+            {
+                _WidH = value / App.AppInfo.H;
+            }
+        }
+        public float _WidW = 0, _WidH = 0;
+        public float _WidX = 0, _WidY = 0;
         public string Name = "";
         public List<String> Text = new List<string>();
         public Dictionary<string, UIWidget> WidMap = new Dictionary<string, UIWidget>();
         public bool EnableScissorTest = false;
+        public bool NonActive = false;
         public UIItem AddItem(UIItem i)
         {
             ItemRoot.Add(i);
@@ -87,11 +110,12 @@ namespace Vivid.UI
             {
                 top.AddWidget(this);
             }
-          
+
             WidX = x;
             WidY = y;
             WidW = w;
             WidH = h;
+           
             Name = text;
         
         }
@@ -159,13 +183,16 @@ namespace Vivid.UI
         }
         public virtual bool OnUpdate()
         {
+          
            for(int wi = Sub.Count - 1; wi > -1; wi--)
             {
                 UIWidget w = Sub[wi];
-                if(w.OnUpdate())
-                {
-                    return true;
-                }
+               
+                    if (w.OnUpdate())
+                    {
+                        return true;
+                    }
+               
             }
           
             if (UISys.Active == null)
@@ -336,6 +363,23 @@ namespace Vivid.UI
                             UISys.Active = this;
                             this.OnActivate();
                             UISys.Lock = true;
+                            foreach(var p in Patches)
+                            {
+                                if(VInput.MX>=p.X)
+                                {
+                                    if (VInput.MY >= p.Y)
+                                    {
+                                        if (VInput.MX <= (p.X + p.W))
+                                        {
+                                            if (VInput.MY <= (p.Y + p.H))
+                                            {
+                                                Console.WriteLine("Patching!");
+                                                p.Action();
+                                            }
+                                        }
+                                    }
+                                }
+                            }
                         }
                     }
                 }
@@ -355,6 +399,23 @@ namespace Vivid.UI
                         Console.WriteLine("Pushed:" + Name);
                         OnMouseDown(UIMouseButton.Left);
                         UISys.Pressed = this;
+                        foreach (var p in Patches)
+                        {
+                            if (VInput.MX >= p.X)
+                            {
+                                if (VInput.MY >= p.Y)
+                                {
+                                    if (VInput.MX <= (p.X + p.W))
+                                    {
+                                        if (VInput.MY <= (p.Y + p.H))
+                                        {
+                                            Console.WriteLine("Patching!");
+                                            p.Action();
+                                        }
+                                    }
+                                }
+                            }
+                        }
                     }
 
                 }
@@ -437,8 +498,8 @@ namespace Vivid.UI
         }
         public virtual void Move(int x,int y)
         {
-            _WidX += x;
-            _WidY += y;
+            WidX = WidX += x;
+            WidY =WidY += y;
         }
         public virtual void Resized()
         {
@@ -446,8 +507,8 @@ namespace Vivid.UI
         }
         public virtual void Resize(int x,int y)
         {
-            WidW += x;
-            WidH += y;
+            WidW = WidW + x;
+            WidH = WidH + y;
             Resized();
         }
         public virtual void ChangeSize(int w,int h)
@@ -456,15 +517,27 @@ namespace Vivid.UI
             WidH = h;
             Resized();
         }
+        public List<Vivid.UI.UIWidgets.UIPatch> Patches = new List<Vivid.UI.UIWidgets.UIPatch>();
+        public void AddPatch(Vivid.UI.UIWidgets.UIPatch p)
+        {
+            Patches.Add(p);
+        }
         public virtual void OnDraw()
         {
-        
-           this.Draw();
+            if (EnableScissorTest)
+            {
+                GL.Enable(EnableCap.ScissorTest);
+                GL.Scissor((int)WidX, Vivid.App.AppInfo.H - ((int)WidY + (int)WidH), (int)WidW, (int)WidH);
+                GL.Viewport((int)WidX, (int)WidY, (int)WidW, (int)WidH);
+
+            }
+                this.Draw();
+            GL.Disable(EnableCap.ScissorTest);
             if (EnableScissorTest)
             {
                 GL.Enable(EnableCap.ScissorTest);
                 GL.Scissor((int)WidX,Vivid.App.AppInfo.H-((int)WidY+(int)WidH), (int)WidW, (int)WidH);
-                //GL.Viewport((int)WidX, (int)WidY, (int)WidW, (int)WidH);
+                GL.Viewport((int)WidX, (int)WidY, (int)WidW, (int)WidH);
 
                 foreach (var w in Sub)
                 {

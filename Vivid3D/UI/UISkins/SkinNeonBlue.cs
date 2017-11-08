@@ -68,11 +68,18 @@ namespace Vivid.UI.UISkins
         public override void DrawWindow(UIWindow w)
         {
             WinBackCol.W = w.Alpha * UISys.AlphaMod;
-            VPen.Rect(w.WidX, w.WidY, w.WidW, w.WidH,WinBord, WinBackCol);
+            VPen.Rect(w.WidX, w.WidY, w.WidW, w.WidH, WinBord, WinBackCol);
             VPen.Rect(w.WidX, w.WidY, w.WidW, w.WidH, WinCon, WinBackCol);
-            WinTitCol.W = w.Alpha * UISys.AlphaMod;
-            VPen.Rect(w.WidX, w.WidY, w.WidW, TitleHeight,WinTitle, WinTitCol);
-            VFontRenderer.Draw(SmallFont, w.Name, w.WidX+5,w.WidY+2,new Vector4(1,1,1,UISys.AlphaMod));
+            if (w.DrawTitle)
+            {
+                WinTitCol.W = w.Alpha * UISys.AlphaMod;
+                VPen.Rect(w.WidX, w.WidY, w.WidW, TitleHeight, WinTitle, WinTitCol);
+                VFontRenderer.Draw(SmallFont, w.Name, w.WidX + 5, w.WidY + 2, new Vector4(1, 1, 1, UISys.AlphaMod));
+            }
+        }
+        public override void DrawLine(int x, int y, int x2, int y2, Vector4 col)
+        {
+            VPen.Line(x, y, x2, y2, col);
         }
         public override void DrawBox(int x, int y, int w, int h)
         {

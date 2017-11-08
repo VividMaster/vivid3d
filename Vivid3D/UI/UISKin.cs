@@ -84,6 +84,10 @@ namespace Vivid.UI
 
             return bi;
         }
+        public virtual void DrawLine(int x,int y,int x2,int y2,Vector4 col)
+        {
+
+        }
         public virtual void DrawText(int x,int y,string text)
         {
             VFontRenderer.Draw(SmallFont, text, x, y);

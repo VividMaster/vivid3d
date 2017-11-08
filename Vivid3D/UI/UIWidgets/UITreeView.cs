@@ -6,35 +6,93 @@ using System.Threading.Tasks;
 
 namespace Vivid.UI.UIWidgets
 {
+    public delegate void OpenNode(UIItem i);
     public class UITreeView : UIWidget
     {
         public UIScrollBarV Scroll;
-        
+        public OpenNode Open = null;
         public UITreeView(int x, int y, int w, int h, string title, UIWidget root = null) : base(x, y, w, h, title, root)
         {
-            Scroll = new UIScrollBarV(w - 15, 0, h, this);
+            Scroll = new UIScrollBarV(w, 0, h, this);
+            EnableScissorTest = true;
         }
         public override void Draw()
         {
+
+            Patches.Clear();
             UISys.Skin().DrawBox((int)WidX, (int)WidY, (int)WidW,(int)WidH);
             UISys.Skin().DrawBoxText((int)(WidX + WidW / 2 - UISys.Skin().SmallFont.Width(Name) / 2), (int)WidY + 8, Name);
-
-            int dy = 25;
+            int oy = Scroll.Current;
+            int dy = 25-oy;
+            Console.WriteLine("Cur:" + Scroll.Current);
+            sy = -1;
+            ey = -1;
             foreach (var i in ItemRoot.Sub)
             {
+                
                 dy=DrawItem(i, dy);
             }
+            Scroll.Max = (dy + oy);
+            Scroll.ViewH = (ey - sy);
+            Scroll.Rebuild();
         }
-        public int DrawItem(UIItem i,int y,int lc=0)
+        private float sy, ey;
+        public int DrawItem(UIItem i, int y, int lc = 0)
         {
-            int dx = lc * 25 + 5;
-            UISys.Skin().DrawBoxText((int)WidX + dx, (int)WidY + y, i.Name);
-            y += 25;
-            foreach (var si in i.Sub)
+            int dx = lc * 25 + 15;
+
+            if (i.Open)
             {
-                if(si.Open == true)
+                UISys.Skin().DrawLine((int)WidX + dx - 10, (int)WidY + y + 12, (int)WidX + dx - 4, (int)WidY + y + 12, new OpenTK.Vector4(1, 0.3f, 0.3f, 1.0f));
+
+            }
+            else
+            {
+                UISys.Skin().DrawLine((int)WidX + dx - 7, (int)WidY + y + 6, (int)WidX + dx - 7, (int)WidY + y + 18, new OpenTK.Vector4(1, 0.3f, 0.3f, 1.0f));
+                UISys.Skin().DrawLine((int)WidX + dx - 10, (int)WidY + y + 12, (int)WidX + dx - 4, (int)WidY + y + 12, new OpenTK.Vector4(1, 0.3f, 0.3f, 1.0f));
+
+            }
+            if ((WidY + y) > WidY)
+            {
+                if (sy < 0) sy = y;
+
+            }
+            if ((WidY + y) < WidY + WidH)
+            {
+                ey = y;
+            }
+            UISys.Skin().DrawBoxText((int)WidX + dx, (int)WidY + y, i.Name);
+            UIPatch p = new UIPatch();
+            p.X = (int)WidX + dx - 8;
+            p.Y = (int)WidY + y + 4;
+            p.W = (int)WidW;
+            p.H = (int)25;
+            p.Action = () => {
+
+                if (i.Open)
                 {
-                    y+=DrawItem(si, y, lc + 1);
+                    i.Open = false;
+                }
+                else
+                {
+                    i.Open = true;
+                    Open(i);
+                }
+
+
+            };
+            AddPatch(p);
+
+            if (i.Open)
+            {
+                 y += 25;
+
+                int ny = y;
+                foreach (var si in i.Sub)
+                {
+
+                    y=DrawItem(si,y, lc + 1);
+                    y += 25;
                 }
             }
             return y;

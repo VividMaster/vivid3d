@@ -7,6 +7,7 @@ using Vivid.UI;
 using Vivid.Input;
 namespace Vivid.UI.UIWidgets
 {
+    public delegate void Drag(int x,int y);
     public class UIButton : UIWidget
     {
         public ButState State = ButState.Norm;
@@ -14,6 +15,7 @@ namespace Vivid.UI.UIWidgets
         public EventHandler Enter;
         public EventHandler Leave;
         public EventHandler Pressed;
+        public Drag Dragged;
         public UIButton(float x, float y, float w, float h, string text, UIWidget root) : base(x, y, w, h, text, root)
         {
 
@@ -30,9 +32,11 @@ namespace Vivid.UI.UIWidgets
         }
         public override void OnMouseDown(UIMouseButton b)
         {
+            lx = VInput.MX;
+            ly = VInput.MY;
             State = ButState.Press;
             UISys.Skin().ClickSound();
-
+       
         }
         public override void OnMouseUp(UIMouseButton b)
         {
@@ -40,6 +44,8 @@ namespace Vivid.UI.UIWidgets
             if(Click!=null) Click(this, null);
             State = ButState.Norm;
             Event(new UIEvent(this, EventType.Click));
+            lx = 0;
+            ly = 0;
         }
         public override void OnActivate()
         {
@@ -49,10 +55,18 @@ namespace Vivid.UI.UIWidgets
         {
          
         }
-      
+        int lx, ly;
         public override void Draw()
         {
-       
+            if (State == ButState.Press)
+            {
+                if (Dragged != null)
+                {
+                    Dragged(VInput.MX - lx, VInput.MY - ly);
+                    lx = VInput.MX;
+                    ly = VInput.MY;
+                }
+            }
             UISys.Skin().DrawButton(this);
 
         }

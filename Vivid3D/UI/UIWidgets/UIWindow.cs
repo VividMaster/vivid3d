@@ -9,12 +9,16 @@ namespace Vivid.UI.UIWidgets
 {
     public class UIWindow : UIWidget
     {
+        public Vivid.App.VApp AppLink = null;
         private UIDragZone titleDrag;
         private UIDragZone sizeDrag;
         private UIDragZone rightDrag;
         private UIDragZone leftDrag;
         private UIDragZone botDrag;
         public float Alpha = 0.85f;
+        public bool PosLocked = false;
+        public bool SizeLocked = false;
+        public bool DrawTitle = true;
         public Vector4 DragCol = new Vector4(0.4f, 0.4f, 0.4f, 0.4f); 
         public UIWindow(int x, int y, int w, int h, string title, UIWidget top=null) : base(x, y, w, h, title, top)
         {
@@ -23,6 +27,7 @@ namespace Vivid.UI.UIWidgets
             botDrag = new UIDragZone(0, (int)WidH - 10, (int)WidW-15, 10, this);
             rightDrag = new UIDragZone((int)WidW - 10, UISys.Skin().TitleHeight + 1, 10, (int)WidH - 15 - UISys.Skin().TitleHeight, this);
             leftDrag = new UIDragZone(0, UISys.Skin().TitleHeight + 1, 10, (int)WidH - UISys.Skin().TitleHeight - 2, this);
+        
             EnableScissorTest = true;
         }
         public override void Resized()
@@ -40,22 +45,32 @@ namespace Vivid.UI.UIWidgets
         public override void Draw()
         {
             UISys.Skin().DrawWindow(this);
-            UISys.Skin().DrawRect((int)WidX + (int)WidW - 15, (int)WidY + (int)WidH - 15, 15, 15,DragCol);
-            UISys.Skin().DrawRect((int)WidX, (int)WidY+UISys.Skin().TitleHeight + 1, 10, (int)WidH - UISys.Skin().TitleHeight - 2,DragCol);
-            UISys.Skin().DrawRect((int)WidX, (int)WidY+(int)WidH - 10, (int)WidW - 15, 10,DragCol);
-            UISys.Skin().DrawRect((int)WidX + (int)WidW - 10, (int)WidY + UISys.Skin().TitleHeight + 1, 10, (int)WidH - UISys.Skin().TitleHeight - 16,DragCol);
+           // UISys.Skin().DrawRect((int)WidX + (int)WidW - 15, (int)WidY + (int)WidH - 15, 15, 15,DragCol);
+          //  UISys.Skin().DrawRect((int)WidX, (int)WidY+UISys.Skin().TitleHeight + 1, 10, (int)WidH - UISys.Skin().TitleHeight - 2,DragCol);
+         //   UISys.Skin().DrawRect((int)WidX, (int)WidY+(int)WidH - 10, (int)WidW - 15, 10,DragCol);
+       //     UISys.Skin().DrawRect((int)WidX + (int)WidW - 10, (int)WidY + UISys.Skin().TitleHeight + 1, 10, (int)WidH - UISys.Skin().TitleHeight - 16,DragCol);
         }
         public override void Update()
         {
             //Console.WriteLine("X:" + titleDrag.DraggedX + " Y:" + titleDrag.DraggedY);
-            
-            Move(titleDrag.DraggedX, titleDrag.DraggedY);
-            Resize(sizeDrag.DraggedX, sizeDrag.DraggedY);
-            Resize(rightDrag.DraggedX, 0);
-            Resize(0, botDrag.DraggedY);
-            Move(leftDrag.DraggedX, 0);
-            Resize(-leftDrag.DraggedX, 0);
+         
+            if (PosLocked == false)
+            {
 
+                    Move(titleDrag.DraggedX, titleDrag.DraggedY);
+            
+            }
+
+            if (SizeLocked == false)
+            {
+               
+                    Resize(sizeDrag.DraggedX, sizeDrag.DraggedY);
+                    Resize(rightDrag.DraggedX, 0);
+                    Resize(0, botDrag.DraggedY);
+                    Move(leftDrag.DraggedX, 0);
+                    Resize(-leftDrag.DraggedX, 0);
+            
+            }
         }
     }
 }
