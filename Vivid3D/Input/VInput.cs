@@ -38,7 +38,7 @@ namespace Vivid.Input
         public static string ValidKeys = "abcdefghijklmnopqrstuvwxyzNumber1Number2Number3Number4Number5Number6Number7Number8Number9Number0!@#$%^&*()_,./<>?||   ";
         public static bool TextKey(Key k)
         {
-            Console.WriteLine("Key:"+k.ToString());
+           
             string ks = k.ToString().ToLower();
             if (ValidKeys.Contains(ks))
             {

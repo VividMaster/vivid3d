@@ -36,7 +36,7 @@ namespace Vivid.UI.UIWidgets
                     
                     DirectoryInfo f = new DirectoryInfo(n.Name);
                     SelectedDir = f.FullName;
-                    Console.WriteLine("Reading Folder:" + n.Name);
+                
                     foreach(var of in f.GetDirectories())
                     {
                         UIItem nf = new UIItem();

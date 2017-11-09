@@ -33,7 +33,7 @@ namespace Vivid.UI.UIWidgets
             //Down = new UIButton(0, WidH - 15, 15, 15, "\\/", this);
             Slide.Dragged = (int mx, int my) =>
             {
-                Console.WriteLine("WidY:" + Slide._WidY + " MY:" + my);
+            
                 Slide._WidY = Slide._WidY + ((float)my / (float)App.AppInfo.H);
                 
             };

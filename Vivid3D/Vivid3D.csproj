@@ -104,6 +104,7 @@
     <Compile Include="Texture\VTexCube.cs" />
     <Compile Include="Texture\VTexDepth.cs" />
     <Compile Include="Texture\VTextureUtil.cs" />
+    <Compile Include="Transient\VTrans.cs" />
     <Compile Include="UI\UIEvent.cs" />
     <Compile Include="UI\UIEventHandler.cs" />
     <Compile Include="UI\UIItem.cs" />
@@ -118,6 +119,7 @@
     <Compile Include="UI\UIWidgets\UIImage.cs" />
     <Compile Include="UI\UIWidgets\UILabel.cs" />
     <Compile Include="UI\UIWidgets\UIList.cs" />
+    <Compile Include="UI\UIWidgets\UIPanel.cs" />
     <Compile Include="UI\UIWidgets\UIPatch.cs" />
     <Compile Include="UI\UIWidgets\UIScrollBarV.cs" />
     <Compile Include="UI\UIWidgets\UITextEntryLine.cs" />

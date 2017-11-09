@@ -25,7 +25,7 @@ namespace Vivid.UI.UIWidgets
             UISys.Skin().DrawBoxText((int)(WidX + WidW / 2 - UISys.Skin().SmallFont.Width(Name) / 2), (int)WidY + 8, Name);
             int oy = Scroll.Current;
             int dy = 30 - oy;
-            Console.WriteLine("Cur:" + Scroll.Current);
+         
             sy = -1;
             ey = -1;
             foreach (var i in ItemRoot.Sub)

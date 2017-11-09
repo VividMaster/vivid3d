@@ -284,7 +284,7 @@ namespace Vivid.Texture
         public void T_LoadTex()
         {
        
-            TexData = new Bitmap(Path);
+            TexData = new Bitmap(Path); 
 
             W = TexData.Width;
             H = TexData.Height;

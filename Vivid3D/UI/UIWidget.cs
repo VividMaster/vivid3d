@@ -402,7 +402,7 @@ namespace Vivid.UI
                                         {
                                             if (VInput.MY <= (p.Y + p.H))
                                             {
-                                                Console.WriteLine("Patching!");
+                                              
                                                 p.Action();
                                             }
                                         }
@@ -425,7 +425,7 @@ namespace Vivid.UI
 
                     if (UISys.Pressed == null)
                     {
-                        Console.WriteLine("Pushed:" + Name);
+               
                         OnMouseDown(UIMouseButton.Left);
                         UISys.Pressed = this;
                         foreach (var p in Patches)
@@ -438,7 +438,7 @@ namespace Vivid.UI
                                     {
                                         if (VInput.MY <= (p.Y + p.H))
                                         {
-                                            Console.WriteLine("Patching!");
+                                          
                                             p.Action();
                                         }
                                     }
@@ -452,7 +452,7 @@ namespace Vivid.UI
                 {
                     if (UISys.Pressed == this)
                     {
-                        Console.WriteLine("Released.");
+                     
                         OnMouseUp(UIMouseButton.Left);
                         UISys.Pressed = null;
                     }
@@ -464,7 +464,7 @@ namespace Vivid.UI
                 {
                     if (UISys.Pressed == this)
                     {
-                        Console.WriteLine("Released.");
+                    
                         UISys.Pressed.OnMouseUp(UIMouseButton.Left);
                         UISys.Pressed = null;
                     }

@@ -6,16 +6,16 @@ using System.Threading.Tasks;
 
 namespace Vivid.UI.UIWidgets
 {
-    public class UILabel : UIWidget
+    public class UIPanel : UIWidget
+        
     {
-        public UILabel(int x, int y, string text, UIWidget top = null) : base(x, y, 0, 0, text, top)
+        public UIPanel(int x,int y,int w,int h,string title,UIWidget top=null) : base(x,y,w,h,title,top)
         {
-         
+
         }
         public override void Draw()
         {
-
-            UISys.Skin().DrawText((int)WidX, (int)WidY, Name);
+            UISys.Skin().DrawPanel(this);
         }
     }
 }

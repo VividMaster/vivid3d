@@ -209,9 +209,9 @@ namespace Vivid.UI.UIWidgets
                 string cs = k.ToString();
                 if (cs.Contains("Number"))
                 {
-                    Console.WriteLine("Number:" + cs);
+                   
                     string ac= cs.Substring(6, 1);
-                    Console.WriteLine("AC:" + ac);
+              
                     if (shift)
                     {
                         switch(int.Parse(ac))

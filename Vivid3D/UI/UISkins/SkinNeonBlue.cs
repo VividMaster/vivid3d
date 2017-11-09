@@ -69,6 +69,11 @@ namespace Vivid.UI.UISkins
                 VPen.Line(b.WidX, b.WidY + 4, b.WidX + b.WidW, b.WidY + 4, new Vector4(1, 1, 1, 1));
             }
         }
+        public override void DrawPanel(UIPanel p)
+        {
+            VPen.Rect(p.WidX, p.WidY, p.WidW, p.WidH, new Vector4(0.7f, 0.7f, 0.7f, 0.9f));
+            VFontRenderer.Draw(SmallFont, p.Name, p.WidX+5, p.WidY+5);
+        }
         public override void DrawWindow(UIWindow w)
         {
             WinBackCol.W = w.Alpha * UISys.AlphaMod;

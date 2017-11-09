@@ -17,6 +17,7 @@ namespace Vivid.UI.UIWidgets
         }
         public override void Draw()
         {
+            if (Img == null) return;
             UISys.Skin().DrawImg((int)WidX,(int)WidY,(int) WidW, (int)WidH, Img);
         }
     }

@@ -204,7 +204,7 @@ namespace Vivid.App
                 fpsL = Environment.TickCount + 1000;
                 fps = frames;
                 frames = 0;
-                Console.WriteLine("FPS:" + fps);
+    
             }
             frames++;
             Title = AppName;
