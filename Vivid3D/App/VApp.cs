@@ -174,7 +174,7 @@ namespace Vivid.App
 
             GL.ClearDepth(1.0f);
             GL.DepthFunc(DepthFunction.Less);
-
+            UI.UISys.ActiveUI.OnResize(Width, Height);
           // GL.DepthFunc(DepthFunction.Lequal);
         }
 

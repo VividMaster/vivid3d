@@ -52,15 +52,18 @@ namespace Vivid.UI.UIWidgets
                 ey = y;
             }
             UISys.Skin().DrawBoxText((int)WidX + dx, (int)WidY + y, i.Name);
-            UIPatch p = new UIPatch();
-            p.X = (int)WidX + dx - 8;
-            p.Y = (int)WidY + y + 4;
-            p.W = (int)WidW;
-            p.H = (int)25;
-            p.Action = () => {
+            UIPatch p = new UIPatch
+            {
+                X = (int)WidX + dx - 8,
+                Y = (int)WidY + y + 4,
+                W = (int)WidW,
+                H = (int)25,
+                Action = () =>
+                {
 
-                Select(i);
+                    Select(i);
 
+                }
             };
             AddPatch(p);
 

@@ -33,9 +33,11 @@ namespace Vivid.Font
 
             for(int c=0;c<255;c++)
             {
-                VGlyph g = new VGlyph();
-                g.W = r.ReadInt16();
-                g.H = r.ReadInt16();
+                VGlyph g = new VGlyph
+                {
+                    W = r.ReadInt16(),
+                    H = r.ReadInt16()
+                };
 
                 byte[] img = new byte[g.W * g.H * 4];
 

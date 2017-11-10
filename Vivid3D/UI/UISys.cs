@@ -30,6 +30,7 @@ namespace Vivid.UI
         public static float DesAlpha = 1.0f;
         public float DA=1.0f;
         public float AA=0.0f;
+        public static UISys ActiveUI = null;
         public static void PushSkin(UISkin s)
         {
             Skins.Add(s);
@@ -60,11 +61,18 @@ namespace Vivid.UI
         }
         public UISys()
         {
+            ActiveUI = this;
             Root = new UIGroup();
         }
         public void Add(UIWidget w)
         {
             Root.AddWidget(w);
+        }
+        public void OnResize(int w,int h)
+        {
+            PushSkin(ISkin);
+            Root.OnAppResize(w, h);
+            PopSkin();
         }
         public void Update()
         {

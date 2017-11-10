@@ -119,9 +119,13 @@
     <Compile Include="UI\UIWidgets\UIImage.cs" />
     <Compile Include="UI\UIWidgets\UILabel.cs" />
     <Compile Include="UI\UIWidgets\UIList.cs" />
+    <Compile Include="UI\UIWidgets\UIMenu.cs" />
+    <Compile Include="UI\UIWidgets\UIMenuItem.cs" />
     <Compile Include="UI\UIWidgets\UIPanel.cs" />
     <Compile Include="UI\UIWidgets\UIPatch.cs" />
     <Compile Include="UI\UIWidgets\UIScrollBarV.cs" />
+    <Compile Include="UI\UIWidgets\UISplitterH.cs" />
+    <Compile Include="UI\UIWidgets\UISplitterV.cs" />
     <Compile Include="UI\UIWidgets\UITextEntryLine.cs" />
     <Compile Include="UI\UIWidgets\UITreeView.cs" />
     <Compile Include="UI\UIWidgets\UIWindow.cs" />

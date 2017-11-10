@@ -490,6 +490,18 @@ namespace Vivid.UI
                 Top.Event(e);
             }
         }
+        public virtual void AppResize(int w,int h)
+        {
+
+        }
+        public virtual void OnAppResize(int w,int h)
+        {
+            AppResize(w, h);
+            foreach(var s in Sub)
+            {
+                s.OnAppResize(w, h);
+            }
+        }
         public virtual void OnEvent(UIEvent e)
         {
 

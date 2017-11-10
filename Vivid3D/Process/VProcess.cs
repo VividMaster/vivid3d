@@ -15,11 +15,13 @@ namespace Vivid.Processes
         public Process Pro = null;
         public VProcess(string file,ProcessType type,string args="")
         {
-            ProcessStartInfo si = new ProcessStartInfo(file);
-            si.WindowStyle = ProcessWindowStyle.Normal;
-            si.WorkingDirectory = "c:/vivid3d/";
-            si.CreateNoWindow = true;
-            si.Arguments = args;
+            ProcessStartInfo si = new ProcessStartInfo(file)
+            {
+                WindowStyle = ProcessWindowStyle.Normal,
+                WorkingDirectory = "c:/vivid3d/",
+                CreateNoWindow = true,
+                Arguments = args
+            };
 
             if (type == ProcessType.Wait)
             {

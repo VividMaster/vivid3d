@@ -22,36 +22,40 @@ namespace Vivid.UI.UIWidgets
         public string SelectedDir = "";
         public UIFileRequest(string path,string title="Select File") : base(AppInfo.W/2-330,AppInfo.H/2-260,660,520,title,null)
         {
-            Folders = new UITreeView(34, 35, 262, 390, "Folders", this);
-            Folders.Open = (UIItem n) =>
+            Folders = new UITreeView(34, 35, 262, 390, "Folders", this)
             {
-                if (n.Name == "Drives")
-                { }
-                else
+                Open = (UIItem n) =>
                 {
-                    if(n.Sub.Count>0)
+                    if (n.Name == "Drives")
+                    { }
+                    else
                     {
-                        n.Sub.Clear();
-                    }
-                    
-                    DirectoryInfo f = new DirectoryInfo(n.Name);
-                    SelectedDir = f.FullName;
-                
-                    foreach(var of in f.GetDirectories())
-                    {
-                        UIItem nf = new UIItem();
-                        nf.Name = of.FullName;
-                        nf.Open = false;
-                        n.Add(nf);
-                    }
-                    Contents.ItemRoot.Sub.Clear();
-                    foreach(var ff in f.GetFiles())
-                    {
-                        Contents.ItemRoot.Sub.Add(new UIItem(ff.Name));
-                    }
-                    
-                }
+                        if (n.Sub.Count > 0)
+                        {
+                            n.Sub.Clear();
+                        }
 
+                        DirectoryInfo f = new DirectoryInfo(n.Name);
+                        SelectedDir = f.FullName;
+
+                        foreach (var of in f.GetDirectories())
+                        {
+                            UIItem nf = new UIItem
+                            {
+                                Name = of.FullName,
+                                Open = false
+                            };
+                            n.Add(nf);
+                        }
+                        Contents.ItemRoot.Sub.Clear();
+                        foreach (var ff in f.GetFiles())
+                        {
+                            Contents.ItemRoot.Sub.Add(new UIItem(ff.Name));
+                        }
+
+                    }
+
+                }
             };
             Contents = new UIList(315, 35, 300, 390,"Files", this);
             File = new UITextEntryLine(34, 435, 380, "", this);

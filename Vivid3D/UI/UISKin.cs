@@ -92,6 +92,10 @@ namespace Vivid.UI
         {
             VFontRenderer.Draw(SmallFont, text, x, y);
         }
+        public virtual void DrawText(int x,int y,string text,Vector4 col)
+        {
+            VFontRenderer.Draw(SmallFont, text, x, y, col);
+        }
         public virtual void DrawPanel(UIPanel p)
         {
 
