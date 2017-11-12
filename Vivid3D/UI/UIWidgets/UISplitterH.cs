@@ -19,6 +19,9 @@ namespace Vivid.UI.UIWidgets
             Left = new UIPanel(0, 0, SplitX - 5, h, "Left", this);
             Right = new UIPanel(SplitX + 5, 0, w / 2 - 10, h, "Right", this);
             Mover = new UIButton(SplitX - 5, 0, 10, h, "<>", this);
+            Left.Docking = DockMode.Center;
+            Right.Docking = DockMode.Center;
+
             Mover.Dragged = (ax, ay) =>
             {
                 SplitX += ax;
@@ -31,11 +34,24 @@ namespace Vivid.UI.UIWidgets
                 {
                     SizeAction();
                 }
+                foreach (var a in Left.Sub)
+                {
+                    a.OnOwnerResized();
+                }
+                foreach (var a in Right.Sub)
+                {
+                    a.OnOwnerResized();
+                }
             };
-       }
+        }
+        public override void OwnerResized()
+        {
+           
+        }
+
         public override void Draw()
         {
-           // UISys.Skin().DrawRect((int)WidX + SplitX - 5, (int)WidY, 10, (int)WidH, new OpenTK.Vector4(0.8f, 0.8f, 0.8f, 1.0f));
+            // UISys.Skin().DrawRect((int)WidX + SplitX - 5, (int)WidY, 10, (int)WidH, new OpenTK.Vector4(0.8f, 0.8f, 0.8f, 1.0f));
 
         }
     }

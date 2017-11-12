@@ -71,7 +71,7 @@ namespace Vivid.UI.UISkins
         }
         public override void DrawPanel(UIPanel p)
         {
-            VPen.Rect(p.WidX, p.WidY, p.WidW, p.WidH, new Vector4(0.7f, 0.7f, 0.7f, 0.9f));
+            VPen.Rect(p.WidX, p.WidY, p.WidW, p.WidH, new Vector4(0.7f, 0.7f, 0.7f, 0.9f), new Vector4(0.2f, 0.2f, 0.2f, 1.0f));
             VFontRenderer.Draw(SmallFont, p.Name, p.WidX+5, p.WidY+5);
         }
         public override void DrawWindow(UIWindow w)

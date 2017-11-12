@@ -8,10 +8,15 @@ using OpenTK;
 using OpenTK.Graphics.OpenGL4;
 namespace Vivid.UI
 {
+    public enum DockMode
+    {
+        Left,Right,Top,Bot,Center,None
+    }
     public class UIWidget
     {
         public UISys Owner = null;
         public UIWidget Top;
+        public DockMode Docking = DockMode.None;
         public float AR = 1.0f;
         public UIItem ItemRoot = new UIItem();
         public UISys GetOwn
@@ -74,6 +79,8 @@ namespace Vivid.UI
             set
             {
                 _WidW = value / App.AppInfo.W;
+
+                
             }
         }
         public float WidH
@@ -85,6 +92,7 @@ namespace Vivid.UI
             set
             {
                 _WidH = value / App.AppInfo.H;
+
             }
         }
         public bool WidOpen = true;
@@ -128,13 +136,13 @@ namespace Vivid.UI
         {
 
         }
-        public virtual void OnOwnerResized()
+        public virtual void OnOwnerResized(bool first=true)
         {
+         
             OwnerResized();
-
-            foreach(var w in Sub)
+            foreach (var w in Sub)
             {
-                w.OnOwnerResized();
+                w.OnOwnerResized(false);
             }   
         }
         public virtual void OnEnter()

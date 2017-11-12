@@ -19,6 +19,9 @@ namespace Vivid.UI.UIWidgets
             Top = new UIPanel(0,0, w,SplitY-5, "Top", this);
             Bot = new UIPanel(0, SplitY+5, w, h/2, "Bot", this);
             Mover = new UIButton(0,SplitY - 5, w, 10, "*", this);
+
+            top.Docking = DockMode.Center;
+            Bot.Docking = DockMode.Center;
             Mover.Dragged = (ax, ay) =>
             {
                 SplitY += ay;
@@ -31,7 +34,25 @@ namespace Vivid.UI.UIWidgets
                 {
                     SizeAction();
                 }
+                foreach(var a in Top.Sub)
+                {
+                    a.OnOwnerResized();
+                }
+                foreach(var a in Bot.Sub)
+                {
+                    a.OnOwnerResized();
+                }
             };
+        }
+        public override void OwnerResized()
+        {
+            //Mover.WidW = Top.Top.WidW;
+
+            Mover.WidW = Top.Top.Top.WidW;
+            Top.WidW = Top.Top.Top.WidW;
+            Bot.WidW = Top.Top.Top.WidW;
+            //Console.WriteLine("MW:" + Mover.WidW + " W:" + WidW + " TW:" + Top.WidW + " TTW:" + Top.Top.Top.WidW);
+           
         }
         public override void Draw()
         {
