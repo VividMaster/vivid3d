@@ -9,9 +9,13 @@ namespace Vivid.UI.UIWidgets
 {
     public class UIGroup : UIWidget
     {
-        public UIGroup() : base(0,0,AppInfo.W,AppInfo.H,"",null)
+        public UIGroup() : base(0, 0, AppInfo.W, AppInfo.H, "", null)
         {
 
+        }
+        public override bool InBounds()
+        {
+            return false;
         }
     }
 }

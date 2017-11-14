@@ -20,6 +20,7 @@ namespace Vivid.Speech
         }
         public void Say(string t, TalkType typ = TalkType.Async)
         {
+            return;
             if (typ == TalkType.Block)
             {
                 SS.Speak(t);

@@ -50,8 +50,9 @@
     <Reference Include="AssimpNet">
       <HintPath>..\..\vividide2\bin\Release\AssimpNet.dll</HintPath>
     </Reference>
-    <Reference Include="irrKlang.NET4">
-      <HintPath>..\..\vividide2\bin\Debug\irrKlang.NET4.dll</HintPath>
+    <Reference Include="irrKlang.NET4, Version=1.0.5235.17346, Culture=neutral, processorArchitecture=x86">
+      <SpecificVersion>False</SpecificVersion>
+      <HintPath>..\..\..\..\Vivid3D\irrKlang.NET4.dll</HintPath>
     </Reference>
     <Reference Include="System" />
     <Reference Include="System.Drawing" />
@@ -129,6 +130,7 @@
     <Compile Include="UI\UIWidgets\UITextEntryLine.cs" />
     <Compile Include="UI\UIWidgets\UITreeView.cs" />
     <Compile Include="UI\UIWidgets\UIWindow.cs" />
+    <Compile Include="UI\UIWidgets\UIWindowDock.cs" />
     <Compile Include="Visuals\VRenderer.cs" />
     <Compile Include="Visuals\VRendererSimple.cs" />
     <Compile Include="Visuals\VRenderLayer.cs" />

@@ -19,6 +19,7 @@ namespace Vivid.UI
         public DockMode Docking = DockMode.None;
         public float AR = 1.0f;
         public UIItem ItemRoot = new UIItem();
+        public UIWidgets.UIWindow ActiveWindow = null;
         public UISys GetOwn
         {
             get
@@ -41,19 +42,19 @@ namespace Vivid.UI
             }
             set
             {
-                _WidX = value / Vivid.App.AppInfo.W;
+                _WidX = value / Vivid.App.AppInfo.RW;
             }
         }
         public float WidY
         {
             get
             {
-                if (Top == null) return _WidY * Vivid.App.AppInfo.RW;
+                if (Top == null) return _WidY * Vivid.App.AppInfo.RH;
                 return Top.WidY + _WidY * Vivid.App.AppInfo.RH;
             }
             set
             {
-                _WidY = value / Vivid.App.AppInfo.H;
+                _WidY = value / (float)Vivid.App.AppInfo.RH;
             }
         }
         public float LocX
@@ -207,8 +208,17 @@ namespace Vivid.UI
                     }
                
             }
-          
-            if (UISys.Active == null)
+            if (UISys.Active != null)
+            {
+             
+                if(UISys.Active is UIWidgets.UIDragZone)
+                {
+                    UISys.ActiveWindow = UISys.Active.Top as UIWidgets.UIWindow;
+                  
+                }
+            }
+            
+                if (UISys.Active == null)
             {
                 UISys.IsKeyIn = false;
             }
@@ -547,8 +557,19 @@ namespace Vivid.UI
         }
         public virtual void Move(int x,int y)
         {
-            WidX = WidX += x;
-            WidY =WidY += y;
+            if(this is UIWidgets.UIWindow)
+            {
+                var w = this as UIWidgets.UIWindow;
+            //    if (w.Docked) return;
+            }
+            if (x != 0)
+            {
+                WidX = WidX + x;
+            }
+            if (y != 0)
+            {
+                WidY = WidY + y;
+            }
         }
         public virtual void Resized()
         {

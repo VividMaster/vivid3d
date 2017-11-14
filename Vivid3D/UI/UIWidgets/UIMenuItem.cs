@@ -16,6 +16,7 @@ namespace Vivid.UI.UIWidgets
             if (panel)
             {
                 subp = new UIPanel(5, 25, 0, 0, "", this);
+                subp.Flat = true;
                 subp.WidOpen = false;
             }
         }

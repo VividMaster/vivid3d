@@ -50,16 +50,58 @@ namespace Vivid.UI.UIWidgets
          //   UISys.Skin().DrawRect((int)WidX, (int)WidY+(int)WidH - 10, (int)WidW - 15, 10,DragCol);
        //     UISys.Skin().DrawRect((int)WidX + (int)WidW - 10, (int)WidY + UISys.Skin().TitleHeight + 1, 10, (int)WidH - UISys.Skin().TitleHeight - 16,DragCol);
         }
+        public bool Dragged = false;
+        public bool Docked = false;
+        public bool Undock = false;
+        public void StopDrag()
+        {
+            titleDrag.dragging = false;
+        }
+        public override void OwnerResized()
+        {
+            if (Docked)
+            {
+                WidW = Top.Top.WidW;
+                WidH = Top.Top.WidH;
+            }
+        }
         public override void Update()
         {
-            //Console.WriteLine("X:" + titleDrag.DraggedX + " Y:" + titleDrag.DraggedY);
          
+            if(Docked == true)
+            {
+           
+                
+            }
+            else
+            {
+                PosLocked = false;
+            }
+            //Console.WriteLine("X:" + titleDrag.DraggedX + " Y:" + titleDrag.DraggedY);
+            Dragged = false;
             if (PosLocked == false)
             {
 
+                if (titleDrag.DraggedX != 0 || titleDrag.DraggedY != 0)
+                {
+                    Dragged = true;
+                    if(Docked == true)
+                    {
+                        Undock = true;
+                       
+                     
+                    }
+                }
+              
+                if (Docked == false)
+                {
+                   
                     Move(titleDrag.DraggedX, titleDrag.DraggedY);
-            
+                }
+                    titleDrag.DraggedX = 0;
+                titleDrag.DraggedY = 0;
             }
+
 
             if (SizeLocked == false)
             {

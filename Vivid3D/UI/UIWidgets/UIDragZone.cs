@@ -8,7 +8,7 @@ namespace Vivid.UI.UIWidgets
 {
     public class UIDragZone : UIWidget
     {
-        bool dragging = false;
+        public bool dragging = false;
         int lx, ly;
         public int DraggedX, DraggedY;
         public UIDragZone(int x,int y,int w,int h,UIWidget top) : base(x,y,w,h,"",top)

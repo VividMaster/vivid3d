@@ -29,13 +29,14 @@ namespace Vivid.UI.UISkins
         }
         public override void InitSkin()
         {
-            But_Norm = new VTex2D("data/ui/skin/neonblue/button_normal.png", LoadMethod.Multi);
+            PanelBG = new VTex2D("data/ui/skin/neonblue/panelbg1.jpg", LoadMethod.Multi);
+            But_Norm = new VTex2D("data/ui/skin/neonblue/but_normal.png", LoadMethod.Multi);
             But_Hover = But_Norm;
             But_Press = But_Norm;
             SmallFont = new VFont("data/font/times.ttf.vf");
             BigFont = new VFont("data/font/f2.ttf.vf");
             WinBord = new VTex2D("data/ui/skin/neonblue/winbord.png", LoadMethod.Multi);
-            WinCon = new VTex2D("data/ui/skin/neonblue/wincon.png", LoadMethod.Multi);
+            WinCon = new VTex2D("data/ui/skin/neonblue/wincon.jpg", LoadMethod.Multi);
             WinTitle = new VTex2D("data/ui/skin/neonblue/wintitle.png", LoadMethod.Multi);
             WinBackCol.W = 0.5f;
             Click = new Sound.VSoundSource("data/ui/skin/neonblue/click.wav");
@@ -71,8 +72,14 @@ namespace Vivid.UI.UISkins
         }
         public override void DrawPanel(UIPanel p)
         {
-            VPen.Rect(p.WidX, p.WidY, p.WidW, p.WidH, new Vector4(0.7f, 0.7f, 0.7f, 0.9f), new Vector4(0.2f, 0.2f, 0.2f, 1.0f));
-            VFontRenderer.Draw(SmallFont, p.Name, p.WidX+5, p.WidY+5);
+            if (p.Flat)
+            {
+                VPen.Rect(p.WidX, p.WidY, p.WidW, p.WidH, new Vector4(0.7f, 0.7f, 0.7f, 0.8f));
+            }
+            else { 
+                VPen.Rect(p.WidX, p.WidY, p.WidW, p.WidH, PanelBG, new Vector4(0.7f, 0.7f, 0.7f, 0.9f));
+            }
+                VFontRenderer.Draw(SmallFont, p.Name, p.WidX+5, p.WidY+5);
         }
         public override void DrawWindow(UIWindow w)
         {

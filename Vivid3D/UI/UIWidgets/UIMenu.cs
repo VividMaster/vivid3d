@@ -33,6 +33,7 @@ namespace Vivid.UI.UIWidgets
                 WidH = 22
             };
             UIPanel np = new UIPanel(10 + xs, 2, (int)ni.WidW, 22, "", this);
+            np.Flat = true;
             np.AddWidget(ni);
 
 

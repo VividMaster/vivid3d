@@ -31,6 +31,7 @@ namespace Vivid.UI
         public float DA=1.0f;
         public float AA=0.0f;
         public static UISys ActiveUI = null;
+        public static UIWindow ActiveWindow = null;
         public static void PushSkin(UISkin s)
         {
             Skins.Add(s);
@@ -63,10 +64,15 @@ namespace Vivid.UI
         {
             ActiveUI = this;
             Root = new UIGroup();
+            TopRoot = new UIGroup();
         }
         public void Add(UIWidget w)
         {
             Root.AddWidget(w);
+        }
+        public void AddTop(UIWidget w)
+        {
+            TopRoot.AddWidget(w);
         }
         public void OnResize(int w,int h)
         {
@@ -80,15 +86,38 @@ namespace Vivid.UI
             AA+= (DA - AA) * 0.02f;
             UISys.AlphaMod = AA;
             PushSkin(ISkin);
-            Root.OnUpdate();
+            var used = TopRoot.OnUpdate();
+            TopRoot.UpdateAll();
+            if (used == false)
+            {
+                Root.OnUpdate();
+            }
             Root.UpdateAll();
+            if (UISys.ActiveWindow != null)
+            {
+                if(UISys.ActiveWindow.Undock == true)
+                {
+                    
+                    var w = UISys.ActiveWindow;
+                    w.Top.Sub.Remove(w);
+                    w.Top = UISys.ActiveUI.TopRoot;
+                    w.Top.Sub.Add(w);
+                    Console.WriteLine("Undocking");
+                    w.Undock = false;
+                    w.Docked = false;
+                    
+    
+                }
+            }
             PopSkin();
 
         }
+
         public void Render()
         {
             PushSkin(ISkin);
             Root.OnDraw();
+            TopRoot.OnDraw();
             PopSkin();
         }
     }

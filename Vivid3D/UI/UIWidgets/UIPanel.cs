@@ -9,9 +9,10 @@ namespace Vivid.UI.UIWidgets
     public class UIPanel : UIWidget
         
     {
+        public bool Flat = false;
         public UIPanel(int x,int y,int w,int h,string title,UIWidget top=null) : base(x,y,w,h,title,top)
         {
-
+            
         }
         public override void Draw()
         {

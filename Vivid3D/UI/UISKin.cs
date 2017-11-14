@@ -14,6 +14,7 @@ namespace Vivid.UI
 {
     public class UISkin
     {
+        public VTex2D PanelBG;
         public VTex2D WinBord;
         public VTex2D WinCon;
         public VTex2D WinTitle;
