@@ -40,6 +40,10 @@ namespace Vivid.UI.UIWidgets
 
             
         }
+        public override void OwnerResized()
+        {
+            WidW = Top.WidW;
+        }
         public override void Draw()
         {
 
@@ -53,29 +57,34 @@ namespace Vivid.UI.UIWidgets
                 VPen.Rect(WidX, WidY, WidW, 50, new OpenTK.Vector4(0, 0, 0.5f, 0.35f));
                 if (Vivid.Input.VInput.MB[0] == false && UISys.ActiveWindow.Docked == false)
                 {
-                    UISys.ActiveWindow.Docked = true;
-
-                   
-                    if (UISys.Active != null) UISys.Active.OnDeactivate();
-                    UISys.Active = null;
-
-                    if (UISys.Over != null) UISys.Over.OnLeave();
-                    UISys.Over = null;
-
-                    UISys.Lock = false;
-                  
-                    UISys.Pressed = null;
-                    UISys.ActiveWindow.Top.Sub.Remove(UISys.ActiveWindow);
-                    UISys.ActiveWindow.StopDrag();
-                    UISys.ActiveWindow.Docked = true;
-                    UISys.ActiveWindow.WidX = 0;
-                    UISys.ActiveWindow.WidY = 0;
-                    UISys.ActiveWindow.WidW = Top.WidW;
-                    UISys.ActiveWindow.WidH = Top.WidH;
-                    UISys.ActiveWindow.Top = this;
-                    UISys.ActiveWindow.Top.Sub.Add(UISys.ActiveWindow);
+                    DockWin();
                 }
             }
+        }
+
+        public void DockWin()
+        {
+            UISys.ActiveWindow.Docked = true;
+
+
+            if (UISys.Active != null) UISys.Active.OnDeactivate();
+            UISys.Active = null;
+
+            if (UISys.Over != null) UISys.Over.OnLeave();
+            UISys.Over = null;
+
+            UISys.Lock = false;
+
+            UISys.Pressed = null;
+            UISys.ActiveWindow.Top.Sub.Remove(UISys.ActiveWindow);
+            UISys.ActiveWindow.StopDrag();
+            UISys.ActiveWindow.Docked = true;
+            UISys.ActiveWindow.WidX = 0;
+            UISys.ActiveWindow.WidY = 0;
+            UISys.ActiveWindow.WidW = Top.WidW;
+            UISys.ActiveWindow.WidH = Top.WidH;
+            UISys.ActiveWindow.Top = this;
+            UISys.ActiveWindow.Top.Sub.Add(UISys.ActiveWindow);
         }
     }
 }

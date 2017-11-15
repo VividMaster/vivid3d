@@ -44,6 +44,27 @@ namespace Vivid.UI.UIWidgets
                 }
             };
         }
+        public void Split(int x)
+        {
+            SplitX = x;
+            Mover.WidX = SplitX;
+            Left.WidW = SplitX - 5;
+            Right.WidW = WidW / 2 - 10;
+            Right.WidX = SplitX + 5;
+            Right.WidW = (WidW - SplitX);
+            if (SizeAction != null)
+            {
+                SizeAction();
+            }
+            foreach (var a in Left.Sub)
+            {
+                a.OnOwnerResized();
+            }
+            foreach (var a in Right.Sub)
+            {
+                a.OnOwnerResized();
+            }
+        }
         public override void OwnerResized()
         {
            

@@ -42,6 +42,7 @@ namespace Vivid.UI.UISkins
             Click = new Sound.VSoundSource("data/ui/skin/neonblue/click.wav");
             Type = new Sound.VSoundSource("data/ui/skin/neonblue/type.wav");
             EOE = new Sound.VSoundSource("data/ui/skin/neonblue/eoe.wav");
+            WinBackCol = new Vector4(0.4f, 0.1f, 0.1f, 0.8f);
         }
         public override void DrawButton(UIButton b)
         {
@@ -84,7 +85,7 @@ namespace Vivid.UI.UISkins
         public override void DrawWindow(UIWindow w)
         {
             WinBackCol.W = w.Alpha * UISys.AlphaMod;
-            VPen.Rect(w.WidX, w.WidY, w.WidW, w.WidH, WinBord, WinBackCol);
+        //    VPen.Rect(w.WidX, w.WidY, w.WidW, w.WidH, WinBord, WinBackCol);
             VPen.Rect(w.WidX, w.WidY, w.WidW, w.WidH, WinCon, WinBackCol);
             if (w.DrawTitle)
             {

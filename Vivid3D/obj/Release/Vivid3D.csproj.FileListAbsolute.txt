@@ -5,3 +5,5 @@ C:\Proj\Vivid3D\vividstudio3d\Vivid3D\bin\Release\AssimpNet.dll
 C:\Proj\Vivid3D\vividstudio3d\Vivid3D\bin\Release\OpenTK.dll
 C:\Proj\Vivid3D\vividstudio3d\Vivid3D\bin\Release\OpenTK.xml
 C:\Proj\Vivid3D\vividstudio3d\Vivid3D\obj\Release\-Vivid3D.dll
+C:\Proj\Vivid3D\vividstudio3d\Vivid3D\bin\Release\irrKlang.NET4.dll
+C:\Vivid3D\-Vivid3D.dll

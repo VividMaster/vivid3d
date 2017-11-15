@@ -61,7 +61,8 @@ namespace Vivid.UI.UIWidgets
             File = new UITextEntryLine(34, 435, 380, "", this);
             OK = new UIButton(34, 470, 100, 30, "OK", this);
             Cancel = new UIButton(160, 470, 100, 30, "Cancel", this);
-            Folders.AddItem(new UIItem("Drives")).Add(new UIItem("c:/"));
+            //   Folders.AddItem(new UIItem("Drives")).Add(new UIItem("c:/"));
+            Folders.AddItem(new UIItem(path));
             Contents.Select = (i) =>
             {
                 File.Name = i.Name;

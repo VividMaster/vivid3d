@@ -65,6 +65,11 @@ namespace Vivid.UI.UIWidgets
                 WidH = Top.Top.WidH;
             }
         }
+        public void Dock(UIWindowDock d)
+        {
+            UISys.ActiveWindow = this;
+            d.DockWin();
+        }
         public override void Update()
         {
          
