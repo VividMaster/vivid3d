@@ -82,3 +82,5 @@ H:\Dev\Proj\Vivid3D\vividstudio3d\CubeConvert\obj\Debug\CubeConvert.csprojResolv
 H:\Dev\Proj\Vivid3D\vividstudio3d\CubeConvert\obj\Debug\CubeConvert.csproj.CoreCompileInputs.cache
 H:\Dev\Proj\Vivid3D\vividstudio3d\CubeConvert\obj\Debug\CubeConvert.exe
 H:\Dev\Proj\Vivid3D\vividstudio3d\CubeConvert\obj\Debug\CubeConvert.pdb
+D:\Vivid\Engine\vivid3d\CubeConvert\obj\Debug\CubeConvert.csprojResolveAssemblyReference.cache
+D:\Vivid\Engine\vivid3d\CubeConvert\obj\Debug\CubeConvert.csproj.CoreCompileInputs.cache

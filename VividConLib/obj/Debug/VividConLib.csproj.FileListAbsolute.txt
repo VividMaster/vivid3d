@@ -1,0 +1,11 @@
+D:\Vivid\Engine\vivid3d\VividConLib\bin\Debug\VividConLib.dll
+D:\Vivid\Engine\vivid3d\VividConLib\bin\Debug\VividConLib.pdb
+D:\Vivid\Engine\vivid3d\VividConLib\bin\Debug\VividConLib.dll.CodeAnalysisLog.xml
+D:\Vivid\Engine\vivid3d\VividConLib\bin\Debug\VividConLib.dll.lastcodeanalysissucceeded
+D:\Vivid\Engine\vivid3d\VividConLib\obj\Debug\VividConLib.csprojResolveAssemblyReference.cache
+D:\Vivid\Engine\vivid3d\VividConLib\obj\Debug\VividConLib.Box.resources
+D:\Vivid\Engine\vivid3d\VividConLib\obj\Debug\VividConLib.InfoBox.resources
+D:\Vivid\Engine\vivid3d\VividConLib\obj\Debug\VividConLib.csproj.GenerateResource.Cache
+D:\Vivid\Engine\vivid3d\VividConLib\obj\Debug\VividConLib.csproj.CoreCompileInputs.cache
+D:\Vivid\Engine\vivid3d\VividConLib\obj\Debug\VividConLib.dll
+D:\Vivid\Engine\vivid3d\VividConLib\obj\Debug\VividConLib.pdb

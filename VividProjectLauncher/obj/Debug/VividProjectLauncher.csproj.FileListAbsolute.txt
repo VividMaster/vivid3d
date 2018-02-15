@@ -1,0 +1,12 @@
+D:\Vivid\Engine\vivid3d\VividProjectLauncher\bin\Debug\VividProjectLauncher.exe.config
+D:\Vivid\Engine\vivid3d\VividProjectLauncher\bin\Debug\VividProjectLauncher.exe
+D:\Vivid\Engine\vivid3d\VividProjectLauncher\bin\Debug\VividProjectLauncher.pdb
+D:\Vivid\Engine\vivid3d\VividProjectLauncher\bin\Debug\VividConLib.dll
+D:\Vivid\Engine\vivid3d\VividProjectLauncher\bin\Debug\VividConLib.pdb
+D:\Vivid\Engine\vivid3d\VividProjectLauncher\obj\Debug\VividProjectLauncher.csprojResolveAssemblyReference.cache
+D:\Vivid\Engine\vivid3d\VividProjectLauncher\obj\Debug\VividProjectLauncher.Projects.resources
+D:\Vivid\Engine\vivid3d\VividProjectLauncher\obj\Debug\VividProjectLauncher.Properties.Resources.resources
+D:\Vivid\Engine\vivid3d\VividProjectLauncher\obj\Debug\VividProjectLauncher.csproj.GenerateResource.Cache
+D:\Vivid\Engine\vivid3d\VividProjectLauncher\obj\Debug\VividProjectLauncher.csproj.CoreCompileInputs.cache
+D:\Vivid\Engine\vivid3d\VividProjectLauncher\obj\Debug\VividProjectLauncher.exe
+D:\Vivid\Engine\vivid3d\VividProjectLauncher\obj\Debug\VividProjectLauncher.pdb

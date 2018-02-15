@@ -1,0 +1,13 @@
+D:\Vivid\Engine\vivid3d\VividStudioIDE\obj\Debug\VividStudioIDE.csprojResolveAssemblyReference.cache
+D:\Vivid\Engine\vivid3d\VividStudioIDE\obj\Debug\VividStudioIDE.ContentViewer.resources
+D:\Vivid\Engine\vivid3d\VividStudioIDE\obj\Debug\VividStudioIDE.Form1.resources
+D:\Vivid\Engine\vivid3d\VividStudioIDE\obj\Debug\VividStudioIDE.Properties.Resources.resources
+D:\Vivid\Engine\vivid3d\VividStudioIDE\obj\Debug\VividStudioIDE.MainView.resources
+D:\Vivid\Engine\vivid3d\VividStudioIDE\obj\Debug\VividStudioIDE.csproj.GenerateResource.Cache
+D:\Vivid\Engine\vivid3d\VividStudioIDE\obj\Debug\VividStudioIDE.csproj.CoreCompileInputs.cache
+D:\Vivid\Engine\vivid3d\VividProjectManager\bin\Debug\VividStudioIDE.exe.config
+D:\Vivid\Engine\vivid3d\VividProjectManager\bin\Debug\VividStudioIDE.exe
+D:\Vivid\Engine\vivid3d\VividProjectManager\bin\Debug\VividStudioIDE.pdb
+D:\Vivid\Engine\vivid3d\VividStudioIDE\obj\Debug\VividStudioIDE.exe
+D:\Vivid\Engine\vivid3d\VividStudioIDE\obj\Debug\VividStudioIDE.pdb
+D:\Vivid\Engine\vivid3d\VividStudioIDE\obj\Debug\VividStudioIDE.SceneView.resources

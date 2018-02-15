@@ -1,0 +1,10 @@
+D:\Vivid\Engine\vivid3d\VividProjectManager\bin\Debug\VividStudio3D.exe
+D:\Vivid\Engine\vivid3d\VividProjectManager\bin\Debug\VividStudio3D.pdb
+D:\Vivid\Engine\vivid3d\VividStudio3D\obj\Debug\VividStudio3D.csprojResolveAssemblyReference.cache
+D:\Vivid\Engine\vivid3d\VividStudio3D\obj\Debug\VividStudio3D.DockingManagerForm.resources
+D:\Vivid\Engine\vivid3d\VividStudio3D\obj\Debug\VividStudio3D.Properties.Resources.resources
+D:\Vivid\Engine\vivid3d\VividStudio3D\obj\Debug\VividStudio3D.SolutionExplorerView.resources
+D:\Vivid\Engine\vivid3d\VividStudio3D\obj\Debug\VividStudio3D.csproj.GenerateResource.Cache
+D:\Vivid\Engine\vivid3d\VividStudio3D\obj\Debug\VividStudio3D.csproj.CoreCompileInputs.cache
+D:\Vivid\Engine\vivid3d\VividStudio3D\obj\Debug\VividStudio3D.exe
+D:\Vivid\Engine\vivid3d\VividStudio3D\obj\Debug\VividStudio3D.pdb

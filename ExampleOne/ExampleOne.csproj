@@ -7,7 +7,7 @@
     <OutputType>Exe</OutputType>
     <RootNamespace>ExampleOne</RootNamespace>
     <AssemblyName>ExampleOne</AssemblyName>
-    <TargetFrameworkVersion>v4.5</TargetFrameworkVersion>
+    <TargetFrameworkVersion>v4.6.1</TargetFrameworkVersion>
     <TargetFrameworkProfile />
   </PropertyGroup>
   <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Debug|AnyCPU' ">
@@ -57,15 +57,15 @@
     <Compile Include="Properties\AssemblyInfo.cs" />
   </ItemGroup>
   <ItemGroup>
-    <ProjectReference Include="..\Vivid3D\Vivid3D.csproj">
-      <Project>{6850F15F-8E1F-4E93-BE21-E5A7066541C1}</Project>
-      <Name>Vivid3D</Name>
-    </ProjectReference>
-  </ItemGroup>
-  <ItemGroup>
     <None Include="App.config" />
     <None Include="OpenTK.dll.config" />
     <None Include="packages.config" />
+  </ItemGroup>
+  <ItemGroup>
+    <ProjectReference Include="..\Vivid3D\Vivid3D.csproj">
+      <Project>{6850f15f-8e1f-4e93-be21-e5a7066541c1}</Project>
+      <Name>Vivid3D</Name>
+    </ProjectReference>
   </ItemGroup>
   <Import Project="$(MSBuildBinPath)\Microsoft.CSharp.targets" />
 </Project>

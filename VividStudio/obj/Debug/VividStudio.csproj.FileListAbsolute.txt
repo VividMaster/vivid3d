@@ -1,0 +1,9 @@
+D:\Vivid\Engine\vivid3d\VividStudio\bin\Debug\VividStudio.exe.config
+D:\Vivid\Engine\vivid3d\VividStudio\bin\Debug\VividStudio.exe
+D:\Vivid\Engine\vivid3d\VividStudio\bin\Debug\VividStudio.pdb
+D:\Vivid\Engine\vivid3d\VividStudio\obj\Debug\VividStudio.csprojResolveAssemblyReference.cache
+D:\Vivid\Engine\vivid3d\VividStudio\obj\Debug\VividStudio.Properties.Resources.resources
+D:\Vivid\Engine\vivid3d\VividStudio\obj\Debug\VividStudio.csproj.GenerateResource.Cache
+D:\Vivid\Engine\vivid3d\VividStudio\obj\Debug\VividStudio.csproj.CoreCompileInputs.cache
+D:\Vivid\Engine\vivid3d\VividStudio\obj\Debug\VividStudio.exe
+D:\Vivid\Engine\vivid3d\VividStudio\obj\Debug\VividStudio.pdb
