@@ -19,12 +19,54 @@ namespace Vivid.App
         public static string App;
         public static int RW, RH;
     }
+    public class VForm : VApp
+    {
+        public void Set(int w,int h)
+        {
+            GL.ClearColor(System.Drawing.Color.AliceBlue);
+            GL.Enable(EnableCap.DepthTest);
+            AppInfo.W = w;
+            AppInfo.H = h;
+            AppInfo.RW = w;
+            AppInfo.RH = h;
+            AppInfo.Full = false;
+            AppInfo.App = "GLApp";
+            VImport.RegDefaults();
+            for (int i = 0; i < 32; i++)
+            {
+                VInput.MB[i] = false;
+            }
+            VPen.InitDraw();
+            VInput.InitInput();
+            Vivid.Sound.VSoundSys.Init();
+            GL.Viewport(0, 0, Width, Height);
+            GL.Scissor(0, 0, Width, Height);
+            GL.Disable(EnableCap.Blend);
+            GL.Disable(EnableCap.Texture2D);
+            GL.Enable(EnableCap.CullFace);
+            GL.CullFace(CullFaceMode.Back);
+            GL.Disable(EnableCap.StencilTest);
+            GL.Disable(EnableCap.ScissorTest);
+            GL.Enable(EnableCap.DepthTest);
+            GL.DepthRange(0, 1);
+
+            GL.ClearDepth(1.0f);
+            GL.DepthFunc(DepthFunction.Less);
+            UI.UISys.ActiveUI.OnResize(Width, Height);
+            VPen.SetProj(0, 0, w, h);
+        }
+
+    }
     public class VApp : GameWindow
     {
         public static VApp Link = null;
         private string _Title = "";
         private OpenTK.Graphics.Color4 _BgCol = OpenTK.Graphics.Color4.Black;
         public VStateManager Stater = new VStateManager();
+        public VApp()
+        {
+
+        }
         public void CleanStates()
         {
             Stater = new VStateManager();

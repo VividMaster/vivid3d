@@ -1,7 +1,5 @@
 D:\Vivid\Engine\vivid3d\VividProjectManager\bin\Debug\VividProjectManager.exe
 D:\Vivid\Engine\vivid3d\VividProjectManager\bin\Debug\VividProjectManager.pdb
-D:\Vivid\Engine\vivid3d\VividProjectManager\bin\Debug\VividProjectManager.exe.CodeAnalysisLog.xml
-D:\Vivid\Engine\vivid3d\VividProjectManager\bin\Debug\VividProjectManager.exe.lastcodeanalysissucceeded
 D:\Vivid\Engine\vivid3d\VividProjectManager\bin\Debug\Syncfusion.Grid.Base.dll
 D:\Vivid\Engine\vivid3d\VividProjectManager\bin\Debug\Syncfusion.Grid.Windows.dll
 D:\Vivid\Engine\vivid3d\VividProjectManager\bin\Debug\Syncfusion.Shared.Base.dll

@@ -1,0 +1,206 @@
+<?xml version="1.0"?>
+<doc>
+    <assembly>
+        <name>phrogGLControl</name>
+    </assembly>
+    <members>
+        <member name="T:Phroggiesoft.Controls.phrogGLControl">
+            <summary>
+            An extended OpenTK.GLControl (an OpenGL-aware WinForms control) fork allowing
+            for additional design-time features such as specifying GL major.minor modes.
+            </summary>
+        </member>
+        <member name="M:Phroggiesoft.Controls.phrogGLControl.#ctor">
+            <summary>
+            Constructs a new <see cref="T:Phroggiesoft.Controls.phrogGLControl"/> instance.
+            </summary>
+        </member>
+        <member name="M:Phroggiesoft.Controls.phrogGLControl.#ctor(System.ComponentModel.IContainer)">
+            <summary>
+            Constructs a new <see cref="T:Phroggiesoft.Controls.phrogGLControl"/> instance owned by an <see cref="T:System.ComponentModel.IContainer"/>.
+            </summary>
+        </member>
+        <member name="P:Phroggiesoft.Controls.phrogGLControl.AspectRatio">
+            <summary>
+            Gets the aspect ratio of client area of this <see cref="T:Phroggiesoft.Controls.phrogGLControl"/>.
+            </summary>
+        </member>
+        <member name="P:Phroggiesoft.Controls.phrogGLControl.ContextFlags">
+            <summary>
+            The <see cref="T:OpenTK.Graphics.GraphicsContextFlags"/> for the OpenGL <see cref="T:OpenTK.Graphics.GraphicsContext"/>.
+            Do not set this property during run-time.
+            </summary>
+        </member>
+        <member name="P:Phroggiesoft.Controls.phrogGLControl.GLMajorVersion">
+            <summary>
+            The major version for the OpenGL GraphicsContext.
+            Do not set this property during run-time.
+            </summary>
+        </member>
+        <member name="P:Phroggiesoft.Controls.phrogGLControl.GLMinorVersion">
+            <summary>
+            The minor version for the OpenGL GraphicsContext.
+            Do not set this property during run-time.
+            </summary>
+        </member>
+        <member name="P:Phroggiesoft.Controls.phrogGLControl.VSync">
+            <summary>
+            Gets or sets a value indicating whether vsync is active for this <see cref="T:Phroggiesoft.Controls.phrogGLControl"/>.
+            Setting this property requires a valid <see cref="P:Phroggiesoft.Controls.phrogGLControl.Context"/>.
+            </summary>
+            <seealso cref="P:Phroggiesoft.Controls.phrogGLControl.Context"/>
+            <seealso cref="M:Phroggiesoft.Controls.phrogGLControl.MakeCurrent"/>
+        </member>
+        <member name="P:Phroggiesoft.Controls.phrogGLControl.Context">
+            <summary>
+            <para>Gets the <see cref="T:OpenTK.Graphics.IGraphicsContext"/> instance that is associated with this <see cref="T:Phroggiesoft.Controls.phrogGLControl"/>.
+            The associated <see cref="T:OpenTK.Graphics.IGraphicsContext"/> is updated whenever the <see cref="T:Phroggiesoft.Controls.phrogGLControl"/> handle is
+            created or recreated.</para>
+            <para>When using multiple <see cref="T:Phroggiesoft.Controls.phrogGLControl"/>s, ensure that <c>Context</c> is current by calling
+            <see cref="M:Phroggiesoft.Controls.phrogGLControl.MakeCurrent"/> before performing any OpenGL operations.</para>
+            </summary>
+            <seealso cref="M:Phroggiesoft.Controls.phrogGLControl.MakeCurrent"/>
+        </member>
+        <member name="P:Phroggiesoft.Controls.phrogGLControl.IsIdle">
+            <summary>
+            Gets a value indicating whether the current thread contains pending system messages.
+            </summary>
+        </member>
+        <member name="P:Phroggiesoft.Controls.phrogGLControl.GraphicsMode">
+            <summary>
+            Gets or sets the <see cref="P:Phroggiesoft.Controls.phrogGLControl.GraphicsMode"/> of the <see cref="T:OpenTK.Graphics.IGraphicsContext"/>
+            associated with this <see cref="T:Phroggiesoft.Controls.phrogGLControl"/>.
+            </summary>
+        </member>
+        <member name="P:Phroggiesoft.Controls.phrogGLControl.WindowInfo">
+            <summary>
+            Gets the <see cref="T:OpenTK.Platform.IWindowInfo"/> for this instance.
+            </summary>
+        </member>
+        <member name="E:Phroggiesoft.Controls.phrogGLControl.Load">
+            <summary>
+            Occurs once before the control is first displayed.
+            </summary>
+        </member>
+        <member name="M:Phroggiesoft.Controls.phrogGLControl.SwapBuffers">
+            <summary>
+            Swaps the front and back buffers, presenting the rendered scene to the screen. This method
+            will have no effect on a single-buffered <see cref="P:Phroggiesoft.Controls.phrogGLControl.GraphicsMode"/>.
+            </summary>
+        </member>
+        <member name="M:Phroggiesoft.Controls.phrogGLControl.MakeCurrent">
+            <summary>
+            <para> Makes <see cref="P:Phroggiesoft.Controls.phrogGLControl.Context"/> current in the calling thread. All OpenGL commands issued
+            are hereafter interpreted by this <see cref="P:Phroggiesoft.Controls.phrogGLControl.Context"/>.</para>
+            <para>When using multiple <see cref="T:Phroggiesoft.Controls.phrogGLControl"/>s, calling <see cref="M:Phroggiesoft.Controls.phrogGLControl.MakeCurrent"/> on one
+            control will make all other controls non-current in the calling thread.</para>
+            <para>A <see cref="T:Phroggiesoft.Controls.phrogGLControl"/> can only be current in one thread at a time. To make a control
+            non-current, call <c>glControl1.Context.MakeCurrent(null)</c>.</para>
+            </summary>
+            <seealso cref="P:Phroggiesoft.Controls.phrogGLControl.Context"/>
+            <seealso cref="T:OpenTK.Graphics.IGraphicsContext"/>
+            <seealso cref="M:OpenTK.Graphics.IGraphicsContext.MakeCurrent(OpenTK.Platform.IWindowInfo)"/>
+        </member>
+        <member name="P:Phroggiesoft.Controls.phrogGLControl.Initializing">
+            <summary>
+            Whether or not this control is undergoing batch initialization from the <see cref="T:System.ComponentModel.ISupportInitialize"/> interface.
+            If <c>true</c>, no events will be generated from this control. If <c>false</c>, normal event dispatching is in place.
+            </summary>
+            <seealso cref="T:System.ComponentModel.ISupportInitialize"/>
+            <seealso cref="M:Phroggiesoft.Controls.phrogGLControl.BeginInit"/>
+            <seealso cref="M:Phroggiesoft.Controls.phrogGLControl.EndInit"/>
+        </member>
+        <member name="M:Phroggiesoft.Controls.phrogGLControl.BeginInit">
+            <summary>
+            Begins the batch initialization routine.
+            </summary>
+            <seealso cref="T:System.ComponentModel.ISupportInitialize"/>
+            <seealso cref="M:Phroggiesoft.Controls.phrogGLControl.EndInit"/>
+            <seealso cref="P:Phroggiesoft.Controls.phrogGLControl.Initializing"/>
+        </member>
+        <member name="M:Phroggiesoft.Controls.phrogGLControl.EndInit">
+            <summary>
+            Ends the batch initialization routine.
+            </summary>
+            <seealso cref="T:System.ComponentModel.ISupportInitialize"/>
+            <seealso cref="M:Phroggiesoft.Controls.phrogGLControl.BeginInit"/>
+            <seealso cref="P:Phroggiesoft.Controls.phrogGLControl.Initializing"/>
+        </member>
+        <member name="T:Phroggiesoft.Controls.phrogGLControl.DelayUpdate">
+            <summary>
+            Delays the invocation on Mac OS X, and inline actions aren't supported in .NET 2.
+            </summary>
+        </member>
+        <member name="P:Phroggiesoft.Controls.phrogGLControl.CreateParams">
+            <summary>
+            Gets the <see cref="T:System.Windows.Forms.CreateParams"/> for this <see cref="T:Phroggiesoft.Controls.phrogGLControl"/> instance.
+            </summary>
+        </member>
+        <member name="P:Phroggiesoft.Controls.phrogGLControl.DesiredGraphicsMode">
+            <summary>
+            This control's desired <see cref="T:OpenTK.Graphics.GraphicsMode"/>.
+            </summary>
+        </member>
+        <member name="M:Phroggiesoft.Controls.phrogGLControl.OnHandleCreated(System.EventArgs)">
+            <summary>
+            Raises the <see cref="E:System.Windows.Forms.Control.HandleCreated"/> event.
+            </summary>
+            <param name="e">Not used.</param>
+        </member>
+        <member name="M:Phroggiesoft.Controls.phrogGLControl.OnHandleDestroyed(System.EventArgs)">
+            <summary>
+            Raises the <see cref="E:System.Windows.Forms.Control.HandleDestroyed"/> event.
+            </summary>
+            <param name="e">Not used.</param>
+        </member>
+        <member name="M:Phroggiesoft.Controls.phrogGLControl.OnLoad(System.EventArgs)">
+            <summary>
+            Raises the <see cref="E:Phroggiesoft.Controls.phrogGLControl.Load"/> event.
+            </summary>
+            <param name="e">Not used.</param>
+            <remarks>This class does not inherit from <see cref="T:System.Windows.Forms.UserControl"/>, so it lacks the official
+            <see cref="E:System.Windows.Forms.UserControl.Load"/> (or <see cref="E:System.Windows.Forms.Form.Load"/>) event. Instead, it attempts to
+            mimic that behavior by raising the event once, shortly after a handle is created.</remarks>
+        </member>
+        <member name="M:Phroggiesoft.Controls.phrogGLControl.OnPaint(System.Windows.Forms.PaintEventArgs)">
+            <summary>
+            Raises the <see cref="E:System.Windows.Forms.Control.Paint"/> event.
+            </summary>
+            <param name="e">A <see cref="T:System.Windows.Forms.PaintEventArgs"/> that contains the event data.</param>
+        </member>
+        <member name="M:Phroggiesoft.Controls.phrogGLControl.OnParentChanged(System.EventArgs)">
+            <summary>
+            Raises the <see cref="E:System.Windows.Forms.Control.ParentChanged"/> event.
+            </summary>
+            <param name="e">Not used.</param>
+        </member>
+        <member name="M:Phroggiesoft.Controls.phrogGLControl.OnResize(System.EventArgs)">
+            <summary>
+            Raises the <see cref="E:System.Windows.Forms.Control.Resize"/> event.
+            </summary>
+            <param name="e">Not used.</param>
+        </member>
+        <member name="M:Phroggiesoft.Controls.phrogGLControl.PerformContextUpdate">
+            <summary>
+            Performs the delayed context update.
+            </summary>
+        </member>
+        <member name="F:Phroggiesoft.Controls.phrogGLControl.components">
+            <summary> 
+            Required designer variable.
+            </summary>
+        </member>
+        <member name="M:Phroggiesoft.Controls.phrogGLControl.Dispose(System.Boolean)">
+            <summary> 
+            Clean up any resources being used.
+            </summary>
+            <param name="disposing">true if managed resources should be disposed; otherwise, false.</param>
+        </member>
+        <member name="M:Phroggiesoft.Controls.phrogGLControl.InitializeComponent">
+            <summary> 
+            Required method for Designer support - do not modify 
+            the contents of this method with the code editor.
+            </summary>
+        </member>
+    </members>
+</doc>

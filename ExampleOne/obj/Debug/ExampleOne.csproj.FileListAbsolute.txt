@@ -117,3 +117,5 @@ H:\Dev\Proj\Vivid3D\vividstudio3d\ExampleOne\obj\Debug\ExampleOne.csprojResolveA
 H:\Dev\Proj\Vivid3D\vividstudio3d\ExampleOne\obj\Debug\ExampleOne.csproj.CoreCompileInputs.cache
 H:\Dev\Proj\Vivid3D\vividstudio3d\ExampleOne\obj\Debug\ExampleOne.exe
 H:\Dev\Proj\Vivid3D\vividstudio3d\ExampleOne\obj\Debug\ExampleOne.pdb
+D:\Vivid\Engine\vivid3d\ExampleOne\obj\Debug\ExampleOne.csprojResolveAssemblyReference.cache
+D:\Vivid\Engine\vivid3d\ExampleOne\obj\Debug\ExampleOne.csproj.CoreCompileInputs.cache

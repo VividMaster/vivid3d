@@ -40,6 +40,7 @@
             this.toolStripCheckBox1 = new Syncfusion.Windows.Forms.Tools.ToolStripCheckBox();
             this.toolStripSeparator2 = new System.Windows.Forms.ToolStripSeparator();
             this.toolStripEx1 = new Syncfusion.Windows.Forms.Tools.ToolStripEx();
+            this.GLO = new OpenTK.GLControl();
             this.toolStripEx1.SuspendLayout();
             this.SuspendLayout();
             // 
@@ -58,7 +59,7 @@
             this.toolStripButton2.Image = ((System.Drawing.Image)(resources.GetObject("toolStripButton2.Image")));
             this.toolStripButton2.ImageTransparentColor = System.Drawing.Color.Magenta;
             this.toolStripButton2.Name = "toolStripButton2";
-            this.toolStripButton2.Size = new System.Drawing.Size(24, 24);
+            this.toolStripButton2.Size = new System.Drawing.Size(34, 34);
             this.toolStripButton2.Text = "toolStripButton2";
             // 
             // toolStripButton3
@@ -67,7 +68,7 @@
             this.toolStripButton3.Image = ((System.Drawing.Image)(resources.GetObject("toolStripButton3.Image")));
             this.toolStripButton3.ImageTransparentColor = System.Drawing.Color.Magenta;
             this.toolStripButton3.Name = "toolStripButton3";
-            this.toolStripButton3.Size = new System.Drawing.Size(24, 24);
+            this.toolStripButton3.Size = new System.Drawing.Size(34, 34);
             this.toolStripButton3.Text = "toolStripButton3";
             // 
             // toolStripButton4
@@ -76,13 +77,13 @@
             this.toolStripButton4.Image = ((System.Drawing.Image)(resources.GetObject("toolStripButton4.Image")));
             this.toolStripButton4.ImageTransparentColor = System.Drawing.Color.Magenta;
             this.toolStripButton4.Name = "toolStripButton4";
-            this.toolStripButton4.Size = new System.Drawing.Size(24, 24);
+            this.toolStripButton4.Size = new System.Drawing.Size(34, 34);
             this.toolStripButton4.Text = "toolStripButton4";
             // 
             // toolStripSeparator1
             // 
             this.toolStripSeparator1.Name = "toolStripSeparator1";
-            this.toolStripSeparator1.Size = new System.Drawing.Size(6, 27);
+            this.toolStripSeparator1.Size = new System.Drawing.Size(6, 37);
             // 
             // toolStripButton5
             // 
@@ -90,7 +91,7 @@
             this.toolStripButton5.Image = ((System.Drawing.Image)(resources.GetObject("toolStripButton5.Image")));
             this.toolStripButton5.ImageTransparentColor = System.Drawing.Color.Magenta;
             this.toolStripButton5.Name = "toolStripButton5";
-            this.toolStripButton5.Size = new System.Drawing.Size(24, 24);
+            this.toolStripButton5.Size = new System.Drawing.Size(34, 34);
             this.toolStripButton5.Text = "toolStripButton5";
             // 
             // toolStripButton6
@@ -99,7 +100,7 @@
             this.toolStripButton6.Image = ((System.Drawing.Image)(resources.GetObject("toolStripButton6.Image")));
             this.toolStripButton6.ImageTransparentColor = System.Drawing.Color.Magenta;
             this.toolStripButton6.Name = "toolStripButton6";
-            this.toolStripButton6.Size = new System.Drawing.Size(24, 24);
+            this.toolStripButton6.Size = new System.Drawing.Size(34, 34);
             this.toolStripButton6.Text = "toolStripButton6";
             // 
             // toolStripButton7
@@ -108,19 +109,19 @@
             this.toolStripButton7.Image = ((System.Drawing.Image)(resources.GetObject("toolStripButton7.Image")));
             this.toolStripButton7.ImageTransparentColor = System.Drawing.Color.Magenta;
             this.toolStripButton7.Name = "toolStripButton7";
-            this.toolStripButton7.Size = new System.Drawing.Size(24, 24);
+            this.toolStripButton7.Size = new System.Drawing.Size(34, 34);
             this.toolStripButton7.Text = "toolStripButton7";
             // 
             // toolStripCheckBox1
             // 
             this.toolStripCheckBox1.Name = "toolStripCheckBox1";
-            this.toolStripCheckBox1.Size = new System.Drawing.Size(126, 24);
+            this.toolStripCheckBox1.Size = new System.Drawing.Size(126, 34);
             this.toolStripCheckBox1.Text = "Debug Mode?";
             // 
             // toolStripSeparator2
             // 
             this.toolStripSeparator2.Name = "toolStripSeparator2";
-            this.toolStripSeparator2.Size = new System.Drawing.Size(6, 27);
+            this.toolStripSeparator2.Size = new System.Drawing.Size(6, 37);
             // 
             // toolStripEx1
             // 
@@ -140,17 +141,30 @@
             this.toolStripSeparator2});
             this.toolStripEx1.Location = new System.Drawing.Point(0, 0);
             this.toolStripEx1.Name = "toolStripEx1";
-            this.toolStripEx1.Size = new System.Drawing.Size(668, 57);
+            this.toolStripEx1.Size = new System.Drawing.Size(830, 57);
             this.toolStripEx1.TabIndex = 0;
-            this.toolStripEx1.Text = "toolStripEx1";
             // 
-            // ToolBar
+            // GLO
+            // 
+            this.GLO.BackColor = System.Drawing.Color.Black;
+            this.GLO.Dock = System.Windows.Forms.DockStyle.Fill;
+            this.GLO.Location = new System.Drawing.Point(0, 57);
+            this.GLO.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
+            this.GLO.Name = "GLO";
+            this.GLO.Size = new System.Drawing.Size(830, 264);
+            this.GLO.TabIndex = 1;
+            this.GLO.VSync = false;
+            this.GLO.Load += new System.EventHandler(this.glControl1_Load);
+            // 
+            // MainView
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(8F, 16F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-            this.ClientSize = new System.Drawing.Size(668, 128);
+            this.ClientSize = new System.Drawing.Size(830, 321);
+            this.Controls.Add(this.GLO);
             this.Controls.Add(this.toolStripEx1);
-            this.Name = "ToolBar";
+            this.Name = "MainView";
+            this.Load += new System.EventHandler(this.MainView_Load);
             this.toolStripEx1.ResumeLayout(false);
             this.toolStripEx1.PerformLayout();
             this.ResumeLayout(false);
@@ -171,5 +185,6 @@
         private Syncfusion.Windows.Forms.Tools.ToolStripCheckBox toolStripCheckBox1;
         private System.Windows.Forms.ToolStripSeparator toolStripSeparator2;
         private Syncfusion.Windows.Forms.Tools.ToolStripEx toolStripEx1;
+        private OpenTK.GLControl GLO;
     }
 }

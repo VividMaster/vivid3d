@@ -72,3 +72,10 @@ C:\Proj\Vivid3D\vividstudio3d\Vivid3D\obj\Debug\-Vivid3D.pdb
 C:\Proj\Vivid3D\vividstudio3d\Vivid3D\obj\Debug\Vivid3D.csprojResolveAssemblyReference.cache
 C:\Vivid3D\-Vivid3D.dll.CodeAnalysisLog.xml
 C:\Vivid3D\-Vivid3D.dll.lastcodeanalysissucceeded
+D:\Vivid3D\-Vivid3D.dll.config
+D:\Vivid3D\-Vivid3D.dll
+D:\Vivid3D\-Vivid3D.pdb
+D:\Vivid\Engine\vivid3d\Vivid3D\obj\Debug\Vivid3D.csproj.CoreCompileInputs.cache
+D:\Vivid\Engine\vivid3d\Vivid3D\obj\Debug\-Vivid3D.dll
+D:\Vivid\Engine\vivid3d\Vivid3D\obj\Debug\-Vivid3D.pdb
+D:\Vivid\Engine\vivid3d\Vivid3D\obj\Debug\Vivid3D.csprojResolveAssemblyReference.cache
