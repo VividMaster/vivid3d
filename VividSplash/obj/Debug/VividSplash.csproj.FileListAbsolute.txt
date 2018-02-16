@@ -1,0 +1,13 @@
+D:\Vivid\Engine\vivid3d\VividSplash\obj\Debug\VividSplash.csprojResolveAssemblyReference.cache
+D:\Vivid\Engine\vivid3d\VividSplash\obj\Debug\VividSplash.LogoSplash.resources
+D:\Vivid\Engine\vivid3d\VividSplash\obj\Debug\VividSplash.Properties.Resources.resources
+D:\Vivid\Engine\vivid3d\VividSplash\obj\Debug\VividSplash.csproj.GenerateResource.Cache
+D:\Vivid\Engine\vivid3d\VividSplash\obj\Debug\VividSplash.csproj.CoreCompileInputs.cache
+D:\Vivid\Engine\vivid3d\VividSplash\bin\Debug\VividSplash.exe.config
+D:\Vivid\Engine\vivid3d\VividSplash\bin\Debug\VividSplash.exe
+D:\Vivid\Engine\vivid3d\VividSplash\bin\Debug\VividSplash.pdb
+D:\Vivid\Engine\vivid3d\VividSplash\obj\Debug\VividSplash.exe
+D:\Vivid\Engine\vivid3d\VividSplash\obj\Debug\VividSplash.pdb
+D:\Vivid\Engine\vivid3d\VividProjectManager\bin\Debug\VividSplash.exe.config
+D:\Vivid\Engine\vivid3d\VividProjectManager\bin\Debug\VividSplash.exe
+D:\Vivid\Engine\vivid3d\VividProjectManager\bin\Debug\VividSplash.pdb

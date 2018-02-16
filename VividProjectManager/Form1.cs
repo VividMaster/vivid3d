@@ -135,7 +135,7 @@ namespace VividProjectManager
 
         public void LoadProject(ProjectLink p)
         {
-            Process.Start("VividStudioIDE.exe", p.Path);
+            Process.Start("VividSplash.exe", p.Path);
             Environment.Exit(-1);
         }
 

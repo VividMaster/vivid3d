@@ -29,7 +29,7 @@ namespace VividStudioIDE
         public ContentViewer VContent = null;
         public MainView VMain = null;
         public SceneView VScene = null;
-        public LogoSplash Splash = null;
+    
         public Form1()
         {
             InitializeComponent();
@@ -64,18 +64,12 @@ namespace VividStudioIDE
 
         private void SplashT_Tick1(object sender, EventArgs e)
         {
-            if (LogoSplash.Done)
-            {
-               // this.Show();
-            }
+         
         }
 
         private void SplashT_Tick(object sender, EventArgs e)
         {
-            if(LogoSplash.Done)
-            {
-               
-            }
+          
         }
 
         private Timer SplashT = null;
@@ -102,9 +96,7 @@ namespace VividStudioIDE
         private void Form1_Load(object sender, EventArgs e)
         {
             this.Hide();
-            Splash = new LogoSplash();
-            Splash.AV = 1.0f;
-            Splash.Show();
+      
             SplashT = new Timer();
             SplashT.Interval = 50;
             SplashT.Tick += SplashT_Tick1;

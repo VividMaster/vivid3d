@@ -7,10 +7,10 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 using System.Windows.Forms;
-
-namespace VividStudioIDE
+using System.Diagnostics;
+namespace VividSplash
 {
-    public partial class LogoSplash : Syncfusion.Windows.Forms.MetroForm
+    public partial class LogoSplash : Form
     {
         public float AV = 0.0f;
         public Timer T1 = new Timer();
@@ -43,11 +43,13 @@ namespace VividStudioIDE
             {
                // this.Close();
                 Done = true;
+                Process.Start("VividStudioIDE.exe", Launch.Proj);
+                Environment.Exit(-1);
               //  AppForm = new Form1();
              //   AppForm.Show();
             }
         }
-        private Form1 AppForm = null;
+   
         private void T1_Tick(object sender, EventArgs e)
         {
             AV = AV + 0.02f;
