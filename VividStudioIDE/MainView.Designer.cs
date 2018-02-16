@@ -146,7 +146,7 @@
             // 
             // GLO
             // 
-            this.GLO.BackColor = System.Drawing.Color.Black;
+            this.GLO.BackColor = System.Drawing.Color.DarkRed;
             this.GLO.Dock = System.Windows.Forms.DockStyle.Fill;
             this.GLO.Location = new System.Drawing.Point(0, 57);
             this.GLO.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
@@ -154,15 +154,19 @@
             this.GLO.Size = new System.Drawing.Size(830, 264);
             this.GLO.TabIndex = 1;
             this.GLO.VSync = false;
+            this.GLO.MakeCurrent();
+        
             this.GLO.Load += new System.EventHandler(this.glControl1_Load);
+            this.GLO.Paint += new System.Windows.Forms.PaintEventHandler(this.GLO_Paint_1);
             // 
             // MainView
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(8F, 16F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.ClientSize = new System.Drawing.Size(830, 321);
-            this.Controls.Add(this.GLO);
+        
             this.Controls.Add(this.toolStripEx1);
+            this.Controls.Add(this.GLO);
             this.Name = "MainView";
             this.Load += new System.EventHandler(this.MainView_Load);
             this.toolStripEx1.ResumeLayout(false);

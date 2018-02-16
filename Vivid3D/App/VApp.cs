@@ -21,7 +21,17 @@ namespace Vivid.App
     }
     public class VForm : VApp
     {
-        public void Set(int w,int h)
+        public void SetSize(int w,int h)
+        {
+            AppInfo.W = w;
+            AppInfo.H = h;
+            AppInfo.RW = w;
+            AppInfo.RH = h;
+            GL.Viewport(0, 0,w,h);
+            GL.Scissor(0, 0, w, h);
+            VPen.SetProj(0, 0, w, h);
+        }
+         public void Set(int w,int h)
         {
             GL.ClearColor(System.Drawing.Color.AliceBlue);
             GL.Enable(EnableCap.DepthTest);
@@ -39,8 +49,8 @@ namespace Vivid.App
             VPen.InitDraw();
             VInput.InitInput();
             Vivid.Sound.VSoundSys.Init();
-            GL.Viewport(0, 0, Width, Height);
-            GL.Scissor(0, 0, Width, Height);
+            GL.Viewport(0, 0, w, h);
+            GL.Scissor(0, 0,w,h);
             GL.Disable(EnableCap.Blend);
             GL.Disable(EnableCap.Texture2D);
             GL.Enable(EnableCap.CullFace);
@@ -52,7 +62,7 @@ namespace Vivid.App
 
             GL.ClearDepth(1.0f);
             GL.DepthFunc(DepthFunction.Less);
-            UI.UISys.ActiveUI.OnResize(Width, Height);
+           // UI.UISys.ActiveUI.OnResize(Width, Height);
             VPen.SetProj(0, 0, w, h);
         }
 

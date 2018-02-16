@@ -32,6 +32,10 @@ namespace VividStudioIDE
         private VForm VF = null;
         private void MainView_Load(object sender, EventArgs e)
         {
+            //if(GLO == null)
+            //{
+              
+            
             GLO.Resize += GLO_Resize;
             GLO.Paint += GLO_Paint;
             Text =
@@ -43,7 +47,7 @@ namespace VividStudioIDE
             Application.Idle += Application_Idle;
             //MessageBox.Show(Text);
 
-
+            GLO.Invalidate();
 
         }
 
@@ -56,27 +60,34 @@ namespace VividStudioIDE
         }
         public void Render()
         {
-            GL.ClearColor(Color.AliceBlue);
-
+            GLO.MakeCurrent();
+            GL.ClearColor(Color.Gray);
             // GL.DepthMask(true);
 
             GL.Clear(ClearBufferMask.ColorBufferBit | ClearBufferMask.DepthBufferBit);
 
 
             GLO.SwapBuffers();
+            GLO.Invalidate();
 
         }
         private void GLO_Paint(object sender, PaintEventArgs e)
         {
 
-           
-            
+
+            Render();
 
         }
 
         private void GLO_Resize(object sender, EventArgs e)
         {
-            VF.Set(Width, Height);
+            VF.SetSize(Width, Height);
+
+        }
+
+        private void GLO_Paint_1(object sender, PaintEventArgs e)
+        {
+            Render();
         }
     }
 }

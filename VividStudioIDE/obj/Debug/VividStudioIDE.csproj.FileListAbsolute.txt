@@ -11,3 +11,4 @@ D:\Vivid\Engine\vivid3d\VividStudioIDE\obj\Debug\VividStudioIDE.csproj.GenerateR
 D:\Vivid\Engine\vivid3d\VividStudioIDE\obj\Debug\VividStudioIDE.csproj.CoreCompileInputs.cache
 D:\Vivid\Engine\vivid3d\VividStudioIDE\obj\Debug\VividStudioIDE.exe
 D:\Vivid\Engine\vivid3d\VividStudioIDE\obj\Debug\VividStudioIDE.pdb
+D:\Vivid\Engine\vivid3d\VividStudioIDE\obj\Debug\VividStudioIDE.LogoSplash.resources
